@@ -1,0 +1,27 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
+<div class="col-sm-12">
+    <div ng-repeat="record in records">
+        <div class="col-md-4 col-sm-6 col-lg-3 well">
+            <div class="col-md-12">
+                <div class="img-thumbnail" id="{{$parent.$index}}-{{column.name}}">
+                    <a ng-href="{{record.album.cover}}" target="_blank"><img class="img-responsive" ng-src="{{record.album.cover}}" alt="{{record.album.cover}}"></a>
+                </div>
+            </div>
+            <div class="caption" >
+                <p ng-switch-when="String"><strong>Album: </strong>{{record.album.name}}</p>
+                <p ng-switch-when="Date"><strong>Release: </strong>{{record.album.release | date}}</p>
+                <p ng-switch-when="Boolean"><strong>Single: </strong> <span class="glyphicon" ng-class="{'glyphicon-check': !!record.album.single, 'glyphicon-unchecked': !record.album.single}"></span></p>
+                <p ng-switch-when="String"><strong>Artist: </strong> {{record.album.artist}}</p>
+                <p ng-switch-when="String"><strong>Price: </strong> {{record.price | currency}}</p>
+            </div>
+            <p ng-if="actions" class="text-center">
+                <button ng-repeat="action in actions" id="{{$parent.$index}}-{{action.name}}-btn" class="btn btn-default btn-sm" ng-show="action.show()" ng-click="action.fn(record)"><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <pagination ng-show="ctrl.numPages > 1" num-pages="ctrl.numPages" total-items="ctrl.totalItems"
+                ng-model="ctrl.currentPage" ng-change="ctrl.pageChanged()" items-per-page="ctrl.itemsPerPage"
+                max-size="ctrl.maxSize" class="pagination-md" boundary-links="true" rotate="false"></pagination>
+</div>

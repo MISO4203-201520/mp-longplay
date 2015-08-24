@@ -15,7 +15,8 @@ import javax.inject.Inject;
 @Stateless
 public class ProviderLogic implements IProviderLogic {
 
-    @Inject private ProviderPersistence persistence;
+    @Inject
+    private ProviderPersistence persistence;
 
     /**
      * @generated
@@ -67,5 +68,9 @@ public class ProviderLogic implements IProviderLogic {
      */
     public List<ProviderDTO> findByName(String name) {
         return ProviderConverter.listEntity2DTO(persistence.findByName(name));
+    }
+
+    public ProviderDTO getArtistByUserId(String userId) {
+        return ProviderConverter.refEntity2DTO(persistence.getProviderByUserId(userId));
     }
 }

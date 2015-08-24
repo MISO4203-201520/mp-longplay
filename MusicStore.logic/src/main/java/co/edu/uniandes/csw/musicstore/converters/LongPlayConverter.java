@@ -28,6 +28,7 @@ public abstract class LongPlayConverter {
             dto.setId(entity.getId());
             dto.setName(entity.getName());
             dto.setPrice(entity.getPrice());
+            dto.setAlbum(AlbumConverter.refEntity2DTO(entity.getAlbum()));
 
             return dto;
         } else {

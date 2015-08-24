@@ -1,7 +1,9 @@
 package co.edu.uniandes.csw.musicstore.services;
 
 import co.edu.uniandes.csw.musicstore.api.ICartItemLogic;
+import co.edu.uniandes.csw.musicstore.api.IClientLogic;
 import co.edu.uniandes.csw.musicstore.dtos.CartItemDTO;
+import co.edu.uniandes.csw.musicstore.dtos.ClientDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
 import java.util.List;
 import javax.inject.Inject;
@@ -17,6 +19,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import org.apache.shiro.SecurityUtils;
 
 /**
  * @generated
@@ -26,10 +29,17 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class CartItemService {
 
-    @Inject private ICartItemLogic cartItemLogic;
-    @Context private HttpServletResponse response;
-    @QueryParam("page") private Integer page;
-    @QueryParam("maxRecords") private Integer maxRecords;
+    @Inject
+    private ICartItemLogic cartItemLogic;
+    @Inject
+    private IClientLogic clientLogic;
+    @Context
+    private HttpServletResponse response;
+    @QueryParam("page")
+    private Integer page;
+    @QueryParam("maxRecords")
+    private Integer maxRecords;
+    private ClientDTO client = (ClientDTO) SecurityUtils.getSubject().getSession().getAttribute("Client");
 
     /**
      * @generated
@@ -37,7 +47,11 @@ public class CartItemService {
     @POST
     @StatusCreated
     public CartItemDTO createCartItem(CartItemDTO dto) {
-        return cartItemLogic.createCartItem(dto);
+        if (client != null) {
+            dto.setClient(client);
+            return cartItemLogic.createCartItem(dto);
+        }
+        return null;
     }
 
     /**
@@ -45,10 +59,7 @@ public class CartItemService {
      */
     @GET
     public List<CartItemDTO> getCartItems() {
-        if (page != null && maxRecords != null) {
-            this.response.setIntHeader("X-Total-Count", cartItemLogic.countCartItems());
-        }
-        return cartItemLogic.getCartItems(page, maxRecords);
+        return clientLogic.getClient(client.getId()).getCartItems();
     }
 
     /**

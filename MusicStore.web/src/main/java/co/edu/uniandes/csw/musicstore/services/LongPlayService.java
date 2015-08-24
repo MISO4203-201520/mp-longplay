@@ -1,7 +1,9 @@
 package co.edu.uniandes.csw.musicstore.services;
 
 import co.edu.uniandes.csw.musicstore.api.ILongPlayLogic;
+import co.edu.uniandes.csw.musicstore.api.IProviderLogic;
 import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
+import co.edu.uniandes.csw.musicstore.dtos.ProviderDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
 import java.util.List;
 import javax.inject.Inject;
@@ -17,6 +19,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import org.apache.shiro.SecurityUtils;
 
 /**
  * @generated
@@ -26,10 +29,19 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class LongPlayService {
 
-    @Inject private ILongPlayLogic longPlayLogic;
-    @Context private HttpServletResponse response;
-    @QueryParam("page") private Integer page;
-    @QueryParam("maxRecords") private Integer maxRecords;
+    @Inject
+    private ILongPlayLogic longPlayLogic;
+    @Inject
+    private IProviderLogic providerLogic;
+    @Context
+    private HttpServletResponse response;
+    @QueryParam("page")
+    private Integer page;
+    @QueryParam("maxRecords")
+    private Integer maxRecords;
+    @QueryParam("q")
+    private String albumName;
+    private ProviderDTO provider = (ProviderDTO) SecurityUtils.getSubject().getSession().getAttribute("Provider");
 
     /**
      * @generated
@@ -45,10 +57,17 @@ public class LongPlayService {
      */
     @GET
     public List<LongPlayDTO> getLongPlays() {
-        if (page != null && maxRecords != null) {
-            this.response.setIntHeader("X-Total-Count", longPlayLogic.countLongPlays());
+        if (provider != null) {
+            return providerLogic.getProvider(provider.getId()).getLongPlays();
+        } else {
+            if (albumName != null) {
+                return longPlayLogic.findByAlbumName(albumName);
+            }
+            if (page != null && maxRecords != null) {
+                this.response.setIntHeader("X-Total-Count", longPlayLogic.countLongPlays());
+            }
+            return longPlayLogic.getLongPlays(page, maxRecords);
         }
-        return longPlayLogic.getLongPlays(page, maxRecords);
     }
 
     /**

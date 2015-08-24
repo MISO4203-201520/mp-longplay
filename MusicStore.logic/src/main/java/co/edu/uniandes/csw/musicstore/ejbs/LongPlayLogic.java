@@ -68,4 +68,8 @@ public class LongPlayLogic implements ILongPlayLogic {
     public List<LongPlayDTO> findByName(String name) {
         return LongPlayConverter.listEntity2DTO(persistence.findByName(name));
     }
+    
+    public List<LongPlayDTO> findByAlbumName(String albumName) {
+        return LongPlayConverter.listEntity2DTO(persistence.findByAlbumName(albumName));
+    }
 }

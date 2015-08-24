@@ -11,4 +11,5 @@ public interface ILongPlayLogic {
     public LongPlayDTO updateLongPlay(LongPlayDTO dto);
     public void deleteLongPlay(Long id);
     public List<LongPlayDTO> findByName(String name);
+    public List<LongPlayDTO> findByAlbumName(String albumName);
 }

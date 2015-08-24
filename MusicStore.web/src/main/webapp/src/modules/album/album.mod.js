@@ -12,7 +12,7 @@
             }, {
                 name: 'cover',
                 displayName: 'Cover',
-                type: 'String',
+                type: 'Image',
                 required: true
             }, {
                 name: 'release',
