@@ -6,10 +6,10 @@
             this.asGallery = true;
             this.readOnly = true;
 
-            this.searchByName = function (artworkName) {
+            this.searchByName = function (albumName) {
                 var search;
-                if (artworkName) {
-                    search = '?q=' + artworkName;
+                if (albumName) {
+                    search = '?q=' + albumName;
                 }
                 $location.url('/catalog' + search);
             };
@@ -19,10 +19,10 @@
                     displayName: 'Add to Cart',
                     icon: 'shopping-cart',
                     class: 'primary',
-                    fn: function (artwork) {
+                    fn: function (longPlay) {
                         return cartItemSvc.addItem({
-                            artwork: artwork,
-                            name: artwork.name,
+                            longPlay: longPlay,
+                            name: longPlay.name,
                             quantity: 1});
                     },
                     show: function () {

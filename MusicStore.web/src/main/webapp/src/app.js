@@ -2,6 +2,7 @@
 
     var mainApp = ng.module('mainApp', [
         //'ngCrudMock',
+        'xeditable',
         'authModule',
         'albumModule',
         'cartItemModule',
@@ -39,6 +40,11 @@
                         controller: 'cartItemCtrl',
                         controllerAs: alias
                     })
+                    .when('/longPlay', {
+                        templateUrl: tplUrl,
+                        controller: 'longPlayCtrl',
+                        controllerAs: alias
+                    })
                     .otherwise('/catalog');
         }]);
 
@@ -54,7 +60,7 @@
                 logoutURL: 'logout',
                 nameCookie: 'userCookie'
             });
-            auth.setRoles({'user': 'Client', 'provider': 'Provider'});
+//            auth.setRoles({'user': 'Client', 'provider': 'Provider'});
         }]);
 
     mainApp.run(function (editableOptions) {

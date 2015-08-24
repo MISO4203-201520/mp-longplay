@@ -5,16 +5,16 @@
 
     mod.constant('longPlayModel', {
         fields: [{
-                name: 'price',
-                displayName: 'Price',
-                type: 'Integer',
-                required: true
-            }, {
                 name: 'album',
                 displayName: 'Album',
                 type: 'Reference',
                 service: 'albumService',
                 options: [],
+                required: true
+            }, {
+                name: 'price',
+                displayName: 'Price',
+                type: 'Integer',
                 required: true
             }]});
 })(window.angular);

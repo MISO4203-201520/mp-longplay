@@ -8,14 +8,14 @@
                 </div>
             </div>
             <div class="caption" >
-                <p ng-switch-when="String"><strong>Album: </strong>{{record.album.name}}</p>
-                <p ng-switch-when="Date"><strong>Release: </strong>{{record.album.release | date}}</p>
-                <p ng-switch-when="Boolean"><strong>Single: </strong> <span class="glyphicon" ng-class="{'glyphicon-check': !!record.album.single, 'glyphicon-unchecked': !record.album.single}"></span></p>
-                <p ng-switch-when="String"><strong>Artist: </strong> {{record.album.artist}}</p>
-                <p ng-switch-when="String"><strong>Price: </strong> {{record.price | currency}}</p>
+                <p><strong>Album: </strong>{{record.album.name}}</p>
+                <p><strong>Release: </strong>{{record.album.release | date}}</p>
+                <p><strong>Single: </strong> <span class="glyphicon" ng-class="{'glyphicon-check': !!record.album.single, 'glyphicon-unchecked': !record.album.single}"></span></p>
+                <p><strong>Artist: </strong> {{record.album.artist}}</p>
+                <p><strong>Price: </strong> {{record.price | currency}}</p>
             </div>
-            <p ng-if="actions" class="text-center">
-                <button ng-repeat="action in actions" id="{{$parent.$index}}-{{action.name}}-btn" class="btn btn-default btn-sm" ng-show="action.show()" ng-click="action.fn(record)"><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>
+            <p ng-if="ctrl.recordActions" class="text-center">
+                <button ng-repeat="action in ctrl.recordActions" id="{{$parent.$index}}-{{action.name}}-btn" class="btn btn-default btn-sm" ng-show="action.show()" ng-click="action.fn(record)"><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>
             </p>
         </div>
     </div>
