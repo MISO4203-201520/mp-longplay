@@ -7,10 +7,9 @@
         res-type="javax.sql.ConnectionPoolDataSource">
         <property name="serverName" value="157.253.238.75"/>
         <property name="portNumber" value="5432"/>
-        <property name="databaseName" value="mp-longplay"/>
+        <property name="databaseName" value="mp-music"/>
         <property name="User" value="marketplace"/>
         <property name="Password" value="Gestion2015"/>
-        <property name="createDatabase" value="create"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/jdbc/MusicStore" object-type="user" pool-name="MusicStore_pool"/>
 </resources>
