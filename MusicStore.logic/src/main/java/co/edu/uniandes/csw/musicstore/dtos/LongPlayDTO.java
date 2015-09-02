@@ -11,6 +11,7 @@ public class LongPlayDTO {
     private Long id;
     private String name;
     private Integer price;
+    private Integer discount;
     private AlbumDTO album;
     private ProviderDTO provider;
     /**
@@ -83,4 +84,11 @@ public class LongPlayDTO {
         this.provider = provider;
     }
 
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
 }

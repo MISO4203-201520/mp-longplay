@@ -24,6 +24,7 @@ public class LongPlayEntity implements Serializable {
     private String name;
 
     private Integer price;
+    private Integer discount;
 
     @ManyToOne
     private AlbumEntity album;
@@ -97,6 +98,14 @@ public class LongPlayEntity implements Serializable {
      */
     public void setProvider(ProviderEntity provider) {
         this.provider = provider;
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
     }
 
 }

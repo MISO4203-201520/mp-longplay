@@ -13,6 +13,7 @@
                 <p><strong>Single: </strong> <span class="glyphicon" ng-class="{'glyphicon-check': !!record.album.single, 'glyphicon-unchecked': !record.album.single}"></span></p>
                 <p><strong>Artist: </strong> {{record.album.artist}}</p>
                 <p><strong>Price: </strong> {{record.price | currency}}</p>
+                <p><strong>Discount: </strong> {{record.discount | currency}}</p>
             </div>
             <p ng-if="ctrl.recordActions" class="text-center">
                 <button ng-repeat="action in ctrl.recordActions" id="{{$parent.$index}}-{{action.name}}-btn" class="btn btn-default btn-sm" ng-show="action.show()" ng-click="action.fn(record)"><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>

@@ -49,6 +49,7 @@ public class LongPlayService {
     @POST
     @StatusCreated
     public LongPlayDTO createLongPlay(LongPlayDTO dto) {
+        dto.setProvider(provider);
         return longPlayLogic.createLongPlay(dto);
     }
 

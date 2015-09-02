@@ -28,6 +28,7 @@ public abstract class LongPlayConverter {
             dto.setId(entity.getId());
             dto.setName(entity.getName());
             dto.setPrice(entity.getPrice());
+            dto.setDiscount(entity.getDiscount());
             dto.setAlbum(AlbumConverter.refEntity2DTO(entity.getAlbum()));
 
             return dto;
@@ -61,6 +62,7 @@ public abstract class LongPlayConverter {
             dto.setId(entity.getId());
             dto.setName(entity.getName());
             dto.setPrice(entity.getPrice());
+            dto.setDiscount(entity.getDiscount());
             dto.setAlbum(AlbumConverter.refEntity2DTO(entity.getAlbum()));
             dto.setProvider(ProviderConverter.refEntity2DTO(entity.getProvider()));
 
@@ -79,6 +81,7 @@ public abstract class LongPlayConverter {
             entity.setId(dto.getId());
             entity.setName(dto.getName());
             entity.setPrice(dto.getPrice());
+            entity.setDiscount(dto.getDiscount());
             entity.setAlbum(AlbumConverter.refDTO2Entity(dto.getAlbum()));
             entity.setProvider(ProviderConverter.refDTO2Entity(dto.getProvider()));
 
