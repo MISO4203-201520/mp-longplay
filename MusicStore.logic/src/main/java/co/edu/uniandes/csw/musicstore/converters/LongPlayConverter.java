@@ -65,7 +65,7 @@ public abstract class LongPlayConverter {
             dto.setDiscount(entity.getDiscount());
             dto.setAlbum(AlbumConverter.refEntity2DTO(entity.getAlbum()));
             dto.setProvider(ProviderConverter.refEntity2DTO(entity.getProvider()));
-
+            dto.setComments(CommentConverter.listEntity2DTO(entity.getComments()));
             return dto;
         } else {
             return null;

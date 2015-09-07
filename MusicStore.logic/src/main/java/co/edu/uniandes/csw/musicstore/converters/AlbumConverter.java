@@ -30,7 +30,7 @@ public abstract class AlbumConverter {
             dto.setRelease(entity.getRelease());
             dto.setSingle(entity.getSingle());
             dto.setArtist(entity.getArtist());
-
+            dto.setPublicationDate(entity.getPublicationDate());  //Nuevo
             return dto;
         } else {
             return null;
@@ -65,7 +65,7 @@ public abstract class AlbumConverter {
             dto.setRelease(entity.getRelease());
             dto.setSingle(entity.getSingle());
             dto.setArtist(entity.getArtist());
-
+            dto.setPublicationDate(entity.getPublicationDate()); // Nuevo
             return dto;
         } else {
             return null;
@@ -84,7 +84,7 @@ public abstract class AlbumConverter {
             entity.setRelease(dto.getRelease());
             entity.setSingle(dto.getSingle());
             entity.setArtist(dto.getArtist());
-
+            entity.setPublicationDate(dto.getPublicationDate()); // Nuevo
             return entity;
         } else {
             return null;

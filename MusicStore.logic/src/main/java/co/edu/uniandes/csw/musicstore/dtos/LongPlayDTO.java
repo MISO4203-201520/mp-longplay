@@ -1,5 +1,6 @@
 package co.edu.uniandes.csw.musicstore.dtos;
 
+import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -14,6 +15,7 @@ public class LongPlayDTO {
     private Integer discount;
     private AlbumDTO album;
     private ProviderDTO provider;
+    private List<CommentDTO> comments; 
     /**
      * @generated
      */
@@ -90,5 +92,18 @@ public class LongPlayDTO {
 
     public void setDiscount(Integer discount) {
         this.discount = discount;
+    }
+    /**
+     * @return the comments
+     */
+    public List<CommentDTO> getComments() {
+        return comments;
+    }
+
+    /**
+     * @param comments the comments to set
+     */
+    public void setComments(List<CommentDTO> comments) {
+        this.comments = comments;
     }
 }

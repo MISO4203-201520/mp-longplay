@@ -5,6 +5,9 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Entity;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,7 +31,10 @@ public class AlbumEntity implements Serializable {
     private Boolean single;
 
     private String artist;
-
+    
+    @Temporal(TemporalType.DATE)  // Nuevo a tributo y definición de formato
+    private Date publicationDate; 
+            
     /**
      * @generated
      */
@@ -111,6 +117,14 @@ public class AlbumEntity implements Serializable {
      */
     public void setArtist(String artist){
         this.artist = artist;
+    }
+    
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
     }
 
 }
