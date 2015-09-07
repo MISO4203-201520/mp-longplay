@@ -16,8 +16,9 @@
                 <p><strong>Discount: </strong> {{record.discount | currency}}</p>
             </div>
             <p ng-if="ctrl.recordActions" class="text-center">
-                <button ng-repeat="action in ctrl.recordActions" id="{{$parent.$index}}-{{action.name}}-btn" class="btn btn-default btn-sm" ng-show="action.show()" ng-click="action.fn(record)"><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>
+                <button ng-repeat="action in ctrl.recordActions" id="{{$parent.$index}}-{{action.name}}-btn" class="btn btn-default btn-sm" ng-show="action.show()" ng-click="action.fn(record)" ><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>
             </p>
+            <div ng-include src="modal.url" ng-if="modal.data.album.id == record.album.id"></div>
         </div>
     </div>
 </div>

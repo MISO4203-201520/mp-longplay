@@ -69,7 +69,7 @@ public abstract class QuestionConverter {
             dto.setId(entity.getId());
             dto.setDescription(entity.getDescription());
             dto.setPostDate(entity.getPostDate());
-
+            
             return dto;
         } else {
             return null;

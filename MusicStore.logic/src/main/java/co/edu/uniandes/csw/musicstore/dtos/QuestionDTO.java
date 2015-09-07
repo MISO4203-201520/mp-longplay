@@ -15,8 +15,12 @@ import java.util.Date;
 public class QuestionDTO {
     
     private Long id;
-        
+            
+    private Long albumId;
+    
     private AlbumDTO album;
+    
+    private Long clientId;
     
     private ClientDTO client;
     
@@ -32,12 +36,28 @@ public class QuestionDTO {
         this.id = id;
     }
 
+    public Long getAlbumId() {
+        return albumId;
+    }
+
+    public void setAlbumId(Long albumId) {
+        this.albumId = albumId;
+    }
+
     public AlbumDTO getAlbum() {
         return album;
     }
 
     public void setAlbum(AlbumDTO album) {
         this.album = album;
+    }
+
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     public ClientDTO getClient() {
