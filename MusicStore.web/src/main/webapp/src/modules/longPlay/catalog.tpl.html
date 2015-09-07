@@ -1,6 +1,6 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
 <div class="col-sm-12">
-    <div ng-repeat="record in records">
+    <div ng-show="ctrl.detailsMode == false" ng-repeat="record in records">
         <div class="col-md-4 col-sm-6 col-lg-3 well">
             <div class="col-md-12">
                 <div class="img-thumbnail" id="{{$parent.$index}}-{{column.name}}">
@@ -26,4 +26,20 @@
     <pagination ng-show="ctrl.numPages > 1" num-pages="ctrl.numPages" total-items="ctrl.totalItems"
                 ng-model="ctrl.currentPage" ng-change="ctrl.pageChanged()" items-per-page="ctrl.itemsPerPage"
                 max-size="ctrl.maxSize" class="pagination-md" boundary-links="true" rotate="false"></pagination>
+</div>
+<div ng-show="ctrl.detailsMode" ng-if="model">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{model.album.name}}</div>
+        <ul class="list-group" ng-repeat="comment in model.comments">
+            <li class="list-group-item">
+                {{comment.description}} - <em>{{comment.commentUser}}</em> 
+            </li>
+        </ul>    
+    </div>
+    <p>
+        <label>New Comment</label>
+        <textarea id="commentsArea" class="textArea"  ng-model="myTextArea" ng-minlength="1" ng-maxlength="250" cols="80"></textarea>
+    </p>
+    <a class="btn btn-default" ng-click="ctrl.addComment(model)" >Add</a>
+    <a class="btn btn-default" ng-click="ctrl.detailsMode = false" >Back</a>
 </div>
