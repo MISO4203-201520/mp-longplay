@@ -37,10 +37,9 @@
                     comment = x[i].value;
                 }
                 if (comment.trim().length == 0) {
-                    alert("El comentario esta vacio");
+                    alert("El comentario esta vacío.");
                 }
                 else {
-                    alert(comment + " Entro al else longPlay: " + record.id);
                     commentService.createComment(record, comment);
                 }
             };
