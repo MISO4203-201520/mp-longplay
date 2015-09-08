@@ -13,9 +13,10 @@ import java.util.Date;
 public class CommentDTO {
     private Long id;
     private String description;
-    private String commentUser;
     private Date commentDate;  
     private LongPlayDTO longPlay;
+    private ClientDTO client;
+    private Long clientId;
     
     public Long getId() {
        return id;
@@ -33,14 +34,6 @@ public class CommentDTO {
         this.description = description;
     }
         
-    public String getCommentUser() {
-        return commentUser;
-    }
-        
-    public void setCommentUser(String commentUser) {
-        this.commentUser = commentUser;
-    }
-
     public Date getCommentDate() {
         return commentDate;
     }
@@ -55,5 +48,21 @@ public class CommentDTO {
 
     public void setLongPlay(LongPlayDTO longPlay) {
          this.longPlay = longPlay;
+    }
+    
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
+    }
+    
+    public ClientDTO getClient() {
+        return client;
+    }
+    
+    public void setClient(ClientDTO client) {
+         this.client = client;
     }
 }

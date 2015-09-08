@@ -27,7 +27,6 @@ public abstract class CommentConverter {
             CommentDTO dto = new CommentDTO();
             dto.setId(entity.getId());
             dto.setDescription(entity.getDescription());
-            dto.setCommentUser(entity.getCommentUser());
             dto.setCommentDate(entity.getCommentDate());
 
             return dto;
@@ -60,9 +59,9 @@ public abstract class CommentConverter {
             CommentDTO dto = new CommentDTO();
             dto.setId(entity.getId());
             dto.setDescription(entity.getDescription());
-            dto.setCommentUser(entity.getCommentUser());
             dto.setCommentDate(entity.getCommentDate());
             dto.setLongPlay(LongPlayConverter.refEntity2DTO(entity.getLongPlay()));
+            dto.setClient(ClientConverter.refEntity2DTO(entity.getClient()));            
             return dto;
         } else {
             return null;
@@ -77,9 +76,9 @@ public abstract class CommentConverter {
             CommentEntity entity = new CommentEntity();
             entity.setId(dto.getId());
             entity.setDescription(dto.getDescription());
-            entity.setCommentUser(dto.getCommentUser());
             entity.setCommentDate(dto.getCommentDate());
             entity.setLongPlay(LongPlayConverter.refDTO2Entity(dto.getLongPlay()));
+            entity.setClient(ClientConverter.refDTO2Entity(dto.getClient()));
             return entity;
         } else {
             return null;

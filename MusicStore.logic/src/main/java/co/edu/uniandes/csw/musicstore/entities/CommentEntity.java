@@ -23,12 +23,14 @@ public class CommentEntity implements Serializable{
     @GeneratedValue(generator = "Comment")
     private Long id;
     private String description;
-    private String commentUser;
     @Temporal(TemporalType.DATE)
     private Date commentDate;
         
     @ManyToOne
     private LongPlayEntity longPlay;
+    
+    @ManyToOne
+    private ClientEntity client;
 
     public Long getId() {
        return id;
@@ -46,14 +48,6 @@ public class CommentEntity implements Serializable{
         this.description = description;
     }
         
-    public String getCommentUser() {
-        return commentUser;
-    }
-        
-    public void setCommentUser(String commentUser) {
-        this.commentUser = commentUser;
-    }
-
     public Date getCommentDate() {
          return commentDate;
     }
@@ -68,6 +62,14 @@ public class CommentEntity implements Serializable{
 
     public void setLongPlay(LongPlayEntity longPlay) {
          this.longPlay = longPlay;
+    }
+    
+    public ClientEntity getClient() {
+        return client;
+    }
+
+    public void setClient(ClientEntity client) {
+         this.client = client;
     }
 }
 
