@@ -40,4 +40,31 @@
         <button  class="btn btn-primary btn-lg" ng-click="checkout()" popover="Thanks" popover-trigger="mouseenter" popover-placement="bottom"> 
             <span class="glyphicon glyphicon-check" aria-hidden="true" ></span> Checkout </button>
     </div>
+    <div id="divPagar"  style="display:none;width:30%;height:54%; position:absolute;top:23%;left:35%; z-index: 1;box-shadow: 2px 2px 5px gray; border-radius: 5px; background-color: #E2ECDE">
+        <label
+            style="color: white; font-size: 15px; text-align: center; width: 100%; background-color: #437FF6; border-top-left-radius: 3px; border-top-right-radius: 3px">Payment</label>
+        <div style="margin: 1%">
+            <label
+                style="font-family: sans-serif; background-color: white; text-align: center; width: 100%; border-radius: 3px;">IVA 16: {{total*+0.16| currency}}</label>
+        </div>
+        <div style="margin: 1%">
+            <label
+                style="font-family: sans-serif; background-color: white; text-align: center; width: 100%; border-radius: 3px;">SUBTOTAL: {{total| currency}}</label>
+        </div>
+        <div style="background-color: white;margin: 1%">
+            <label 	style="margin:3%; font-size: 30px; font-family: sans-serif;  text-align: center; width: 100%; border-radius: 3px;">Total: {{(total*+0.16)+total| currency}}</label>
+        </div>
+        <div style="margin: 3%">
+            <IMG SRC="src/modules/cartItem/images/tarjeta.jpg" height="35px" width="120px" style="border-radius: 3px"> 
+            <input ng-model="cardNumber" type="text" class="form-control"  placeholder="Valid Card Number" required autofocus data-stripe="number" />
+            <select ng-model="paymentMethodList"  ng-change="" ng-options="opt as opt.label for opt in paymentMethod">         
+                
+            </select>
+            <br>
+            <label	style="color: red; font-size: 15px; ">{{error}}</label>
+            <button ng-click="pay();"
+                    style="color: white; font-size: 30px; font-family: sans-serif; background-color: #437FF6; text-align: center; width: 100%; border-radius: 10px;">Buy Now</button>
+        </div>
+    </div>
+    
 </div>

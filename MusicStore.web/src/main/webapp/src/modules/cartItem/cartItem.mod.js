@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module('cartItemModule', ['ngCrud']);
+    var mod = ng.module('cartItemModule', ['ngCrud','purchaseModule']);
 
     mod.constant('cartItemContext', 'cartItems');
 

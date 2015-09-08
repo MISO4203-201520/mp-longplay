@@ -17,5 +17,6 @@
                     self.saveRecord(record);
                 });
             };
+            
         }]);
 })(window.angular);
