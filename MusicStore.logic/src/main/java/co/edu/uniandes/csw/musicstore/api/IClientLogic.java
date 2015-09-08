@@ -6,6 +6,7 @@ import java.util.List;
 public interface IClientLogic {
     public int countClients();
     public List<ClientDTO> getClients(Integer page, Integer maxRecords);
+    public List<ClientDTO> getAllClients();
     public ClientDTO getClient(Long id);
     public ClientDTO createClient(ClientDTO dto);
     public ClientDTO updateClient(ClientDTO dto);

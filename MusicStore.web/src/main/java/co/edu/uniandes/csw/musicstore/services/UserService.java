@@ -5,10 +5,10 @@
  */
 package co.edu.uniandes.csw.musicstore.services;
 
-import co.edu.uniandes.csw.musicstore.api.IProviderLogic;
 import co.edu.uniandes.csw.musicstore.api.IClientLogic;
-import co.edu.uniandes.csw.musicstore.dtos.ProviderDTO;
+import co.edu.uniandes.csw.musicstore.api.IProviderLogic;
 import co.edu.uniandes.csw.musicstore.dtos.ClientDTO;
+import co.edu.uniandes.csw.musicstore.dtos.ProviderDTO;
 import co.edu.uniandes.csw.musicstore.dtos.UserDTO;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.account.AccountStatus;
@@ -18,6 +18,8 @@ import com.stormpath.sdk.group.Group;
 import com.stormpath.sdk.group.GroupList;
 import com.stormpath.sdk.resource.ResourceException;
 import com.stormpath.shiro.realm.ApplicationRealm;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -136,6 +138,38 @@ public class UserService {
                     .entity(e.getMessage())
                     .type(MediaType.TEXT_PLAIN)
                     .build();
+        }
+    }
+    
+    @Path("/findAll")
+    @GET
+    public Response findAll() {
+        try {
+            StringBuilder response = new StringBuilder();
+            response.append("CLIENTS: \n\n");
+            for(ClientDTO cdto : clientLogic.getAllClients()) {
+                response.append(cdto.getId());
+                response.append(" : ");
+                response.append(cdto.getName());
+                response.append("\n");
+            }
+            
+            response.append("\n\nPROVIDERS: \n\n");
+            for(ProviderDTO pdto : artistLogic.getAllProviders()) {
+                response.append(pdto.getId());
+                response.append(" : ");
+                response.append(pdto.getName());
+                response.append("\n");
+            }   
+            
+            //return clientLogic.getClients(1, 1);
+            return Response.ok()
+                    //.entity(clientLogic.getClients(0, 2))
+                    .entity(response.toString())
+                    .type(MediaType.TEXT_PLAIN)
+                    .build();
+        } catch (Exception e) {
+            return null;//Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
 

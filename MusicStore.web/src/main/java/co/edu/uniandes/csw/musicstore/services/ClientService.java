@@ -50,6 +50,12 @@ public class ClientService {
         }
         return clientLogic.getClients(page, maxRecords);
     }
+    
+    @GET
+    @Path("/findAll")
+    public List<ClientDTO> getAllClients() {
+        return clientLogic.getAllClients();
+    }
 
     /**
      * @generated

@@ -73,4 +73,8 @@ public class ProviderLogic implements IProviderLogic {
     public ProviderDTO getArtistByUserId(String userId) {
         return ProviderConverter.refEntity2DTO(persistence.getProviderByUserId(userId));
     }
+    
+    public List<ProviderDTO> getAllProviders() {
+        return ProviderConverter.listEntity2DTO(persistence.findAll());
+    }
 }
