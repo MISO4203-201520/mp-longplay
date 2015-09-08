@@ -18,6 +18,7 @@ import com.stormpath.sdk.group.Group;
 import com.stormpath.sdk.group.GroupList;
 import com.stormpath.sdk.resource.ResourceException;
 import com.stormpath.shiro.realm.ApplicationRealm;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
@@ -142,15 +143,31 @@ public class UserService {
     
     @Path("/findAll")
     @GET
-    public List<ClientDTO> findAll() {
+    public Response findAll() {
         try {
-            Subject currentUser = SecurityUtils.getSubject();
-            return clientLogic.getAllClients();
+            StringBuilder response = new StringBuilder();
+            response.append("CLIENTS: \n\n");
+            for(ClientDTO cdto : clientLogic.getAllClients()) {
+                response.append(cdto.getId());
+                response.append(" : ");
+                response.append(cdto.getName());
+                response.append("\n");
+            }
+            
+            response.append("\n\nPROVIDERS: \n\n");
+            for(ProviderDTO pdto : artistLogic.getAllProviders()) {
+                response.append(pdto.getId());
+                response.append(" : ");
+                response.append(pdto.getName());
+                response.append("\n");
+            }   
+            
             //return clientLogic.getClients(1, 1);
-            //return Response.ok()
-              //      .entity(clientLogic.getClients(0, 2))
-               //     .type(MediaType.TEXT_PLAIN);
-                    //.build();
+            return Response.ok()
+                    //.entity(clientLogic.getClients(0, 2))
+                    .entity(response.toString())
+                    .type(MediaType.TEXT_PLAIN)
+                    .build();
         } catch (Exception e) {
             return null;//Response.status(Response.Status.BAD_REQUEST).build();
         }
