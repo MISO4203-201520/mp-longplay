@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import java.util.List;
+import javax.persistence.CascadeType;
 
 /**
  * @generated
@@ -24,11 +27,24 @@ public class LongPlayEntity implements Serializable {
     private String name;
 
     private Integer price;
+    private Integer discount;
 
     @ManyToOne
     private AlbumEntity album;
     @ManyToOne
     private ProviderEntity provider;
+    
+    @OneToMany(mappedBy = "longPlay", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentEntity> comments;
+    
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+    
     /**
      * @generated
      */
@@ -99,4 +115,12 @@ public class LongPlayEntity implements Serializable {
         this.provider = provider;
     }
 
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+    
 }

@@ -10,7 +10,8 @@
         'longPlayModule',
         'providerModule',
         'ngRoute',
-        'ngCrud'
+        'ngCrud',
+        'ngCookies'
     ]);
 
     mainApp.config(['$routeProvider', 'CrudTemplateURL', 'CrudCtrlAlias', function ($routeProvider, tplUrl, alias) {

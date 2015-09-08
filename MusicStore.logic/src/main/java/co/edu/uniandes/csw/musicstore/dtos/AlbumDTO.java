@@ -17,6 +17,9 @@ public class AlbumDTO {
     private Date release;
     private Boolean single;
     private String artist;
+    
+    private Date publicationDate;    // Nuevo atributo
+    
     /**
      * @generated
      */
@@ -100,5 +103,13 @@ public class AlbumDTO {
     public void setArtist(String artist) {
         this.artist = artist;
     }
+    
+    public Date getPublicationDate() {
+      return publicationDate;
+    }
+
+   public void setPublicationDate(Date publicationDate) {
+     this.publicationDate = publicationDate;
+   }
 
 }

@@ -16,5 +16,10 @@
                 displayName: 'Price',
                 type: 'Integer',
                 required: true
+            },  {
+                name: 'discount',
+                displayName: 'Discount',
+                type: 'Integer',
+                required: false
             }]});
 })(window.angular);

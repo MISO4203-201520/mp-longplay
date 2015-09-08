@@ -6,4 +6,4 @@
             this.loadRefOptions();
             this.fetchRecords();
         }]);
-})(window.angular);
+    })(window.angular);
