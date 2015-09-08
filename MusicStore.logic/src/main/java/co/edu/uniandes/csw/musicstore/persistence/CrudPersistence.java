@@ -65,6 +65,11 @@ public abstract class CrudPersistence<T> {
         }
         return q.getResultList();
     }
+    
+    public List<T> findAll() {
+        Query q = em.createQuery("select u from " + entityClass.getSimpleName() + " u");
+        return q.getResultList();
+    }
 
     /**
      * @generated
