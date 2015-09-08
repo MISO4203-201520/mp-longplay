@@ -10,12 +10,6 @@
                 type: 'String',
                 required: true
             }, {
-                name: 'commentUser',
-                displayName: 'Comment User',
-                type: 'String',
-                required: true
-            }, {
-            }, {
                 name: 'commentDate',
                 displayName: 'Comment Date',
                 type: 'Date',

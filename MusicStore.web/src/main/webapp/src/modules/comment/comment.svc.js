@@ -7,7 +7,7 @@
             
             //var user = angular.fromJson($cookies.get('userCookie'));
             
-            var data = angular.toJson({ id: null, description: comment, commentUser: 'usuario prueba', commentDate: null, longPlay: record  });
+            var data = angular.toJson({ id: null, description: comment, commentDate: null, longPlay: record  });
             
             $http({
                 method: "POST",

@@ -42,6 +42,10 @@
                 else {
                     commentService.createComment(record, comment);
                 }
+                for (i = 0; i < x.length; i++) {
+                    x[i].value="";
+                }
+                
             };
             this.recordActions = [{
                     name: 'addToCart',
