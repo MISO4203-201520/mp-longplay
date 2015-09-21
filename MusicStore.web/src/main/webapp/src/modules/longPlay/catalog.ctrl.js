@@ -1,8 +1,8 @@
 (function (ng) {
     var mod = ng.module('longPlayModule');
 
-    mod.controller('catalogCtrl', ['CrudCreator', '$scope', 'longPlayService', 'longPlayModel', 'cartItemService', '$location', 'commentService', 'authService', 'questionService', function (CrudCreator, $scope, svc, model, cartItemSvc, $location, commentService, authSvc, questionService) {
-            CrudCreator.extendController(this, svc, $scope, model, 'catalog', 'Catalog');
+    mod.controller('catalogCtrl', ['CrudCreator', '$scope', '$route','longPlayService', 'longPlayModel', 'cartItemService', '$location', 'commentService', 'authService', 'questionService', function (CrudCreator, $scope, $route, svc, model, cartItemSvc, $location, commentService, authSvc, questionService) {
+            CrudCreator.extendController(this, svc, $scope, $route, model, 'catalog', 'Catalog');
             this.asGallery = true;
             this.readOnly = true;
             this.detailsMode = false;
@@ -31,7 +31,7 @@
                 var comment = "";
                 var x = document.getElementsByClassName("textArea");
                 var i;
-                
+
 
                 for (i = 0; i < x.length; i++) {
                     comment = x[i].value;
@@ -41,12 +41,24 @@
                 }
                 else {
                     commentService.createComment(record, comment);
+                    this.refreshComment(record);
                 }
                 for (i = 0; i < x.length; i++) {
-                    x[i].value="";
+                    x[i].value = "";
                 }
-                
             };
+            this.refreshComment = function (record) {
+                //location.reload(true);
+                //$route.reload();
+                //self.detailsModel = true;
+                svc.api.get(record.id).then(function (data) {
+                    //alert(record.id);
+                    self.detailsModel = true;
+                    $scope.model = data;
+                });
+                this.fetchRecords();
+            };
+            
             this.recordActions = [{
                     name: 'addToCart',
                     displayName: 'Add to Cart',

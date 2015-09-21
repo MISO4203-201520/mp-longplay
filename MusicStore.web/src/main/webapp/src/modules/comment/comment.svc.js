@@ -14,11 +14,11 @@
                 url: "webresources/comments",
                 data: data,
                 headers: {'Content-Type': 'application/json'}
-            }).success(function() {
+            })/*.success(function() {
                 alert("Registro almacenado.");
             }).error(function() {
                 alert("Error al guardar.");
-            });
+            })*/;
             
             return true;
         };
