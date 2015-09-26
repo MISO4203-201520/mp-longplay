@@ -72,4 +72,8 @@ public class LongPlayLogic implements ILongPlayLogic {
     public List<LongPlayDTO> findByAlbumName(String albumName) {
         return LongPlayConverter.listEntity2DTO(persistence.findByAlbumName(albumName));
     }
+    
+    public List<LongPlayDTO> getCheaperProduct(Long priceMax){       
+        return LongPlayConverter.listEntity2DTO(persistence.getCheaperProduct(priceMax));
+    }
 }

@@ -16,7 +16,8 @@ import javax.persistence.CascadeType;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "LongPlay.getByAlbumName", query = "select u from LongPlayEntity u WHERE u.album.name = :albumName")
+    @NamedQuery(name = "LongPlay.getByAlbumName", query = "select u from LongPlayEntity u WHERE u.album.name = :albumName"),
+    @NamedQuery(name = "LongPlay.getCheaperProduct", query = "select u from LongPlayEntity u WHERE u.price <= :priceMax order by u.price") 
 })
 public class LongPlayEntity implements Serializable {
 
