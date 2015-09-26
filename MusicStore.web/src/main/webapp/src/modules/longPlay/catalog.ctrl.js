@@ -59,6 +59,13 @@
                 this.fetchRecords();
             };
             
+            this.findItem = function(priceMax){
+                //alert(priceMax);
+               svc.findItem(priceMax).then(function(results){
+                   $scope.records = [];
+                   $scope.records = results;
+               });
+            };
             this.recordActions = [{
                     name: 'addToCart',
                     displayName: 'Add to Cart',
