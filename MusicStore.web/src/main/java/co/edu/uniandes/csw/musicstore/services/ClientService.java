@@ -3,6 +3,7 @@ package co.edu.uniandes.csw.musicstore.services;
 import co.edu.uniandes.csw.musicstore.api.IClientLogic;
 import co.edu.uniandes.csw.musicstore.dtos.ClientDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
+import com.stormpath.sdk.account.Account;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-
+import com.stormpath.sdk.client.*;
+import com.stormpath.sdk.group.Group;
+import com.stormpath.sdk.group.GroupList;
+import javax.ws.rs.core.Response;
 /**
  * @generated
  */
@@ -65,6 +69,7 @@ public class ClientService {
     public ClientDTO getClient(@PathParam("id") Long id) {
         return clientLogic.getClient(id);
     }
+    
 
     /**
      * @generated

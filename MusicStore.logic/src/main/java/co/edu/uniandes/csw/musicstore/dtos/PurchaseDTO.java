@@ -30,6 +30,9 @@ public class PurchaseDTO {
     private Float iva;
     private List<PurchaseDetailDTO> purchaseDetail;
     private String cardNumber;
+    private String nameCardOwner;
+    private String expirationDate;
+    private String CVC;
 
     public Long getId() {
         return id;
@@ -93,5 +96,29 @@ public class PurchaseDTO {
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
+    }
+
+    public String getNameCardOwner() {
+        return nameCardOwner;
+    }
+
+    public void setNameCardOwner(String nameCardOwner) {
+        this.nameCardOwner = nameCardOwner;
+    }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public String getCVC() {
+        return CVC;
+    }
+
+    public void setCVC(String CVC) {
+        this.CVC = CVC;
     }
 }

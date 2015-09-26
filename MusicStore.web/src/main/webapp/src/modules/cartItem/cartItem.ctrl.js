@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module('cartItemModule');
 
-    mod.controller('cartItemCtrl', ['CrudCreator', '$scope', 'cartItemService', 'cartItemModel','purchaseService', function (CrudCreator, $scope, svc, model, purchaseSvc) {
+    mod.controller('cartItemCtrl', ['CrudCreator', '$scope', 'cartItemService', 'cartItemModel','purchaseService','$http', function (CrudCreator, $scope, svc, model, purchaseSvc,$http) {
             CrudCreator.extendController(this, svc, $scope, model, 'cartItem', 'CartItem');         
             var self = this;
             
@@ -45,8 +45,14 @@
             this.calcTotal = function () {
                 $scope.cartList=[];
                 $scope.total = 0;
+                $scope.totalDiscount=0;
+                $scope.totalIva=0;
                 for (var i = 0; i < $scope.records.length; i++) {
-                    $scope.total += $scope.records[i].longPlay.price * $scope.records[i].quantity;
+                    var iva=($scope.records[i].longPlay.price * $scope.records[i].quantity)*0.16;
+                    var total= (($scope.records[i].longPlay.price * $scope.records[i].quantity)+iva)-$scope.records[i].longPlay.discount;
+                    $scope.total += total;
+                    $scope.totalDiscount += $scope.records[i].longPlay.discount;
+                    $scope.totalIva += iva;
                     var obj=new Object();
                     obj.price=$scope.records[i].longPlay.price;
                     obj.quantity=$scope.records[i].quantity;
@@ -75,8 +81,14 @@
                 $('#divPagar').show('slow');
             };
             $scope.subtotal = function (record) {
-                return record.longPlay.price * record.quantity;
+                var iva=(record.longPlay.price * record.quantity)*0.16;
+                return ((record.longPlay.price * record.quantity)+iva)-record.longPlay.discount;
             };
+            $scope.iva = function (record) {
+                var iva=(record.longPlay.price * record.quantity)*0.16;
+                return iva;
+            };
+            
             
            function fecha(num){
                if(num.toString().length==1){
@@ -85,30 +97,64 @@
                
                return num;
            }
+           $scope.comboChange = function () {
+               if ($scope.paymentMethodList.label=="Credit"){
+                   $("#divCredito").show("slow");
+               }else{
+                   
+                   $("#divCredito").hide("slow");
+                   
+               }
+           };
             
             $scope.pay = function () {
+                var date="";
+                var grabar=true;
                 if ($scope.cardNumber == undefined){
                     self.showWarning("Card number is required.");                    
                 }else if($scope.paymentMethodList==undefined){
                     self.showWarning("Payment method is required.");
                 } else{
+                    if ($scope.paymentMethodList.label=="Credit"){
+                   if ($scope.expire==undefined || $scope.nameCardOwner=="" || $scope.nameCardOwner==undefined || $scope.cvc=="" || $scope.cvc==undefined){
+                       self.showWarning("Missing data.");
+                       grabar=false;
+                   }else{
+                       date=($scope.expire.getMonth()+1)+"/"+$scope.expire.getFullYear();
+                   }
+                    }
+                    if (grabar==true){
                     var f = new Date();
                     var pay =new Object();
                     pay.date= f.getFullYear()+ "-" +fecha((f.getMonth() +1)) + "-" +fecha(f.getDate());
-                    pay.iva=$scope.total*0.16;                    
+                    pay.iva=$scope.totalIva;                    
                     pay.paymentMethod=$scope.paymentMethodList.label;
                     pay.cardNumber=$scope.cardNumber;
-                    pay.total=($scope.total*0.16)+$scope.total;
+                    pay.total=$scope.total;
                     pay.purchaseDetail=$scope.cartList;
+                    pay.expirationDate=date;
+                    pay.CVC=$scope.cvc;
+                    pay.nameCardOwner=$scope.nameCardOwner;
+                    //pay.nameCardOwner=$scope.nameCardOwner;
                     purchaseSvc.addItem(pay);
                    for (var i = 0; i < $scope.records.length; i++) {
                    svc.deleteRecord($scope.records[i]).then(function(){
                             //self.fetchRecords();
                         });
                    }
-                $('#divPagar').hide('slow');    
+                //$('#divPagar').hide('slow');    
                 window.location="#/catalog";
+                 }
                 }
             };
+            
+            $scope.ponerDatos= function(){
+                alert("Entro");
+            $http.get("https://api.stormpath.com/v1/accounts/4pIAQFVF9SVaWyzyp43fnD").success(function(response) {
+
+               alert(response);
+                //contest.user=JSON.parse(localStorage.getItem("usuario"));
+            });
+        };
         }]);
 })(window.angular);

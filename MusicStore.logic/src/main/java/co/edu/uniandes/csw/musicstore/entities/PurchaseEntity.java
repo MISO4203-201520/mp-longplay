@@ -41,8 +41,35 @@ public class PurchaseEntity implements Serializable{
     @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PurchaseDetailEntity> purchaseDetail;
     private String cardNumber;
+    private String nameCardOwner;
+    private String expirationDate;
+    private String CVC;
     public Long getId() {
         return id;
+    }
+
+    public String getNameCardOwner() {
+        return nameCardOwner;
+    }
+
+    public void setNameCardOwner(String nameCardOwner) {
+        this.nameCardOwner = nameCardOwner;
+    }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public String getCVC() {
+        return CVC;
+    }
+
+    public void setCVC(String CVC) {
+        this.CVC = CVC;
     }
 
     public void setId(Long id) {

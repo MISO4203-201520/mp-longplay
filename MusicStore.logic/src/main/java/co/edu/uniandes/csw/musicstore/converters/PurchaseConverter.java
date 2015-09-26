@@ -29,6 +29,9 @@ public abstract class PurchaseConverter {
             dto.setDate(entity.getDate());
             dto.setPaymentMethod(entity.getPaymentMethod());
             dto.setCardNumber(entity.getCardNumber());
+            dto.setNameCardOwner(entity.getNameCardOwner());
+            dto.setExpirationDate(entity.getExpirationDate());
+            dto.setCVC(entity.getCVC());
             dto.setTotal(entity.getTotal());
             dto.setIva(entity.getIva());
 
@@ -63,6 +66,9 @@ public abstract class PurchaseConverter {
             dto.setDate(entity.getDate());
             dto.setPaymentMethod(entity.getPaymentMethod());
             dto.setCardNumber(entity.getCardNumber());
+            dto.setNameCardOwner(entity.getNameCardOwner());
+            dto.setExpirationDate(entity.getExpirationDate());
+            dto.setCVC(entity.getCVC());
             dto.setTotal(entity.getTotal());
             dto.setIva(entity.getIva());
             dto.setClient(ClientConverter.refEntity2DTO(entity.getClient()));
@@ -83,6 +89,9 @@ public abstract class PurchaseConverter {
             entity.setDate(dto.getDate());
             entity.setPaymentMethod(dto.getPaymentMethod());
             entity.setCardNumber(dto.getCardNumber());
+            entity.setNameCardOwner(dto.getNameCardOwner());
+            entity.setExpirationDate(dto.getExpirationDate());
+            entity.setCVC(dto.getCVC());
             entity.setIva(dto.getIva());
             entity.setTotal(dto.getTotal());
             entity.setClient(ClientConverter.refDTO2Entity(dto.getClient()));
