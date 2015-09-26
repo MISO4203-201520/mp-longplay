@@ -43,6 +43,7 @@
         <label>New Comment</label>
         <textarea id="commentsArea" class="textArea"  ng-model="myTextArea" ng-minlength="1" ng-maxlength="250" cols="80"></textarea>
     </p>
-    <a class="btn btn-default" ng-click="ctrl.addComment(model)" >Add</a>
+    <a class="btn btn-default" ng-click="ctrl.addComment(model);ctrl.refreshComment(model)">Add</a>
     <a class="btn btn-default" ng-click="ctrl.detailsMode = false" >Back</a>
+    
 </div>
