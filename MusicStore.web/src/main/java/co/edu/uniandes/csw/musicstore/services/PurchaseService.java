@@ -93,4 +93,10 @@ public class PurchaseService {
     public void deletePurchase(@PathParam("id") Long id) {
         PurchaseLogic.deletePurchase(id);
     }
+    
+    @GET
+    @Path("/mine")
+    public List<PurchaseDTO> getUserPurchases() {
+        return PurchaseLogic.getUserPurchases(client.getUserId());
+    }
 }
