@@ -1,66 +1,13 @@
 (function (ng) {
-    var mod = ng.module('cartItemModule');
+    var mod = ng.module('purchaseModule');
 
-    mod.controller('cartItemCtrl', ['CrudCreator', '$scope', 'cartItemService', 'cartItemModel', function (CrudCreator, $scope, svc, model) {
-            CrudCreator.extendController(this, svc, $scope, model, 'cartItem', 'Shopping Cart');
-            var self = this;
-            
-            $scope.fecha=""
-            var oldFetch = this.fetchRecords;
-            this.fetchRecords = function(){
-                return oldFetch.call(this).then(function(data){
-                    self.calcTotal();
-                    return data;
+    mod.controller('purchaseCtrl', ['CrudCreator', '$scope', 'purchaseService', 'purchaseModel', function (CrudCreator, $scope, svc, model) {
+            CrudCreator.extendController(this, $scope, svc,model);
+            getUserPurchases = function () {
+                svc.getUserPurchases().then(function (res) {
+                    $scope.purchases = [];
+                    $scope.purchases = res;
                 });
-            };
-            this.fetchRecords();
-            this.readOnly = true;
-            $scope.lastQuantity = 0;
-            $scope.total = 0;
-
-            this.recordActions = {
-                delete: {
-                    displayName: ' ',
-                    icon: 'trash',
-                    class: 'primary',
-                    fn: function (record) {
-                        svc.deleteRecord(record).then(function(){
-                            self.fetchRecords();
-                        });
-                    },
-                    show: function () {
-                        return true;
-                    }
-                }
-            };
-
-            this.calcTotal = function () {
-                $scope.total = 0;
-                for (var i = 0; i < $scope.records.length; i++) {
-                    $scope.total += $scope.records[i].longPlay.price * $scope.records[i].quantity;
-                }
-            };
-
-            $scope.verify = function (quantity) {
-                $scope.lastQuantity = quantity;
-            };//guarda la cantidad anterior
-
-            $scope.postVerify = function (record) {
-                var patron = /^\d*$/; //^[0-9]{3}$
-                if (patron.test(record.quantity) && record.quantity > 0) {
-                    self.calcTotal();
-                } else {
-                    self.showError("You must enter a valid quantity");
-                    record.quantity = $scope.lastQuantity;
-                    $scope.currentRecord = record;
-                }
-            };//Realiza la validacion de la nueva cantidad asignada.
-            $scope.checkout = function () {
-                //self.showWarning("Not implemented yet");
-                $('#divPagar').show('slow');
-            };
-            $scope.subtotal = function (record) {
-                return record.longPlay.price * record.quantity;
             };
         }]);
 })(window.angular);

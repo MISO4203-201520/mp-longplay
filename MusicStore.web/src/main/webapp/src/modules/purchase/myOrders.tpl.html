@@ -1,6 +1,4 @@
-<div>
-    <!--Display Alerts -->
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
+<div ng-controller="purchaseCtrl">
     <div>
         <table class="table table-striped table-bordered">
             <thead>
@@ -20,8 +18,11 @@
                 </tr>
             </tbody>
         </table>
-        
-        <button ng-click="findMyOrders()" class="btn btn-default">Click me</button>
-        
-    </div>
+        <form id="formComment" onsubmit="getUserPurchases()">
+                        <div class="form-group">
+                                <label>Comentario: </label>
+                                <button type="submit" id="commentsubmit" data-loading-text="Saving..." class="btn btn-primary pull-right" >Post</button>
+                        </div>
+                        
+                    </form>    </div>
 </div>
