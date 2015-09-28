@@ -1,0 +1,54 @@
+﻿Merge branch 'master' into Req15
+
+Conflicts:
+	MusicStore.web/src/main/webapp/src/app.js
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Req15
+# Your branch is up-to-date with 'origin/Req15'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/api/ILongPlayLogic.java
+#	new file:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/api/ISongLogic.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/converters/LongPlayConverter.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/converters/PurchaseConverter.java
+#	new file:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/converters/SongConverter.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/dtos/LongPlayDTO.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/dtos/PurchaseDTO.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/dtos/QuestionDTO.java
+#	new file:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/dtos/SongDTO.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/ejbs/LongPlayLogic.java
+#	new file:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/ejbs/SongLogic.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/entities/LongPlayEntity.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/entities/PurchaseEntity.java
+#	new file:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/entities/SongEntity.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/persistence/LongPlayPersistence.java
+#	new file:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/persistence/SongPersistence.java
+#	modified:   MusicStore.web/src/main/java/co/edu/uniandes/csw/musicstore/services/ClientService.java
+#	modified:   MusicStore.web/src/main/java/co/edu/uniandes/csw/musicstore/services/LongPlayService.java
+#	new file:   MusicStore.web/src/main/java/co/edu/uniandes/csw/musicstore/services/SongService.java
+#	modified:   MusicStore.web/src/main/java/co/edu/uniandes/csw/musicstore/services/UserService.java
+#	modified:   MusicStore.web/src/main/webapp/index.html
+#	new file:   MusicStore.web/src/main/webapp/src/Authorization.js
+#	modified:   MusicStore.web/src/main/webapp/src/app.js
+#	modified:   MusicStore.web/src/main/webapp/src/modules/cartItem/cartItem.ctrl.js
+#	modified:   MusicStore.web/src/main/webapp/src/modules/cartItem/shoppingCart.tpl.html
+#	modified:   MusicStore.web/src/main/webapp/src/modules/longPlay/catalog.ctrl.js
+#	modified:   MusicStore.web/src/main/webapp/src/modules/longPlay/catalog.tpl.html
+#	modified:   MusicStore.web/src/main/webapp/src/modules/longPlay/longPlay.mod.js
+#	modified:   MusicStore.web/src/main/webapp/src/modules/longPlay/longPlay.svc.js
+#	modified:   MusicStore.web/src/main/webapp/src/modules/question/question.svc.js
+#	new file:   MusicStore.web/src/main/webapp/src/modules/song/song.ctrl.js
+#	new file:   MusicStore.web/src/main/webapp/src/modules/song/song.mod.js
+#	new file:   MusicStore.web/src/main/webapp/src/modules/song/song.svc.js
+#
+

@@ -23,6 +23,7 @@ public abstract class LongPlayConverter {
      * @generated
      */
     public static LongPlayDTO refEntity2DTO(LongPlayEntity entity) {
+        
         if (entity != null) {
             LongPlayDTO dto = new LongPlayDTO();
             dto.setId(entity.getId());
@@ -30,7 +31,6 @@ public abstract class LongPlayConverter {
             dto.setPrice(entity.getPrice());
             dto.setDiscount(entity.getDiscount());
             dto.setAlbum(AlbumConverter.refEntity2DTO(entity.getAlbum()));
-
             return dto;
         } else {
             return null;
@@ -43,10 +43,10 @@ public abstract class LongPlayConverter {
      * @generated
      */
     public static LongPlayEntity refDTO2Entity(LongPlayDTO dto) {
+        
         if (dto != null) {
             LongPlayEntity entity = new LongPlayEntity();
             entity.setId(dto.getId());
-
             return entity;
         } else {
             return null;
@@ -57,6 +57,7 @@ public abstract class LongPlayConverter {
      * @generated
      */
     private static LongPlayDTO basicEntity2DTO(LongPlayEntity entity) {
+      
         if (entity != null) {
             LongPlayDTO dto = new LongPlayDTO();
             dto.setId(entity.getId());
@@ -66,6 +67,7 @@ public abstract class LongPlayConverter {
             dto.setAlbum(AlbumConverter.refEntity2DTO(entity.getAlbum()));
             dto.setProvider(ProviderConverter.refEntity2DTO(entity.getProvider()));
             dto.setComments(CommentConverter.listEntity2DTO(entity.getComments()));
+            dto.setSongs(SongConverter.listEntity2DTO(entity.getSongs()));
             return dto;
         } else {
             return null;
@@ -84,7 +86,6 @@ public abstract class LongPlayConverter {
             entity.setDiscount(dto.getDiscount());
             entity.setAlbum(AlbumConverter.refDTO2Entity(dto.getAlbum()));
             entity.setProvider(ProviderConverter.refDTO2Entity(dto.getProvider()));
-
             return entity;
         } else {
             return null;

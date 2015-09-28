@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.musicstore.persistence;
 
 import co.edu.uniandes.csw.musicstore.entities.LongPlayEntity;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,4 +30,15 @@ public class LongPlayPersistence extends CrudPersistence<LongPlayEntity> {
             return null;
         }
     }
+    public List<LongPlayEntity> getCheaperProduct (Long priceMax){
+        try{
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("priceMax",priceMax);
+            //List<LongPlayEntity> list = new ArrayList<LongPlayEntity>();
+            return  executeListNamedQuery("LongPlay.getCheaperProduct",params);
+            //return list.get(0);
+            } catch(NoResultException e){
+                return null;
+            }
+        }
 }

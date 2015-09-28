@@ -1,4 +1,4 @@
-(function (ng) {
+(function(ng) {
 
     var mainApp = ng.module('mainApp', [
         //'ngCrudMock',
@@ -10,12 +10,13 @@
         'longPlayModule',
         'providerModule',
         'purchaseModule',
+        'songModule',
         'ngRoute',
         'ngCrud',
         'ngCookies'
     ]);
 
-    mainApp.config(['$routeProvider', 'CrudTemplateURL', 'CrudCtrlAlias', function ($routeProvider, tplUrl, alias) {
+    mainApp.config(['$routeProvider', 'CrudTemplateURL', 'CrudCtrlAlias', function($routeProvider, tplUrl, alias) {
             $routeProvider
                     .when('/album', {
                         templateUrl: tplUrl,
@@ -52,10 +53,15 @@
                         controller: 'purchaseCtrl',
                         controllerAs: alias
                     })
+                    .when('/song', {
+                        templateUrl: tplUrl,
+                        controller: 'songCtrl',
+                        controllerAs: alias
+                    })
                     .otherwise('/catalog');
         }]);
 
-    mainApp.config(['authServiceProvider', function (auth) {
+    mainApp.config(['authServiceProvider', function(auth) {
             auth.setValues({
                 apiUrl: 'users',
                 successPath: '/catalog',
@@ -70,7 +76,7 @@
 //            auth.setRoles({'user': 'Client', 'provider': 'Provider'});
         }]);
 
-    mainApp.run(function (editableOptions) {
+    mainApp.run(function(editableOptions) {
         editableOptions.theme = 'bs3'; // bootstrap3 theme. For Xeditable plugin Angular
     });
 })(window.angular);

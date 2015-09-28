@@ -12,4 +12,5 @@ public interface ILongPlayLogic {
     public void deleteLongPlay(Long id);
     public List<LongPlayDTO> findByName(String name);
     public List<LongPlayDTO> findByAlbumName(String albumName);
+    public List<LongPlayDTO> getCheaperProduct(Long priceMax);
 }

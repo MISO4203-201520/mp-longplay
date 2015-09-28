@@ -13,7 +13,10 @@ import co.edu.uniandes.csw.musicstore.dtos.UserDTO;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.account.AccountStatus;
 import com.stormpath.sdk.application.Application;
+import com.stormpath.sdk.client.ApiKey;
+import com.stormpath.sdk.client.ApiKeys;
 import com.stormpath.sdk.client.Client;
+import com.stormpath.sdk.client.Clients;
 import com.stormpath.sdk.group.Group;
 import com.stormpath.sdk.group.GroupList;
 import com.stormpath.sdk.resource.ResourceException;
@@ -98,11 +101,24 @@ public class UserService {
     public Response getCurrentUser() {
         UserDTO user = new UserDTO();
         try {
+            
+            
             Subject currentUser = SecurityUtils.getSubject();
             Map<String, String> userAttributes = (Map<String, String>) currentUser.getPrincipals().oneByType(java.util.Map.class);
             user.setName(userAttributes.get("givenName") + " " + userAttributes.get("surname"));
             user.setEmail(userAttributes.get("email"));
             user.setUserName(userAttributes.get("username"));
+            
+            String path = "C:\\.stormpath/apiKey.properties";
+            ApiKey apiKey = ApiKeys.builder().setFileLocation(path).build();
+            Client client = Clients.builder().setApiKey(apiKey).build();
+            Account account = client.getResource(currentUser.getPrincipal().toString(), Account.class);
+            GroupList groups = account.getGroups();
+            String nomgreGrupo="";
+            for(Group grp : groups) {
+                nomgreGrupo=grp.getName();
+            }        
+            user.setRole(nomgreGrupo);
             return Response.ok(user).build();
         } catch (AuthenticationException e) {
             return Response.status(Response.Status.BAD_REQUEST)

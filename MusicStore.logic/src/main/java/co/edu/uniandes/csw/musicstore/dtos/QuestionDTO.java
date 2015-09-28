@@ -3,29 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package co.edu.uniandes.csw.musicstore.dtos;
 
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author je.barrera11
  */
+@XmlRootElement
 public class QuestionDTO {
-    
+
     private Long id;
-            
+
     private Long albumId;
-    
+
     private AlbumDTO album;
-    
+
     private Long clientId;
-    
+
     private ClientDTO client;
-    
+
     private String description;
-   
+
     private Date postDate;
 
     public Long getId() {

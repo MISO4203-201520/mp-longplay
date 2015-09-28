@@ -16,7 +16,8 @@ import javax.persistence.CascadeType;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "LongPlay.getByAlbumName", query = "select u from LongPlayEntity u WHERE u.album.name = :albumName")
+    @NamedQuery(name = "LongPlay.getByAlbumName", query = "select u from LongPlayEntity u WHERE u.album.name = :albumName"),
+    @NamedQuery(name = "LongPlay.getCheaperProduct", query = "select u from LongPlayEntity u WHERE u.price <= :priceMax order by u.price")
 })
 public class LongPlayEntity implements Serializable {
 
@@ -27,63 +28,60 @@ public class LongPlayEntity implements Serializable {
     private String name;
 
     private Integer price;
+
     private Integer discount;
 
     @ManyToOne
     private AlbumEntity album;
+
     @ManyToOne
     private ProviderEntity provider;
-    
+
     @OneToMany(mappedBy = "longPlay", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommentEntity> comments;
-    
-    public List<CommentEntity> getComments() {
-        return comments;
-    }
 
-    public void setComments(List<CommentEntity> comments) {
-        this.comments = comments;
-    }
-    
+    @OneToMany(mappedBy = "longPlay", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SongEntity> songs;
+
     /**
      * @generated
      */
-    public Long getId(){
+    public Long getId() {
         return id;
     }
 
     /**
      * @generated
      */
-    public void setId(Long id){
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
      * @generated
      */
-    public String getName(){
+    public String getName() {
         return name;
     }
 
     /**
      * @generated
      */
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
     /**
      * @generated
      */
-    public Integer getPrice(){
+    public Integer getPrice() {
         return price;
     }
 
     /**
      * @generated
      */
-    public void setPrice(Integer price){
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -122,5 +120,20 @@ public class LongPlayEntity implements Serializable {
     public void setDiscount(Integer discount) {
         this.discount = discount;
     }
-    
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+
+    public List<SongEntity> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<SongEntity> songs) {
+        this.songs = songs;
+    }
 }

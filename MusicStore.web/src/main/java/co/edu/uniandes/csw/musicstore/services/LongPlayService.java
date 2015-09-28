@@ -98,4 +98,10 @@ public class LongPlayService {
     public void deleteLongPlay(@PathParam("id") Long id) {
         longPlayLogic.deleteLongPlay(id);
     }
+    
+    @GET
+    @Path("/cheapest/{id: \\d+}")
+    public List<LongPlayDTO> getCheapestProduct(@PathParam("id") Long priceMax) {
+        return longPlayLogic.getCheaperProduct(priceMax);
+    }
 }
