@@ -5,16 +5,14 @@
     </script>
     <div>
         <div class="panel panel-default">
-
             <p>
                 <label>Maximum Price:</label>
                 <input type="number"  placeholder="Search price" ng-model="priceMax" required ng-minlength="1" ng-maxlength="10" cols="80">
-
             </p>
             <a class="btn btn-default" ng-click="ctrl.findItem(priceMax)" >Find Cheapest</a>
         </div>
     </div>
-    <div ng-show="ctrl.detailsMode == false" ng-repeat="record in records">
+    <div ng-show="ctrl.detailsMode == false" ng-repeat="record in records| orderBy:'+album.name'">
         <div class="col-md-4 col-sm-6 col-lg-3 well">
             <div class="col-md-12">
                 <div class="img-thumbnail" id="{{$parent.$index}}-{{column.name}}">
@@ -29,6 +27,19 @@
                 <p><strong>Price: </strong> {{record.price| currency}}</p>
                 <p><strong>Discount: </strong> {{record.discount| currency}}</p>
                 <p><strong>Provider: </strong> {{record.provider.name}}</p>
+                <p><strong>Songs: </strong> {{record.songs.length}}</p>
+                <table class="table table-condensed" ng-show="record.songs.length > 0" >
+                    <tr>
+                        <td></td>
+                        <td>Title</td>
+                        <td>Duration</td>
+                    </tr>
+                    <tr ng-repeat="song in record.songs">
+                        <td><span class="glyphicon glyphicon-music"></span></td>
+                        <td>{{song.title}}</td>
+                        <td><span class="badge">{{song.duration}}</span></td>
+                    </tr>
+                </table>
             </div>
             <p ng-if="ctrl.recordActions" class="text-center">
                 <button ng-repeat="action in ctrl.recordActions" id="{{$parent.$index}}-{{action.name}}-btn" class="btn btn-default btn-sm" ng-show="action.show()" ng-click="action.fn(record)" ><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>
@@ -55,8 +66,6 @@
         <label>New Comment</label>
         <textarea id="commentsArea" class="textArea"  ng-model="myTextArea" ng-minlength="1" ng-maxlength="250" cols="80"></textarea>
     </p>
-    <a class="btn btn-default" ng-click="ctrl.addComment(model);
-                    ctrl.refreshComment(model)">Add</a>
+    <a class="btn btn-default" ng-click="ctrl.addComment(model);ctrl.refreshComment(model)">Add</a>
     <a class="btn btn-default" ng-click="ctrl.detailsMode = false" >Back</a>
-
 </div>

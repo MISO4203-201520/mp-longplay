@@ -22,7 +22,7 @@
         };
 
         return {
-            registerQuestion: registerQuestion,
+            registerQuestion: registerQuestion
         };
 
     };

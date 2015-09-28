@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * @generated
  */
-@XmlRootElement 
+@XmlRootElement
 public class LongPlayDTO {
 
     private Long id;
@@ -15,7 +15,9 @@ public class LongPlayDTO {
     private Integer discount;
     private AlbumDTO album;
     private ProviderDTO provider;
-    private List<CommentDTO> comments; 
+    private List<CommentDTO> comments;
+    private List<SongDTO> songs;
+
     /**
      * @generated
      */
@@ -93,6 +95,7 @@ public class LongPlayDTO {
     public void setDiscount(Integer discount) {
         this.discount = discount;
     }
+
     /**
      * @return the comments
      */
@@ -105,5 +108,13 @@ public class LongPlayDTO {
      */
     public void setComments(List<CommentDTO> comments) {
         this.comments = comments;
+    }
+
+    public List<SongDTO> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<SongDTO> songs) {
+        this.songs = songs;
     }
 }
