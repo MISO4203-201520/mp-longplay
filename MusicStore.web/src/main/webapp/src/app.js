@@ -9,6 +9,7 @@
         'clientModule',
         'longPlayModule',
         'providerModule',
+        'purchaseModule',
         'ngRoute',
         'ngCrud',
         'ngCookies'
@@ -44,6 +45,11 @@
                     .when('/longPlay', {
                         templateUrl: tplUrl,
                         controller: 'longPlayCtrl',
+                        controllerAs: alias
+                    })
+                    .when('/myOrders', {
+                        templateUrl: 'src/modules/purchase/myOrders.tpl.html',
+                        controller: 'purchaseCtrl',
                         controllerAs: alias
                     })
                     .otherwise('/catalog');

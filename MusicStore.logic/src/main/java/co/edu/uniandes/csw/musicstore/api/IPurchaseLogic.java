@@ -19,5 +19,5 @@ public interface IPurchaseLogic {
     public PurchaseDTO createPurchase(PurchaseDTO dto);
     public PurchaseDTO updatePurchase(PurchaseDTO dto);
     public void deletePurchase(Long id);
-    
+    public List<PurchaseDTO> getUserPurchases(String userId);
 }
