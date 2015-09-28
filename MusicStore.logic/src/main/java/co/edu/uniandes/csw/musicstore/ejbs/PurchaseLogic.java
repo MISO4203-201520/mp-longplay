@@ -68,5 +68,7 @@ public class PurchaseLogic implements IPurchaseLogic{
         persistence.delete(id);
     }
 
-    
+    public List<PurchaseDTO> getUserPurchases(String userId) {
+        return PurchaseConverter.listEntity2DTO(persistence.getUserPurchases(userId));
+    }
 }

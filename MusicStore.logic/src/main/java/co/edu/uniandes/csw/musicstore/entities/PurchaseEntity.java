@@ -5,13 +5,15 @@
  */
 package co.edu.uniandes.csw.musicstore.entities;
 import java.io.Serializable;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,6 +22,8 @@ import javax.persistence.TemporalType;
  * @author jd.patino10
  */
 @Entity
+    @NamedQueries({
+        @NamedQuery(name = "PurchaseEntity.getUserPurchases", query = "select u from PurchaseEntity u WHERE u.client.userId = :userId") })
 public class PurchaseEntity implements Serializable{
     @Id
     @GeneratedValue(generator = "Purchase")

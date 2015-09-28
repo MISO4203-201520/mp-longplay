@@ -23,3 +23,5 @@ nbactions.xml
 #Tests
 /MusicStore.logic/derby.log
 
+MusicStore.web/src/main/java/co/edu/uniandes/csw/musicstore/services/PurchaseService.java
+MusicStore.web/src/main/java/co/edu/uniandes/csw/musicstore/services/PurchaseService.java

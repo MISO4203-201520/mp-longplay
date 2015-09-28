@@ -9,6 +9,7 @@
         'clientModule',
         'longPlayModule',
         'providerModule',
+        'purchaseModule',
         'songModule',
         'ngRoute',
         'ngCrud',
@@ -45,6 +46,11 @@
                     .when('/longPlay', {
                         templateUrl: tplUrl,
                         controller: 'longPlayCtrl',
+                        controllerAs: alias
+                    })
+                    .when('/myOrders', {
+                        templateUrl: 'src/modules/purchase/myOrders.tpl.html',
+                        controller: 'purchaseCtrl',
                         controllerAs: alias
                     })
                     .when('/song', {
