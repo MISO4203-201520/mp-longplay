@@ -53,6 +53,11 @@
                         controller: 'purchaseCtrl',
                         controllerAs: alias
                     })
+                    .when('/orders', {
+                        templateUrl: 'src/modules/longPlay/orders.tpl.html',
+                        controller: 'provPurchaseCtrl',
+                        controllerAs: alias
+                    })
                     .when('/song', {
                         templateUrl: tplUrl,
                         controller: 'songCtrl',

@@ -8,6 +8,8 @@ import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic;
 import co.edu.uniandes.csw.musicstore.api.IClientLogic;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
 import co.edu.uniandes.csw.musicstore.dtos.ClientDTO;
+import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
+import co.edu.uniandes.csw.musicstore.dtos.ProviderDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
 import java.util.List;
 import javax.inject.Inject;
@@ -97,6 +99,9 @@ public class PurchaseService {
     @GET
     @Path("/mine")
     public List<PurchaseDTO> getUserPurchases() {
-        return PurchaseLogic.getUserPurchases(client.getUserId());
+        if(client != null){
+            return PurchaseLogic.getUserPurchases(client.getUserId());
+        }
+        return null;
     }
 }

@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
     @NamedQueries({
-        @NamedQuery(name = "PurchaseEntity.getUserPurchases", query = "select u from PurchaseEntity u WHERE u.client.userId = :userId") })
+        @NamedQuery(name = "PurchaseEntity.getUserPurchases", query = "select u from PurchaseEntity u WHERE u.client.userId = :userId")})
 public class PurchaseEntity implements Serializable{
     @Id
     @GeneratedValue(generator = "Purchase")

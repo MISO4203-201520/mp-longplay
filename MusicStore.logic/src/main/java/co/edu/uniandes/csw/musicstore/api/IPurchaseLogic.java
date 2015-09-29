@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musicstore.api;
 
+import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
 import java.util.List;
 
@@ -20,4 +21,5 @@ public interface IPurchaseLogic {
     public PurchaseDTO updatePurchase(PurchaseDTO dto);
     public void deletePurchase(Long id);
     public List<PurchaseDTO> getUserPurchases(String userId);
+    public List<LongPlayDTO> getProviderPurchases(String providerId);
 }

@@ -2,6 +2,7 @@ package co.edu.uniandes.csw.musicstore.services;
 
 import co.edu.uniandes.csw.musicstore.api.ILongPlayLogic;
 import co.edu.uniandes.csw.musicstore.api.IProviderLogic;
+import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic;
 import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
 import co.edu.uniandes.csw.musicstore.dtos.ProviderDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
@@ -29,6 +30,8 @@ import org.apache.shiro.SecurityUtils;
 @Produces(MediaType.APPLICATION_JSON)
 public class LongPlayService {
 
+    @Inject
+    private IPurchaseLogic PurchaseLogic;
     @Inject
     private ILongPlayLogic longPlayLogic;
     @Inject
@@ -103,5 +106,14 @@ public class LongPlayService {
     @Path("/cheapest/{id: \\d+}")
     public List<LongPlayDTO> getCheapestProduct(@PathParam("id") Long priceMax) {
         return longPlayLogic.getCheaperProduct(priceMax);
+    }
+    
+    @GET
+    @Path("/provider")
+    public List<LongPlayDTO> getProviderPurchases() {
+        if(provider != null){
+            return PurchaseLogic.getProviderPurchases(provider.getUserId());
+        }
+        return null;
     }
 }

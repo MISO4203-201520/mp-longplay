@@ -6,4 +6,15 @@
             this.loadRefOptions();
             this.fetchRecords();
         }]);
+    
+    mod.controller('provPurchaseCtrl', ['CrudCreator', '$scope', 'longPlayService', 'longPlayModel', function (CrudCreator, $scope, svc, model) {
+        CrudCreator.extendController(this, $scope, svc,model);
+        getProviderPurchases = function () {
+            svc.getProviderPurchases().then(function (res) {
+                $scope.purchases = [];
+                $scope.purchases = res;
+            });
+        };
+        getProviderPurchases();
+    }]);
     })(window.angular);

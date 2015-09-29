@@ -1,6 +1,8 @@
 package co.edu.uniandes.csw.musicstore.services;
 
 import co.edu.uniandes.csw.musicstore.api.IProviderLogic;
+import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic;
+import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
 import co.edu.uniandes.csw.musicstore.dtos.ProviderDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
 import java.util.List;
@@ -17,6 +19,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import org.apache.shiro.SecurityUtils;
 
 /**
  * @generated
@@ -30,6 +33,8 @@ public class ProviderService {
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("maxRecords") private Integer maxRecords;
+    
+    private ProviderDTO provider = (ProviderDTO) SecurityUtils.getSubject().getSession().getAttribute("Provider");
 
     /**
      * @generated

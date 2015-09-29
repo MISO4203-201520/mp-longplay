@@ -7,6 +7,10 @@
                 return this.api.one('cheapest', priceMax).get();
                 
             };
+            
+            this.getProviderPurchases = function(){
+                return this.api.one("provider").get();
+            };
     }]);
 })(window.angular);
 
