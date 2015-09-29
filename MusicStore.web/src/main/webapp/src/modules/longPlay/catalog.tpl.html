@@ -16,7 +16,7 @@
         <div class="col-md-4 col-sm-6 col-lg-3 well">
             <div class="col-md-12">
                 <div class="img-thumbnail" id="{{$parent.$index}}-{{column.name}}">
-                    <a ng-href="{{record.album.cover}}" target="_blank"><img class="img-responsive" ng-src="{{record.album.cover}}" alt="{{record.album.cover}}"></a>
+                    <a ng-href="{{record.album.cover}}" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{record.album.cover}}" alt="{{record.album.cover}}"></a>
                 </div>
             </div>
             <div class="caption" >
@@ -28,11 +28,14 @@
                 <p><strong>Discount: </strong> {{record.discount| currency}}</p>
                 <p><strong>Provider: </strong> {{record.provider.name}}</p>
                 <p><strong>Songs: </strong> {{record.songs.length}}</p>
-                <table class="table table-condensed" ng-show="record.songs.length > 0" >
-                    <tr>
+                <p><button ng-disabled="record.songs.length==0" class="btn btn-default btn-sm" ng-click="ctrl.seeSongs($index,true);"><span class="glyphicon glyphicon-music"> Song List</span></button></p><br>
+                <div id="{{$index}}"  style="display:none;z-index: 5;position: absolute;right: 10px; bottom: 120px ;background-color: white;border-radius: 5px;border-style: solid;border-color: gray">
+                <table  class="table table-condensed" ng-show="record.songs.length > 0" >
+                    <tr>      
                         <td></td>
                         <td>Title</td>
                         <td>Duration</td>
+                        <td><span ng-click="ctrl.seeSongs($index,false);" class="glyphicon glyphicon-remove-circle"></span></td>
                     </tr>
                     <tr ng-repeat="song in record.songs">
                         <td><span class="glyphicon glyphicon-music"></span></td>
@@ -40,6 +43,7 @@
                         <td><span class="badge">{{song.duration}}</span></td>
                     </tr>
                 </table>
+                </div>
             </div>
             <p ng-if="ctrl.recordActions" class="text-center">
                 <button ng-repeat="action in ctrl.recordActions" id="{{$parent.$index}}-{{action.name}}-btn" class="btn btn-default btn-sm" ng-show="action.show()" ng-click="action.fn(record)" ><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>

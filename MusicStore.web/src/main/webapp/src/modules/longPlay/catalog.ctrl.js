@@ -66,6 +66,15 @@
                    $scope.records = results;
                });
             };
+            this.seeSongs = function(index,show){
+               if (show==true){
+                   $("#"+index).show("slow");                   
+               }else{
+                   $("#"+index).hide("slow");                   
+               }
+                
+               
+            };
             this.recordActions = [{
                     name: 'addToCart',
                     displayName: 'Add to Cart',
