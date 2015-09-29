@@ -9,5 +9,6 @@
                     $scope.purchases = res;
                 });
             };
+            getUserPurchases();
         }]);
 })(window.angular);

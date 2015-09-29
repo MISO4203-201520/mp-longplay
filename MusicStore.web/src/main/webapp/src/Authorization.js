@@ -1,5 +1,7 @@
-var cliente='<li ><a href="#/shoppingCart"><span class="glyphicon glyphicon-shopping-cart" ></span> My Shopping Cart </a></li>'
-var proveedor='<li ><a href="#/album">Album </a></li>'+
+var cliente='<li ><a href="#/shoppingCart"><span class="glyphicon glyphicon-shopping-cart" ></span> My Shopping Cart </a></li>'+
+        '<li ><a href="#/myOrders">My Orders </a></li>';
+var proveedor='<li ><a href="#/album">Album </a></li>'+              
+              '<li ><a href="#/song">Album Songs </a></li>'+
               '<li ><a href="#/longPlay">Long Play </a></li>';
 var administrador='<li ><a href="#/provider">Provider </a></li>'+
                   '<li ><a href="#/client">Client </a></li>';

@@ -148,13 +148,6 @@
                 }
             };
             
-            $scope.ponerDatos= function(){
-                alert("Entro");
-            $http.get("https://api.stormpath.com/v1/accounts/4pIAQFVF9SVaWyzyp43fnD").success(function(response) {
-
-               alert(response);
-                //contest.user=JSON.parse(localStorage.getItem("usuario"));
-            });
-        };
+           
         }]);
 })(window.angular);
