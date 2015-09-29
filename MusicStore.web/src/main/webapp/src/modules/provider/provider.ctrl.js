@@ -8,6 +8,6 @@
 
     mod.controller('longPlaysCtrl', ['CrudCreator', '$scope', 'longPlayModel', function (CrudCreator, $scope, model) {
             CrudCreator.extendCompChildCtrl(this, $scope, model, 'longPlays', 'provider');
-            this.loadRefOptions();
+            //this.loadRefOptions();
         }]);
 })(window.angular);

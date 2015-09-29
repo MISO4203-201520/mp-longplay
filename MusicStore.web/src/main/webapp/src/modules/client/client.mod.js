@@ -9,11 +9,6 @@
                 displayName: 'Name',
                 type: 'String',
                 required: true
-            }, {
-                name: 'userId',
-                displayName: 'UserId',
-                type: 'String',
-                required: true
             }], 
         childs: [{
                 name: 'cartItems',
