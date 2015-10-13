@@ -31,6 +31,8 @@ public abstract class LongPlayConverter {
             dto.setPrice(entity.getPrice());
             dto.setDiscount(entity.getDiscount());
             dto.setAlbum(AlbumConverter.refEntity2DTO(entity.getAlbum()));
+            dto.setAwards(entity.getAwards());
+            dto.setHistoricReview(entity.getHistoricReview());
             return dto;
         } else {
             return null;
@@ -68,6 +70,8 @@ public abstract class LongPlayConverter {
             dto.setProvider(ProviderConverter.refEntity2DTO(entity.getProvider()));
             dto.setComments(CommentConverter.listEntity2DTO(entity.getComments()));
             dto.setSongs(SongConverter.listEntity2DTO(entity.getSongs()));
+            dto.setAwards(entity.getAwards());
+            dto.setHistoricReview(entity.getHistoricReview());
             return dto;
         } else {
             return null;
@@ -86,6 +90,8 @@ public abstract class LongPlayConverter {
             entity.setDiscount(dto.getDiscount());
             entity.setAlbum(AlbumConverter.refDTO2Entity(dto.getAlbum()));
             entity.setProvider(ProviderConverter.refDTO2Entity(dto.getProvider()));
+            entity.setAwards(dto.getAwards());
+            entity.setHistoricReview(dto.getHistoricReview());
             return entity;
         } else {
             return null;

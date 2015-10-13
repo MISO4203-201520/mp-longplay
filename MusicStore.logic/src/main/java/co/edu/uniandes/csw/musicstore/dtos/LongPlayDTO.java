@@ -17,6 +17,8 @@ public class LongPlayDTO {
     private ProviderDTO provider;
     private List<CommentDTO> comments;
     private List<SongDTO> songs;
+    private String awards;
+    private String historicReview;
 
     /**
      * @generated
@@ -117,4 +119,21 @@ public class LongPlayDTO {
     public void setSongs(List<SongDTO> songs) {
         this.songs = songs;
     }
+
+    public String getAwards() {
+        return awards;
+    }
+
+    public void setAwards(String awards) {
+        this.awards = awards;
+    }
+
+    public String getHistoricReview() {
+        return historicReview;
+    }
+
+    public void setHistoricReview(String historicReview) {
+        this.historicReview = historicReview;
+    }
+    
 }

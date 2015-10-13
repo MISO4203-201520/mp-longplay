@@ -31,6 +31,11 @@ public class LongPlayEntity implements Serializable {
 
     private Integer discount;
 
+    private String awards;
+    
+    private String historicReview;
+
+
     @ManyToOne
     private AlbumEntity album;
 
@@ -136,4 +141,21 @@ public class LongPlayEntity implements Serializable {
     public void setSongs(List<SongEntity> songs) {
         this.songs = songs;
     }
+
+    public String getAwards() {
+        return awards;
+    }
+
+    public void setAwards(String awards) {
+        this.awards = awards;
+    }
+
+    public String getHistoricReview() {
+        return historicReview;
+    }
+
+    public void setHistoricReview(String historicReview) {
+        this.historicReview = historicReview;
+    }
+    
 }
