@@ -1,7 +1,7 @@
-(function (ng) {
+(function(ng) {
     var mod = ng.module('longPlayModule');
 
-    mod.controller('catalogCtrl', ['CrudCreator', '$scope', '$route','longPlayService', 'longPlayModel', 'cartItemService', '$location', 'commentService', 'authService', 'questionService', function (CrudCreator, $scope, $route, svc, model, cartItemSvc, $location, commentService, authSvc, questionService) {
+    mod.controller('catalogCtrl', ['CrudCreator', '$scope', '$route', 'longPlayService', 'longPlayModel', 'cartItemService', '$location', 'commentService', 'authService', 'questionService', function(CrudCreator, $scope, $route, svc, model, cartItemSvc, $location, commentService, authSvc, questionService) {
             CrudCreator.extendController(this, svc, $scope, $route, model, 'catalog', 'Catalog');
             this.asGallery = true;
             this.readOnly = true;
@@ -11,7 +11,7 @@
 
             $scope.modal = {url: 'src/modules/question/question.tpl.html', data: null, question: ''};
 
-            this.searchByName = function (albumName) {
+            this.searchByName = function(albumName) {
                 var search;
                 if (albumName) {
                     search = '?q=' + albumName;
@@ -19,7 +19,7 @@
                 $location.url('/catalog' + search);
             };
 
-            this.registerQuestion = function () {
+            this.registerQuestion = function() {
                 var result = false;
                 result = questionService.registerQuestion($scope.modal.data, $scope.modal.question);
                 if (result) {
@@ -27,17 +27,17 @@
                     $scope.modal.question = '';
                 }
             };
-            this.addComment = function (record) {
+
+            this.addComment = function(record) {
                 var comment = "";
                 var x = document.getElementsByClassName("textArea");
                 var i;
-
 
                 for (i = 0; i < x.length; i++) {
                     comment = x[i].value;
                 }
                 if (comment.trim().length == 0) {
-                    alert("El comentario esta vacío.");
+                    alert("El comentario esta vacio.");
                 }
                 else {
                     commentService.createComment(record, comment);
@@ -47,46 +47,54 @@
                     x[i].value = "";
                 }
             };
-            this.refreshComment = function (record) {
+
+            this.refreshComment = function(record) {
                 //location.reload(true);
                 //$route.reload();
                 //self.detailsModel = true;
-                svc.api.get(record.id).then(function (data) {
+                svc.api.get(record.id).then(function(data) {
                     //alert(record.id);
                     self.detailsModel = true;
                     $scope.model = data;
                 });
                 this.fetchRecords();
             };
-            
-            this.findItem = function(priceMax){
+
+            this.findItem = function(priceMax) {
                 //alert(priceMax);
-               svc.findItem(priceMax).then(function(results){
-                   $scope.records = [];
-                   $scope.records = results;
-               });
+                svc.findItem(priceMax).then(function(results) {
+                    $scope.records = [];
+                    $scope.records = results;
+                });
             };
-            this.seeSongs = function(index,show){
-               if (show==true){
-                   $("#"+index).show("slow");                   
-               }else{
-                   $("#"+index).hide("slow");                   
-               }
-                
-               
+
+            this.playSong = function(record, song) {
+
+                jwplayer("player" + record.id).setup({
+                    playlist: [
+                        {
+                            file: song.sample,
+                            title: song.title,
+                            image: record.album.cover,
+                            description: record.comments
+                        }
+                    ]
+                });
             };
+
             this.recordActions = [{
                     name: 'addToCart',
                     displayName: 'Add to Cart',
                     icon: 'shopping-cart',
                     class: 'primary',
-                    fn: function (longPlay) {
+                    fn: function(longPlay) {
                         return cartItemSvc.addItem({
                             longPlay: longPlay,
                             name: longPlay.name,
-                            quantity: 1});
+                            quantity: 1
+                        });
                     },
-                    show: function () {
+                    show: function() {
                         return true;
                     }
                 },
@@ -95,12 +103,12 @@
                     displayName: 'Add Question',
                     icon: 'question-sign',
                     class: 'info',
-                    fn: function (record) {
+                    fn: function(record) {
                         $scope.modal.data = record;
                         $scope.modal.question = '';
                         return true;
                     },
-                    show: function () {
+                    show: function() {
                         return true;
                     }
                 },
@@ -109,19 +117,31 @@
                     displayName: 'Comments',
                     icon: 'list',
                     class: 'info',
-                    fn: function (record) {
-                        svc.api.get(record.id).then(function (data) {
+                    fn: function(record) {
+                        svc.api.get(record.id).then(function(data) {
                             self.detailsMode = true;
                             $scope.model = data;
                         });
                     },
-                    show: function () {
+                    show: function() {
                         return !self.detailsMode;
+                    }
+                },
+                {
+                    name: 'songList',
+                    displayName: 'Song List',
+                    icon: 'music',
+                    class: 'info',
+                    fn: function(record) {
+                        $('#song_modal_' + record.id).modal('show');
+                        return true;
+                    },
+                    show: function() {
+                        return true;
                     }
                 }];
 
             this.fetchRecords();
         }]);
-
 
 })(window.angular);

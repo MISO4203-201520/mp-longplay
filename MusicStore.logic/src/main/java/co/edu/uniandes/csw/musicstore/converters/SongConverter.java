@@ -6,16 +6,15 @@ import co.edu.uniandes.csw.musicstore.entities.SongEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author je.barrera11
+ */
 public abstract class SongConverter {
 
     private SongConverter() {
     }
 
-    /**
-     * @param entity
-     * @return
-     * @generated
-     */
     public static SongDTO refEntity2DTO(SongEntity entity) {
 
         if (entity != null) {
@@ -25,6 +24,7 @@ public abstract class SongConverter {
             dto.setDuration(entity.getDuration());
             dto.setGenre(entity.getGenre());
             dto.setAuthor(entity.getAuthor());
+            dto.setSample(entity.getSample());
             dto.setLongPlay(LongPlayConverter.refEntity2DTO(entity.getLongPlay()));
             return dto;
         } else {
@@ -32,11 +32,6 @@ public abstract class SongConverter {
         }
     }
 
-    /**
-     * @param dto
-     * @return
-     * @generated
-     */
     public static SongEntity refDTO2Entity(SongDTO dto) {
 
         if (dto != null) {
@@ -48,9 +43,6 @@ public abstract class SongConverter {
         }
     }
 
-    /**
-     * @generated
-     */
     private static SongDTO basicEntity2DTO(SongEntity entity) {
         if (entity != null) {
             SongDTO dto = new SongDTO();
@@ -59,6 +51,7 @@ public abstract class SongConverter {
             dto.setDuration(entity.getDuration());
             dto.setGenre(entity.getGenre());
             dto.setAuthor(entity.getAuthor());
+            dto.setSample(entity.getSample());
             dto.setLongPlay(LongPlayConverter.refEntity2DTO(entity.getLongPlay()));
             return dto;
         } else {
@@ -66,9 +59,6 @@ public abstract class SongConverter {
         }
     }
 
-    /**
-     * @generated
-     */
     private static SongEntity basicDTO2Entity(SongDTO dto) {
 
         if (dto != null) {
@@ -78,6 +68,7 @@ public abstract class SongConverter {
             entity.setDuration(dto.getDuration());
             entity.setGenre(dto.getGenre());
             entity.setAuthor(dto.getAuthor());
+            entity.setSample(dto.getSample());
             entity.setLongPlay(LongPlayConverter.refDTO2Entity(dto.getLongPlay()));
             return entity;
         } else {
@@ -85,9 +76,6 @@ public abstract class SongConverter {
         }
     }
 
-    /**
-     * @generated
-     */
     public static SongDTO fullEntity2DTO(SongEntity entity) {
         if (entity != null) {
             SongDTO dto = basicEntity2DTO(entity);
@@ -97,9 +85,6 @@ public abstract class SongConverter {
         }
     }
 
-    /**
-     * @generated
-     */
     public static SongEntity fullDTO2Entity(SongDTO dto) {
         if (dto != null) {
             SongEntity entity = basicDTO2Entity(dto);
@@ -109,9 +94,6 @@ public abstract class SongConverter {
         }
     }
 
-    /**
-     * @generated
-     */
     public static List<SongDTO> listEntity2DTO(List<SongEntity> entities) {
         List<SongDTO> dtos = new ArrayList<SongDTO>();
         if (entities != null) {
@@ -122,9 +104,6 @@ public abstract class SongConverter {
         return dtos;
     }
 
-    /**
-     * @generated
-     */
     public static List<SongEntity> listDTO2Entity(List<SongDTO> dtos) {
         List<SongEntity> entities = new ArrayList<SongEntity>();
         if (dtos != null) {
@@ -135,18 +114,12 @@ public abstract class SongConverter {
         return entities;
     }
 
-    /**
-     * @generated
-     */
     public static SongEntity childDTO2Entity(SongDTO dto, LongPlayEntity parent) {
         SongEntity entity = basicDTO2Entity(dto);
         entity.setLongPlay(parent);
         return entity;
     }
 
-    /**
-     * @generated
-     */
     public static List<SongEntity> childListDTO2Entity(List<SongDTO> dtos, LongPlayEntity parent) {
         List<SongEntity> entities = new ArrayList<SongEntity>();
         if (dtos != null) {

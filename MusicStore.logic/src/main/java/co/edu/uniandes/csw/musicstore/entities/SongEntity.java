@@ -8,6 +8,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
+/**
+ *
+ * @author je.barrera11
+ */
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Song.getByLongPlay", query = "select s from SongEntity s WHERE s.longPlay.id = :longPlay")})
@@ -24,6 +28,8 @@ public class SongEntity implements Serializable {
     private String genre;
 
     private String author;
+
+    private String sample;
 
     @ManyToOne
     private LongPlayEntity longPlay;
@@ -66,6 +72,14 @@ public class SongEntity implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getSample() {
+        return sample;
+    }
+
+    public void setSample(String sample) {
+        this.sample = sample;
     }
 
     public LongPlayEntity getLongPlay() {

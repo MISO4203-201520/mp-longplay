@@ -6,6 +6,10 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 
+/**
+ *
+ * @author je.barrera11
+ */
 @Stateless
 public class SongPersistence extends CrudPersistence<SongEntity> {
 

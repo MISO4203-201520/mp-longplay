@@ -1,0 +1,55 @@
+<style>
+    .table-fixed thead {
+        width: 97%;
+    }
+    .table-fixed tbody {
+        height: 200px;
+        overflow-y: auto;
+        width: 100%;
+    }
+    .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+        display: block;
+    }
+    .table-fixed tbody td, .table-fixed thead > tr> th {
+        float: left;
+        border-bottom-width: 0;
+    }
+    .ellipsis {
+        width: 300px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+</style>
+<div class="modal fade" id="song_modal_{{record.id}}" tabindex="-1" role="dialog"
+     aria-labelledby="song_modal_{{record.id}}Label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="song_modal_{{record.id}}Label">Song List</h4>
+            </div>
+            <div class="modal-body">               
+                <div id="player{{record.id}}" class="well well-sm text-center">Click on the button <button class="btn-default btn-sm" > <span class="glyphicon glyphicon-play-circle"></span></button> to play</div>
+                <table class="table table-fixed">
+                    <thead>
+                        <tr>
+                            <th class="col-xs-2">&nbsp;</th><th class="col-xs-8">Title</th><th class="col-xs-2">Play</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="song in record.songs">
+                            <td class="col-xs-2"><span class="glyphicon glyphicon-music"></span></td>
+                            <td class="col-xs-8"><div class="ellipsis">{{song.title}}</div></td>
+                            <td class="col-xs-2"><button ng-click="ctrl.playSong(record, song)" class="btn-default btn-sm" > <span class="glyphicon glyphicon-play-circle"></span></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

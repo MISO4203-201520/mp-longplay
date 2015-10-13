@@ -25,6 +25,11 @@
                 type: 'String',
                 required: true
             }, {
+                name: 'sample',
+                displayName: 'Sample',
+                type: 'String',
+                required: true
+            }, {
                 name: 'longPlay',
                 displayName: 'LongPlay',
                 type: 'Reference',

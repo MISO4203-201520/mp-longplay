@@ -1,7 +1,7 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
 <div class="col-sm-12" >
     <script type="text/javascript">
-                authorization();
+        authorization();
     </script>
     <div>
         <div class="panel panel-default">
@@ -28,22 +28,7 @@
                 <p><strong>Discount: </strong> {{record.discount| currency}}</p>
                 <p><strong>Provider: </strong> {{record.provider.name}}</p>
                 <p><strong>Songs: </strong> {{record.songs.length}}</p>
-                <p><button ng-disabled="record.songs.length==0" class="btn btn-default btn-sm" ng-click="ctrl.seeSongs($index,true);"><span class="glyphicon glyphicon-music"> Song List</span></button></p><br>
-                <div id="{{$index}}"  style="display:none;z-index: 5;position: absolute;right: 10px; bottom: 120px ;background-color: white;border-radius: 5px;border-style: solid;border-color: gray">
-                <table  class="table table-condensed" ng-show="record.songs.length > 0" >
-                    <tr>      
-                        <td></td>
-                        <td>Title</td>
-                        <td>Duration</td>
-                        <td><span ng-click="ctrl.seeSongs($index,false);" class="glyphicon glyphicon-remove-circle"></span></td>
-                    </tr>
-                    <tr ng-repeat="song in record.songs">
-                        <td><span class="glyphicon glyphicon-music"></span></td>
-                        <td>{{song.title}}</td>
-                        <td><span class="badge">{{song.duration}}</span></td>
-                    </tr>
-                </table>
-                </div>
+                <div ng-show="record.songs.length > 0" ng-include src="'src/modules/song/song.tpl.html'" ></div>
             </div>
             <p ng-if="ctrl.recordActions" class="text-center">
                 <button ng-repeat="action in ctrl.recordActions" id="{{$parent.$index}}-{{action.name}}-btn" class="btn btn-default btn-sm" ng-show="action.show()" ng-click="action.fn(record)" ><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>
@@ -70,6 +55,7 @@
         <label>New Comment</label>
         <textarea id="commentsArea" class="textArea"  ng-model="myTextArea" ng-minlength="1" ng-maxlength="250" cols="80"></textarea>
     </p>
-    <a class="btn btn-default" ng-click="ctrl.addComment(model);ctrl.refreshComment(model)">Add</a>
+    <a class="btn btn-default" ng-click="ctrl.addComment(model);
+                ctrl.refreshComment(model)">Add</a>
     <a class="btn btn-default" ng-click="ctrl.detailsMode = false" >Back</a>
 </div>

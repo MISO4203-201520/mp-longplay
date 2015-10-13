@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.musicstore.dtos;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -23,6 +18,8 @@ public class SongDTO {
     private String genre;
 
     private String author;
+
+    private String sample;
 
     private LongPlayDTO longPlay;
 
@@ -60,6 +57,14 @@ public class SongDTO {
 
     public String getAuthor() {
         return author;
+    }
+
+    public String getSample() {
+        return sample;
+    }
+
+    public void setSample(String sample) {
+        this.sample = sample;
     }
 
     public void setAuthor(String author) {

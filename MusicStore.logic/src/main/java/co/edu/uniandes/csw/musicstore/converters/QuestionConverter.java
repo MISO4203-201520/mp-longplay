@@ -79,7 +79,7 @@ public abstract class QuestionConverter {
     /**
      * @generated
      */
-    private static QuestionEntity basicDTO2Entity(QuestionDTO dto) {
+    public static QuestionEntity basicDTO2Entity(QuestionDTO dto) {
         if (dto != null) {
             
             QuestionEntity entity = new QuestionEntity();
