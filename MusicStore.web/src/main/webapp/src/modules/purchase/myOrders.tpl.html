@@ -19,7 +19,8 @@
                     <td><div>{{purchase.total}}</div></td>
                     <td>
                         <div id="element" style="text-align: center;">
-                            <button class="btn btn-default" ng-click="sayHi()" ng-confirm-click="Would you like to say hi?">
+                            <button class="btn btn-default" data-toggle="modal" 
+                                    data-target="#modalConfirmation" ng-show="true">
                                 <span class="glyphicon glyphicon-ok"></span> Confirmation
                             </button>
                         </div>
@@ -27,7 +28,7 @@
                     <td>
                         <div style="text-align: center;">
                             <button class="btn btn-default" data-toggle="modal" 
-                                    data-target="#myModalNorm" ng-show="true">
+                                    data-target="#simpleModalConfirmation" ng-show="true">
                                 <span class="glyphicon glyphicon-remove"></span> Cancel
                             </button>
                         </div>
@@ -36,37 +37,103 @@
             </tbody>
         </table>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog" 
+    <!-- Modal Confirmation -->
+    <div class="modal fade" id="modalConfirmation" tabindex="-1" role="dialog" 
          aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <button type="button" class="close" 
-                                data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            &iquest;Are you sure you want to cancel the order?
-                        </h4>
-                    </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                            data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        &iquest;Are you sure you want to confirme the order?
+                    </h4>
+                </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                        <form role="form">
-                            <button type="button" class="btn btn-success">
-                                <span class="glyphicon glyphicon-message-plus"></span>
-                                Yes
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <span class="glyphicon glyphicon-message-plus"></span>
-                                No
-                            </button>
-                        </form>
-                    </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form role="form">
+                        <button type="button" class="btn btn-success" data-toggle="modal" 
+                                    data-target="#modalDate" ng-show="true">
+                            <span class="glyphicon glyphicon-message-plus"></span>
+                            Yes
+                        </button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" 
+                                    data-target="#modalConfirmation" ng-show="true">
+                            <span class="glyphicon glyphicon-message-plus"></span>
+                            No
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+      <!-- Modal Input Date -->
+    <div class="modal fade" id="modalDate" tabindex="-1" role="dialog" 
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                            data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Please select the order date
+                    </h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form role="form">
+                        <input type="date" name="orderDate" required/>
+                         <button type="button" class="btn btn-success"
+                                 ng-show="true" data-toggle="modal" data-target="#modalConfirmation,#modalDate">
+                            <span class="glyphicon glyphicon-message-plus"></span>
+                            Accept
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Simple Modal Confirmation -->
+    <div class="modal fade" id="simpleModalConfirmation" tabindex="-1" role="dialog" 
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                            data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        &iquest;Are you sure you want to cancel the order?
+                    </h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form role="form">
+                        <button type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-message-plus"></span>
+                            Yes
+                        </button>
+                        <button type="button" class="btn btn-danger" ng-show="true" 
+                                data-toggle="modal" data-target="#simpleModalConfirmation">
+                            <span class="glyphicon glyphicon-message-plus"></span>
+                            No
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>  
 </div>
