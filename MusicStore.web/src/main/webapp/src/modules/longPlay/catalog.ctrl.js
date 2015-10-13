@@ -133,7 +133,10 @@
                     icon: 'music',
                     class: 'info',
                     fn: function(record) {
-                        $('#song_modal_' + record.id).modal('show');
+                        if (record.songs.length > 0)
+                            $('#song_modal_' + record.id).modal('show');
+                        else
+                            alert('No songs to Play');
                         return true;
                     },
                     show: function() {
