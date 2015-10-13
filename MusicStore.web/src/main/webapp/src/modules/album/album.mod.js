@@ -34,6 +34,18 @@
                 displayName: 'Publication Date',
                 type: 'Date',
                 required: true 
-            }]});
+            },{
+                name: 'awards',
+                displayName: 'Awards',
+                type: 'String',
+                required: true
+            },
+           {
+                name: 'historicReview',
+                displayName: 'HistoricReview',
+                type: 'String',
+                required: true
+            }
+        ]});
             
 })(window.angular);

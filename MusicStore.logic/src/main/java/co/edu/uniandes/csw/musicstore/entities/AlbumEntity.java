@@ -32,7 +32,11 @@ public class AlbumEntity implements Serializable {
 
     private String artist;
     
-    @Temporal(TemporalType.DATE)  // Nuevo a tributo y definición de formato
+    private String awards;
+    
+    private String historicReview;
+    
+    @Temporal(TemporalType.DATE)  // Nuevo a tributo y definiciï¿½n de formato
     private Date publicationDate; 
             
     /**
@@ -127,4 +131,21 @@ public class AlbumEntity implements Serializable {
         this.publicationDate = publicationDate;
     }
 
+    public String getAwards() {
+        return awards;
+    }
+
+    public void setAwards(String awards) {
+        this.awards = awards;
+    }
+
+    public String getHistoricReview() {
+        return historicReview;
+    }
+
+    public void setHistoricReview(String historicReview) {
+        this.historicReview = historicReview;
+    }
+
+    
 }

@@ -20,6 +20,9 @@ public class AlbumDTO {
     
     private Date publicationDate;    // Nuevo atributo
     
+    private String awards;
+    
+    private String historicReview;
     /**
      * @generated
      */
@@ -112,4 +115,21 @@ public class AlbumDTO {
      this.publicationDate = publicationDate;
    }
 
+    public String getAwards() {
+        return awards;
+    }
+
+    public void setAwards(String awards) {
+        this.awards = awards;
+    }
+
+    public String getHistoricReview() {
+        return historicReview;
+    }
+
+    public void setHistoricReview(String historicReview) {
+        this.historicReview = historicReview;
+    }
+
+   
 }
