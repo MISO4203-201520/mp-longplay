@@ -99,6 +99,8 @@ public class AlbumPersistenceTest {
             entity.setRelease(generateRandom(Date.class));
             entity.setSingle(generateRandom(Boolean.class));
             entity.setArtist(generateRandom(String.class));
+            entity.setAwards(generateRandom(String.class)); //new attribute
+            entity.setHistoricReview(generateRandom(String.class)); //new attribute
             em.persist(entity);
             data.add(entity);
         }
@@ -115,7 +117,8 @@ public class AlbumPersistenceTest {
         newEntity.setRelease(generateRandom(Date.class));
         newEntity.setSingle(generateRandom(Boolean.class));
         newEntity.setArtist(generateRandom(String.class));
-
+        newEntity.setAwards(generateRandom(String.class));
+        newEntity.setHistoricReview(generateRandom(String.class));
         AlbumEntity result = albumPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
@@ -127,6 +130,10 @@ public class AlbumPersistenceTest {
         Assert.assertEquals(newEntity.getRelease(), entity.getRelease());
         Assert.assertEquals(newEntity.getSingle(), entity.getSingle());
         Assert.assertEquals(newEntity.getArtist(), entity.getArtist());
+        Assert.assertEquals(newEntity.getAwards(), entity.getAwards());
+        Assert.assertEquals(newEntity.getHistoricReview(), entity.getHistoricReview());
+
+        
     }
 
     /**
@@ -160,6 +167,8 @@ public class AlbumPersistenceTest {
         Assert.assertEquals(entity.getRelease(), newEntity.getRelease());
         Assert.assertEquals(entity.getSingle(), newEntity.getSingle());
         Assert.assertEquals(entity.getArtist(), newEntity.getArtist());
+        Assert.assertEquals(entity.getAwards(), newEntity.getAwards());
+        Assert.assertEquals(entity.getHistoricReview(), newEntity.getHistoricReview());
     }
 
     /**
@@ -188,7 +197,8 @@ public class AlbumPersistenceTest {
         newEntity.setRelease(generateRandom(Date.class));
         newEntity.setSingle(generateRandom(Boolean.class));
         newEntity.setArtist(generateRandom(String.class));
-
+        newEntity.setAwards(generateRandom(String.class));
+        newEntity.setHistoricReview(generateRandom(String.class));
         albumPersistence.update(newEntity);
 
         AlbumEntity resp = em.find(AlbumEntity.class, entity.getId());
@@ -198,6 +208,9 @@ public class AlbumPersistenceTest {
         Assert.assertEquals(newEntity.getRelease(), resp.getRelease());
         Assert.assertEquals(newEntity.getSingle(), resp.getSingle());
         Assert.assertEquals(newEntity.getArtist(), resp.getArtist());
+        Assert.assertEquals(newEntity.getAwards(), resp.getAwards());
+        Assert.assertEquals(newEntity.getHistoricReview(), resp.getHistoricReview());
+
     }
 
     /**
