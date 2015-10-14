@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.musicstore.converters;
 
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
-import co.edu.uniandes.csw.musicstore.entities.LongPlayEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseDetailEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import java.util.ArrayList;
@@ -29,7 +28,10 @@ public abstract class PurchaseDetailConverter {
             dto.setId(entity.getId());
             dto.setQuantity(entity.getQuantity());
             dto.setPrice(entity.getPrice());
-
+            dto.setIsConfirm(entity.getIsConfirm());
+            dto.setConfirmDate(entity.getConfirmDate());
+            dto.setConfirmObservations(entity.getConfirmObservations());
+            
             return dto;
         } else {
             return null;
@@ -62,6 +64,9 @@ public abstract class PurchaseDetailConverter {
             dto.setPrice(entity.getPrice());
             dto.setPurchase(PurchaseConverter.refEntity2DTO(entity.getPurchase()));
             dto.setLongPlay(LongPlayConverter.refEntity2DTO(entity.getLongPlay()));
+            dto.setConfirmDate(entity.getConfirmDate());
+            dto.setConfirmObservations(entity.getConfirmObservations());
+            dto.setIsConfirm(entity.getIsConfirm());
 
             return dto;
         } else {
@@ -80,6 +85,9 @@ public abstract class PurchaseDetailConverter {
             entity.setPrice(dto.getPrice());
             entity.setPurchase(PurchaseConverter.refDTO2Entity(dto.getPurchase()));
             entity.setLongPlay(LongPlayConverter.refDTO2Entity(dto.getLongPlay()));
+            entity.setIsConfirm(dto.getIsConfirm());
+            entity.setConfirmDate(dto.getConfirmDate());
+            entity.setConfirmObservations(dto.getConfirmObservations());
 
             return entity;
         } else {

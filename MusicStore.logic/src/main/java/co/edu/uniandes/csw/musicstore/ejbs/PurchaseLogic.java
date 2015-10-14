@@ -8,8 +8,10 @@ package co.edu.uniandes.csw.musicstore.ejbs;
 import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic;
 import co.edu.uniandes.csw.musicstore.converters.LongPlayConverter;
 import co.edu.uniandes.csw.musicstore.converters.PurchaseConverter;
+import co.edu.uniandes.csw.musicstore.converters.PurchaseDetailConverter;
 import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
+import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import co.edu.uniandes.csw.musicstore.persistence.PurchasePersistence;
 import java.util.List;
@@ -74,7 +76,7 @@ public class PurchaseLogic implements IPurchaseLogic{
         return PurchaseConverter.listEntity2DTO(persistence.getUserPurchases(userId));
     }
     
-    public List<LongPlayDTO> getProviderPurchases(String providerId) {
-        return LongPlayConverter.listEntity2DTO(persistence.getProviderPurchases(providerId));
+    public List<PurchaseDetailDTO> getProviderPurchases(String providerId) {
+        return PurchaseDetailConverter.listEntity2DTO(persistence.getProviderPurchases(providerId));
     }
 }

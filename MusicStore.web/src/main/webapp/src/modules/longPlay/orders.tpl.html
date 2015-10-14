@@ -9,7 +9,7 @@
                     <th>Price</th>
                     <th>Discount</th>
                     <th>Album</th>
-                    <th>Provider</th>
+                    <th>Test</th>
                     <th>Confirm Order</th>
                     <th>Cancel Order</th>
                 </tr>
@@ -17,11 +17,11 @@
             <tbody>
                 <tr ng-repeat="purchase in purchases">
                     <td><div>{{purchase.id}}</div></td>
-                    <td><div>{{purchase.name}}</div></td>  
-                    <td><div>{{purchase.price}}</div></td>
-                    <td><div>{{purchase.discount}}</div></td>
-                    <td><div>{{purchase.album.name}}</div></td>
-                    <td><div>{{purchase.provider.name}}</div></td>
+                    <td><div>{{purchase.longPlay.name}}</div></td>  
+                    <td><div>{{purchase.longPlay.price}}</div></td>
+                    <td><div>{{purchase.longPlay.discount}}</div></td>
+                    <td><div>{{purchase.longPlay.album.name}}</div></td>
+                    <td><div>{{purchase.confirmObservations}}</div></td>
                     <td>
                         <div id="element" style="text-align: center;">
                             <button class="btn btn-default" data-toggle="modal" 

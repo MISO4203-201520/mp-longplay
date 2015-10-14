@@ -5,6 +5,7 @@ import co.edu.uniandes.csw.musicstore.api.IProviderLogic;
 import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic;
 import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
 import co.edu.uniandes.csw.musicstore.dtos.ProviderDTO;
+import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
 import java.util.List;
 import javax.inject.Inject;
@@ -110,7 +111,7 @@ public class LongPlayService {
     
     @GET
     @Path("/provider")
-    public List<LongPlayDTO> getProviderPurchases() {
+    public List<PurchaseDetailDTO> getProviderPurchases() {
         if(provider != null){
             return PurchaseLogic.getProviderPurchases(provider.getUserId());
         }

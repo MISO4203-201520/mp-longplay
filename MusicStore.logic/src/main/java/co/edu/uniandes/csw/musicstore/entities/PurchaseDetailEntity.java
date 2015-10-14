@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "PurchaseDetailEntity.getProviderLongPlayPurchases", query = "select u.longPlay from PurchaseDetailEntity u WHERE u.longPlay.provider.userId = :providerId")
+    @NamedQuery(name = "PurchaseDetailEntity.getProviderLongPlayPurchases", query = "select u from PurchaseDetailEntity u WHERE u.longPlay.provider.userId = :providerId")
 })
 public class PurchaseDetailEntity {
     
@@ -37,6 +37,13 @@ public class PurchaseDetailEntity {
     private Integer quantity;
 
     private Integer price;
+    
+    private Boolean isConfirm;
+    
+    @Temporal(TemporalType.DATE)
+    private Date confirmDate;
+    
+    private String confirmObservations;
 
     public Long getId() {
         return id;
@@ -76,5 +83,29 @@ public class PurchaseDetailEntity {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Boolean getIsConfirm() {
+        return isConfirm;
+    }
+
+    public void setIsConfirm(Boolean isConfirm) {
+        this.isConfirm = isConfirm;
+    }
+
+    public Date getConfirmDate() {
+        return confirmDate;
+    }
+
+    public void setConfirmDate(Date confirmDate) {
+        this.confirmDate = confirmDate;
+    }
+
+    public String getConfirmObservations() {
+        return confirmObservations;
+    }
+
+    public void setConfirmObservations(String confirmObservations) {
+        this.confirmObservations = confirmObservations;
     }
 }
