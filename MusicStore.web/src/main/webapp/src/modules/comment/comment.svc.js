@@ -24,7 +24,7 @@
         };
 
         return {
-            createComment: createComment,
+            createComment: createComment
         };
 
     };
