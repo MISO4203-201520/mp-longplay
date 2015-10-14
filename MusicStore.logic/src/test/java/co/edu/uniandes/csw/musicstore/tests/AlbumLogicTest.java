@@ -107,6 +107,8 @@ public class AlbumLogicTest {
         	entity.setRelease(generateRandom(Date.class));
         	entity.setSingle(generateRandom(Boolean.class));
         	entity.setArtist(generateRandom(String.class));
+                entity.setAwards(generateRandom(String.class));
+                entity.setHistoricReview(generateRandom(String.class));
             em.persist(entity);
             data.add(entity);
         }
@@ -123,7 +125,8 @@ public class AlbumLogicTest {
         dto.setRelease(generateRandom(Date.class));
         dto.setSingle(generateRandom(Boolean.class));
         dto.setArtist(generateRandom(String.class));
-
+        dto.setAwards(generateRandom(String.class));
+        dto.setHistoricReview(generateRandom(String.class));
         AlbumDTO result = albumLogic.createAlbum(dto);
 
         Assert.assertNotNull(result);
@@ -135,6 +138,10 @@ public class AlbumLogicTest {
         Assert.assertEquals(dto.getRelease(), entity.getRelease());
         Assert.assertEquals(dto.getSingle(), entity.getSingle());
         Assert.assertEquals(dto.getArtist(), entity.getArtist());
+        Assert.assertEquals(dto.getAwards(), entity.getAwards());
+        Assert.assertEquals(dto.getHistoricReview(), entity.getHistoricReview());
+
+        
     }
 
     /**
@@ -168,6 +175,9 @@ public class AlbumLogicTest {
         Assert.assertEquals(entity.getRelease(), dto.getRelease());
         Assert.assertEquals(entity.getSingle(), dto.getSingle());
         Assert.assertEquals(entity.getArtist(), dto.getArtist());
+        Assert.assertEquals(entity.getAwards(), dto.getAwards());
+        Assert.assertEquals(entity.getHistoricReview(), dto.getHistoricReview());
+
     }
 
     /**
@@ -196,6 +206,8 @@ public class AlbumLogicTest {
         dto.setRelease(generateRandom(Date.class));
         dto.setSingle(generateRandom(Boolean.class));
         dto.setArtist(generateRandom(String.class));
+        dto.setAwards(generateRandom(String.class));
+        dto.setHistoricReview(generateRandom(String.class));
 
         albumLogic.updateAlbum(dto);
 
@@ -206,6 +218,10 @@ public class AlbumLogicTest {
         Assert.assertEquals(dto.getRelease(), resp.getRelease());
         Assert.assertEquals(dto.getSingle(), resp.getSingle());
         Assert.assertEquals(dto.getArtist(), resp.getArtist());
+        Assert.assertEquals(dto.getAwards(), resp.getAwards());
+        Assert.assertEquals(dto.getHistoricReview(), resp.getHistoricReview());
+
+
     }
 
     /**
