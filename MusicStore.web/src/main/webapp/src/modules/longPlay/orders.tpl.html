@@ -25,7 +25,9 @@
                     <td>
                         <div id="element" style="text-align: center;">
                             <button class="btn btn-default" data-toggle="modal" 
-                                    data-target="#modalConfirmation" ng-show="true">
+                                    data-target="#modalConfirmation" ng-show="true" 
+                                    ng-disabled="purchase.isConfirm != null"
+                                    ng-click="selectOrderDetail(purchase)">
                                 <span class="glyphicon glyphicon-ok"></span> Confirmation
                             </button>
                         </div>
@@ -33,7 +35,9 @@
                     <td>
                         <div style="text-align: center;">
                             <button class="btn btn-default" data-toggle="modal" 
-                                    data-target="#simpleModalConfirmation" ng-show="true">
+                                    data-target="#simpleModalConfirmation" ng-show="true"
+                                    ng-disabled="purchase.isConfirm != null"
+                                    ng-click="selectOrderDetail(purchase)">
                                 <span class="glyphicon glyphicon-remove"></span> Cancel
                             </button>
                         </div>
@@ -98,7 +102,8 @@
                     <form role="form">
                         <input type="date" name="orderDate" required/>
                         <button type="button" class="btn btn-success"
-                                ng-show="true" data-toggle="modal" data-target="#modalConfirmation,#modalDate">
+                                ng-show="true" data-toggle="modal" data-target="#modalConfirmation,#modalDate"
+                                ng-click="confirmOrderDetail()">
                             <span class="glyphicon glyphicon-message-plus"></span>
                             Accept
                         </button>
@@ -127,7 +132,9 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <form role="form">
-                        <button type="button" class="btn btn-success">
+                        <button type="button" class="btn btn-success" ng-show="true" 
+                                data-toggle="modal" data-target="#simpleModalConfirmation"
+                                ng-click="cancelOrderDetail()">
                             <span class="glyphicon glyphicon-message-plus"></span>
                             Yes
                         </button>

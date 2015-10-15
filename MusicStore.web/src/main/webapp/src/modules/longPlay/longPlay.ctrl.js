@@ -15,6 +15,20 @@
                 $scope.purchases = res;
             });
         };
+        $scope.tmpOrderDetail;
+        $scope.selectOrderDetail = function(purchase){
+            $scope.tmpOrderDetail=purchase;
+        };
+        $scope.confirmOrderDetail = function(){
+            console.log('confirmDetail');
+            $scope.tmpOrderDetail.isConfirm=true;
+            svc.confirmOrderDetail($scope.tmpOrderDetail);
+        };
+        $scope.cancelOrderDetail = function(){
+            console.log('cancelDetail');
+            $scope.tmpOrderDetail.isConfirm=false;
+            svc.cancelOrderDetail($scope.tmpOrderDetail);
+        };
         getProviderPurchases();
     }]);
     })(window.angular);

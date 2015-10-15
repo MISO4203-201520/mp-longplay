@@ -13,7 +13,8 @@
         'songModule',
         'ngRoute',
         'ngCrud',
-        'ngCookies'
+        'ngCookies',
+        'restangular'
     ]);
 
     mainApp.config(['$routeProvider', 'CrudTemplateURL', 'CrudCtrlAlias', function($routeProvider, tplUrl, alias) {
