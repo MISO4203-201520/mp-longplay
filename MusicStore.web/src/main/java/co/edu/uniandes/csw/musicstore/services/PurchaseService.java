@@ -111,7 +111,7 @@ public class PurchaseService {
     public PurchaseDetailDTO confirmOrder(@PathParam("id") Long id, PurchaseDetailDTO dto) {
         System.out.println("data"+id+dto.getId());
         dto.setId(id);
-        return null;
+        return PurchaseLogic.confirmOrder(dto);
     }
     
     @PUT
@@ -119,6 +119,6 @@ public class PurchaseService {
     public PurchaseDetailDTO cancelOrder(@PathParam("id") Long id, PurchaseDetailDTO dto) {
         System.out.println("data"+id+dto.getId());
         dto.setId(id);
-        return null;
+        return PurchaseLogic.cancelOrder(dto);
     }
 }

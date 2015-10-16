@@ -23,11 +23,13 @@
             console.log('confirmDetail');
             $scope.tmpOrderDetail.isConfirm=true;
             svc.confirmOrderDetail($scope.tmpOrderDetail);
+            $scope.tmpOrderDetail='';
         };
         $scope.cancelOrderDetail = function(){
             console.log('cancelDetail');
             $scope.tmpOrderDetail.isConfirm=false;
             svc.cancelOrderDetail($scope.tmpOrderDetail);
+            $scope.tmpOrderDetail='';
         };
         getProviderPurchases();
     }]);

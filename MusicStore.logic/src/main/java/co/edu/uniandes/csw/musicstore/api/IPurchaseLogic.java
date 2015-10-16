@@ -23,4 +23,6 @@ public interface IPurchaseLogic {
     public void deletePurchase(Long id);
     public List<PurchaseDTO> getUserPurchases(String userId);
     public List<PurchaseDetailDTO> getProviderPurchases(String providerId);
+    public PurchaseDetailDTO confirmOrder(PurchaseDetailDTO dto);
+    public PurchaseDetailDTO cancelOrder(PurchaseDetailDTO dto);
 }

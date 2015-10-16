@@ -100,7 +100,7 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <form role="form">
-                        <input type="date" name="orderDate" required/>
+                        <input type="date" name="orderDate" ng-model="tmpOrderDetail.confirmDate" required/>
                         <button type="button" class="btn btn-success"
                                 ng-show="true" data-toggle="modal" data-target="#modalConfirmation,#modalDate"
                                 ng-click="confirmOrderDetail()">
@@ -132,6 +132,10 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <form role="form">
+                        Why do you want to cancel the order?
+                        <div style="margin-bottom: 15px;">
+                            <textarea style="width: 100%;" type="text" name="confirmObservations" ng-model="tmpOrderDetail.confirmObservations" required/>
+                        </div>
                         <button type="button" class="btn btn-success" ng-show="true" 
                                 data-toggle="modal" data-target="#simpleModalConfirmation"
                                 ng-click="cancelOrderDetail()">
