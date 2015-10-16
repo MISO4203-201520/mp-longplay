@@ -1,4 +1,3 @@
-          
 (function () {
 
     var commentService = function ($http, $cookies) {
@@ -31,4 +30,4 @@
 
     var module = angular.module("mainApp");
     module.factory("commentService", commentService);
-});
+}());
