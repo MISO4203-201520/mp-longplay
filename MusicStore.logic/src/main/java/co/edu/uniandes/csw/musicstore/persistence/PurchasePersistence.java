@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musicstore.persistence;
 
 import co.edu.uniandes.csw.musicstore.entities.LongPlayEntity;
+import co.edu.uniandes.csw.musicstore.entities.PurchaseDetailEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +36,8 @@ public class PurchasePersistence extends CrudPersistence<PurchaseEntity> {
         return result;
     }
     
-    public List<LongPlayEntity> getProviderPurchases(String userId) {
-        List<LongPlayEntity> result = new ArrayList<LongPlayEntity>();
+    public List<PurchaseDetailEntity> getProviderPurchases(String userId) {
+        List<PurchaseDetailEntity> result = new ArrayList<PurchaseDetailEntity>();
         try {
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("providerId", userId);

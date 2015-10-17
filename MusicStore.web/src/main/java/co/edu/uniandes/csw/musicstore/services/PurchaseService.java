@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
 import co.edu.uniandes.csw.musicstore.dtos.ClientDTO;
 import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
 import co.edu.uniandes.csw.musicstore.dtos.ProviderDTO;
+import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
 import java.util.List;
 import javax.inject.Inject;
@@ -103,5 +104,21 @@ public class PurchaseService {
             return PurchaseLogic.getUserPurchases(client.getUserId());
         }
         return null;
+    }
+    
+    @PUT
+    @Path("/confirm/{id: \\d+}")
+    public PurchaseDetailDTO confirmOrder(@PathParam("id") Long id, PurchaseDetailDTO dto) {
+        System.out.println("data"+id+dto.getId());
+        dto.setId(id);
+        return PurchaseLogic.confirmOrder(dto);
+    }
+    
+    @PUT
+    @Path("/cancel/{id: \\d+}")
+    public PurchaseDetailDTO cancelOrder(@PathParam("id") Long id, PurchaseDetailDTO dto) {
+        System.out.println("data"+id+dto.getId());
+        dto.setId(id);
+        return PurchaseLogic.cancelOrder(dto);
     }
 }

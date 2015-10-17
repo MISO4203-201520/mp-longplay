@@ -7,7 +7,11 @@ package co.edu.uniandes.csw.musicstore.dtos;
 
 import co.edu.uniandes.csw.musicstore.entities.LongPlayEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
+import java.util.Date;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -23,7 +27,14 @@ public class PurchaseDetailDTO {
     
     private Integer quantity;
 
-    private Integer price;   
+    private Integer price; 
+    
+    private Boolean isConfirm;
+    
+    @XmlJavaTypeAdapter(DateAdapter.class)
+    private Date confirmDate;
+    
+    private String confirmObservations;
 
     public Long getId() {
         return id;
@@ -63,5 +74,29 @@ public class PurchaseDetailDTO {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Boolean getIsConfirm() {
+        return isConfirm;
+    }
+
+    public void setIsConfirm(Boolean isConfirm) {
+        this.isConfirm = isConfirm;
+    }
+
+    public Date getConfirmDate() {
+        return confirmDate;
+    }
+
+    public void setConfirmDate(Date confirmDate) {
+        this.confirmDate = confirmDate;
+    }
+
+    public String getConfirmObservations() {
+        return confirmObservations;
+    }
+
+    public void setConfirmObservations(String confirmObservations) {
+        this.confirmObservations = confirmObservations;
     }
 }
