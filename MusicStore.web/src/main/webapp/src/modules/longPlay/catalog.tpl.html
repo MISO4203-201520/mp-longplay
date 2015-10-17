@@ -1,7 +1,7 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
 <div class="col-sm-12" >
     <script type="text/javascript">
-        authorization();
+                authorization();
     </script>
     <div ng-show="ctrl.findCheapMode">
         <div class="panel panel-default">
@@ -43,30 +43,55 @@
                 max-size="ctrl.maxSize" class="pagination-md" boundary-links="true" rotate="false"></pagination>
 </div>
 <div ng-show="ctrl.detailsMode" ng-if="model">
-    <div ng-show="ctrl.answerMode" class="input-group">
-        <input type="text" class="form-control" placeholder="Reply..."  ng-model="answer" ng-minlength="1" required ng-maxlength="250" style="width: 100%; border-radius: 4px; padding: 18px 18px">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-primary" ng-click="ctrl.addAnswer(model,answer)" style="float:right; width: 100%">
-                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
-            </button>
-        </span>
-    </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">Album: {{model.album.name}}</div>
         <ul class="list-group" ng-repeat="comment in model.comments">
             <li ng-show="comment.idPadre == null" class="list-group-item">
                 {{comment.description}}
-                <br><a ng-click="ctrl.answerMode = !ctrl.answerMode;ctrl.idCommentPadre= comment.id">Reply</a></br>
+                <br><a ng-click="ctrl.answerMode[comment.id] = !ctrl.answerMode[comment.id];
+                                ctrl.idCommentPadre = comment.id">Reply</a></br>
+                <div ng-show="ctrl.answerMode[comment.id]" class="input-group">
+                    <input type="text" class="form-control" placeholder="Reply..."  ng-model="answer" ng-minlength="1" required ng-maxlength="250" style="width: 100%; border-radius: 4px; padding: 18px 18px">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.addAnswer(model, answer)" style="float:right; width: 100%">
+                            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
+                        </button>
+                    </span>
+                </div>
             </li>
             <ul class="list-group" ng-repeat="respuesta in model.comments">
-                <li ng-show="respuesta.idPadre != null && respuesta.idPadre == comment.id" class="list-group-item" 
-                     style="background-color: #222222 !important; border: 0px !important; padding:0px !important;"> 
-                    <div>
+                <li ng-show="respuesta.idPadre != null && respuesta.idPadre == comment.id && comment.idPadre == null" class="list-group-item" > 
+                    <div style="background-color: black !important; border: 0px !important; padding:0px !important;">
                         <ul class="list-group" style="padding-left: 30px; border: 0px;">
                             <li class="list-group-item" style="background-color: white; color:black; 
-                        padding:18px 18px; margin-bottom: 2px;">{{respuesta.description}}</li>
+                                padding:18px 18px; margin-bottom: 2px;">{{respuesta.description}}
+
+                                <br><a ng-click="ctrl.answerMode[respuesta.id] = !ctrl.answerMode[respuesta.id];
+                                                    ctrl.idCommentPadre = respuesta.id">Reply</a></br></li>
                         </ul>    
-                    </div>  
+                    </div>
+                    <div ng-show="ctrl.answerMode[respuesta.id]" class="input-group">
+                                <input type="text" class="form-control" placeholder="Reply..."  ng-model="answer" ng-minlength="1" required ng-maxlength="250" style="width: 100%; border-radius: 4px; padding: 18px 18px">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary" ng-click="ctrl.addAnswer(model, answer)" style="float:right; width: 100%">
+                                        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
+                                    </button>
+                                </span>
+                            </div>
+                    
+                    <ul class="list-group" ng-repeat="c_respuesta in model.comments">
+                        <li ng-show="c_respuesta.idPadre == respuesta.id" class="list-group-item" 
+                            style="background-color: black !important; border: 0px !important; padding:0px !important;"> 
+                            <div>
+                                <ul class="list-group" style="padding-left: 60px; border: 0px;">
+                                    <li class="list-group-item" style="background-color: white; color:black; 
+                                        padding:18px 18px; margin-bottom: 2px;">{{c_respuesta.description}}
+
+                                </ul>    
+                            </div>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </ul>    

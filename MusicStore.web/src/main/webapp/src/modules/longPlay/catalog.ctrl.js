@@ -8,11 +8,13 @@
             this.detailsMode = false;
             this.myTextArea = "";
             var self = this;
-            this.answerMode = false;
+            //this.answerMode = false;
+            $scope.answerMode = [];
             this.idCommentPadre = 0;
             
             $scope.modal = {url: 'src/modules/question/question.tpl.html', data: null, question: ''};
-
+            
+      
             this.searchByName = function(albumName) {
                 var search;
                 if (albumName) {
