@@ -17,6 +17,7 @@ public class CommentDTO {
     private LongPlayDTO longPlay;
     private ClientDTO client;
     private Long clientId;
+    private Long idPadre;
     
     public Long getId() {
        return id;
@@ -64,5 +65,13 @@ public class CommentDTO {
     
     public void setClient(ClientDTO client) {
          this.client = client;
+    }
+    
+    public Long getIdPadre() {
+       return idPadre;
+    }
+
+    public void setIdPadre(Long idPadre) {
+        this.idPadre = idPadre;
     }
 }

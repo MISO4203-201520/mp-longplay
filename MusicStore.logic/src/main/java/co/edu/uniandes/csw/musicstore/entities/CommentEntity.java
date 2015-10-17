@@ -25,7 +25,8 @@ public class CommentEntity implements Serializable{
     private String description;
     @Temporal(TemporalType.DATE)
     private Date commentDate;
-        
+    private Long idPadre;
+    
     @ManyToOne
     private LongPlayEntity longPlay;
     
@@ -70,6 +71,14 @@ public class CommentEntity implements Serializable{
 
     public void setClient(ClientEntity client) {
          this.client = client;
+    }
+    
+    public Long getIdPadre() {
+       return idPadre;
+    }
+
+    public void setIdPadre(Long idPadre) {
+        this.idPadre = idPadre;
     }
 }
 
