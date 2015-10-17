@@ -3,7 +3,7 @@
     <script type="text/javascript">
         authorization();
     </script>
-    <div>
+    <div ng-show="ctrl.findCheapMode">
         <div class="panel panel-default">
             <p>
                 <label>Maximum Price:</label>
@@ -43,12 +43,32 @@
                 max-size="ctrl.maxSize" class="pagination-md" boundary-links="true" rotate="false"></pagination>
 </div>
 <div ng-show="ctrl.detailsMode" ng-if="model">
+    <div ng-show="ctrl.answerMode" class="input-group">
+        <input type="text" class="form-control" placeholder="Reply..."  ng-model="answer" ng-minlength="1" required ng-maxlength="250" style="width: 100%; border-radius: 4px; padding: 18px 18px">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-primary" ng-click="ctrl.addAnswer(model,answer)" style="float:right; width: 100%">
+                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
+            </button>
+        </span>
+    </div>
     <div class="panel panel-default">
-        <div class="panel-heading">{{model.album.name}}</div>
+        <div class="panel-heading">Album: {{model.album.name}}</div>
         <ul class="list-group" ng-repeat="comment in model.comments">
-            <li class="list-group-item">
-                {{comment.description}} 
+            <li ng-show="comment.idPadre == null" class="list-group-item">
+                {{comment.description}}
+                <br><a ng-click="ctrl.answerMode = !ctrl.answerMode;ctrl.idCommentPadre= comment.id">Reply</a></br>
             </li>
+            <ul class="list-group" ng-repeat="respuesta in model.comments">
+                <li ng-show="respuesta.idPadre != null && respuesta.idPadre == comment.id" class="list-group-item" 
+                     style="background-color: #222222 !important; border: 0px !important; padding:0px !important;"> 
+                    <div>
+                        <ul class="list-group" style="padding-left: 30px; border: 0px;">
+                            <li class="list-group-item" style="background-color: white; color:black; 
+                        padding:18px 18px; margin-bottom: 2px;">{{respuesta.description}}</li>
+                        </ul>    
+                    </div>  
+                </li>
+            </ul>
         </ul>    
     </div>
     <p>
@@ -57,5 +77,7 @@
     </p>
     <a class="btn btn-default" ng-click="ctrl.addComment(model);
                 ctrl.refreshComment(model)">Add</a>
-    <a class="btn btn-default" ng-click="ctrl.detailsMode = false" >Back</a>
+    <a class="btn btn-default" ng-click="ctrl.detailsMode = false;
+                ctrl.findCheapMode = true" >Back</a>
 </div>
+
