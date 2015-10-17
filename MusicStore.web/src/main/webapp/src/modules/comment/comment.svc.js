@@ -2,11 +2,11 @@
 
     var commentService = function ($http, $cookies) {
 
-        var createComment = function (record, comment) {
+        var createComment = function (record, comment, padre) {
             
             //var user = angular.fromJson($cookies.get('userCookie'));
             
-            var data = angular.toJson({ id: null, description: comment, commentDate: null, longPlay: record  });
+            var data = angular.toJson({ id: null, description: comment, commentDate: null, longPlay: record, idPadre: padre  });
             
             $http({
                 method: "POST",

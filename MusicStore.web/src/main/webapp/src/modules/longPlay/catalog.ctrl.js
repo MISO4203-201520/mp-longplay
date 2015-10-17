@@ -8,7 +8,9 @@
             this.detailsMode = false;
             this.myTextArea = "";
             var self = this;
-
+            this.answerMode = false;
+            this.idCommentPadre = 0;
+            
             $scope.modal = {url: 'src/modules/question/question.tpl.html', data: null, question: ''};
 
             this.searchByName = function(albumName) {
@@ -40,7 +42,7 @@
                     alert("El comentario esta vacio.");
                 }
                 else {
-                    commentService.createComment(record, comment);
+                    commentService.createComment(record, comment, null);
                     this.refreshComment(record);
                 }
                 for (i = 0; i < x.length; i++) {
@@ -81,7 +83,16 @@
                     ]
                 });
             };
-
+            this.addAnswer = function (record, answer) {
+                //alert(record.id + ' ' + this.idCommentPadre + ' ' + answer);
+                if (answer.trim().length !== 0)
+                {
+                    commentService.createComment(record, answer, this.idCommentPadre);
+                    this.answerMode = false;
+                    this.refreshComment(record);
+                }
+                this.refreshComment(record);
+            };
             this.recordActions = [{
                     name: 'addToCart',
                     displayName: 'Add to Cart',
@@ -120,6 +131,7 @@
                     fn: function(record) {
                         svc.api.get(record.id).then(function(data) {
                             self.detailsMode = true;
+                            self.findCheapMode =false;
                             $scope.model = data;
                         });
                     },

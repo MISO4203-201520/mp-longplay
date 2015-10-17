@@ -28,7 +28,7 @@ public abstract class CommentConverter {
             dto.setId(entity.getId());
             dto.setDescription(entity.getDescription());
             dto.setCommentDate(entity.getCommentDate());
-
+            dto.setIdPadre(entity.getIdPadre());
             return dto;
         } else {
             return null;
@@ -61,7 +61,8 @@ public abstract class CommentConverter {
             dto.setDescription(entity.getDescription());
             dto.setCommentDate(entity.getCommentDate());
             dto.setLongPlay(LongPlayConverter.refEntity2DTO(entity.getLongPlay()));
-            dto.setClient(ClientConverter.refEntity2DTO(entity.getClient()));            
+            dto.setClient(ClientConverter.refEntity2DTO(entity.getClient()));  
+            dto.setIdPadre(entity.getIdPadre());
             return dto;
         } else {
             return null;
@@ -79,6 +80,7 @@ public abstract class CommentConverter {
             entity.setCommentDate(dto.getCommentDate());
             entity.setLongPlay(LongPlayConverter.refDTO2Entity(dto.getLongPlay()));
             entity.setClient(ClientConverter.refDTO2Entity(dto.getClient()));
+            entity.setIdPadre(dto.getIdPadre());
             return entity;
         } else {
             return null;
