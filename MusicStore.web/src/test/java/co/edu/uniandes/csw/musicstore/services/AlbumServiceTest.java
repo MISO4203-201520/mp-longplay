@@ -87,7 +87,6 @@ public class AlbumServiceTest {
         Response response = cliente.target(URLBASE + PATHALBUM) 
                 .request() 
                 .post(Entity.entity(album, MediaType.APPLICATION_JSON));
-        System.out.println("albumtest "+ (AlbumDTO) response.readEntity(AlbumDTO.class));
         /*
         AlbumDTO albumTest = (AlbumDTO) response.readEntity(AlbumDTO.class); 
         Assert.assertEquals(album.getName(), albumTest.getName()); 
