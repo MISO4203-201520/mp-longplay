@@ -82,7 +82,7 @@ public abstract class PurchaseConverter {
     /**
      * @generated
      */
-    private static PurchaseEntity basicDTO2Entity(PurchaseDTO dto) {
+    public static PurchaseEntity basicDTO2Entity(PurchaseDTO dto) {
         if (dto != null) {
             PurchaseEntity entity = new PurchaseEntity();
             entity.setId(dto.getId());

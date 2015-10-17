@@ -21,6 +21,13 @@
             <scope>test</scope> 
         </dependency>
         
+        <dependency>
+            <groupId>uk.co.jemos.podam</groupId>
+            <artifactId>podam</artifactId>
+            <version>6.0.2.RELEASE</version>
+        </dependency>
+
+        
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
