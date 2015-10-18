@@ -1,9 +1,7 @@
 package co.edu.uniandes.csw.musicstore.tests;
 
-import co.edu.uniandes.csw.musicstore.entities.ClientEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import co.edu.uniandes.csw.musicstore.persistence.PurchasePersistence;
-import static co.edu.uniandes.csw.musicstore.tests._TestUtil.generateRandom;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -18,6 +16,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 @RunWith(Arquillian.class) 
 public class PurchasePersistenceTest {
@@ -64,45 +64,79 @@ public class PurchasePersistenceTest {
     
     private List<PurchaseEntity> data = new ArrayList<PurchaseEntity>();
     
+    private PurchaseEntity createTestObject() {
+
+        PodamFactory factory = new PodamFactoryImpl();
+        PurchaseEntity testObject = factory.manufacturePojo(PurchaseEntity.class);
+        return testObject;
+    }
+    
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-            PurchaseEntity entity = new PurchaseEntity();
-            entity.setCVC(generateRandom(String.class));
-            entity.setCardNumber(generateRandom(String.class));
-            entity.setExpirationDate(generateRandom(String.class));
-            entity.setId(generateRandom(Long.class));
-            entity.setIva(generateRandom(Float.class));
-            entity.setNameCardOwner(generateRandom(String.class));
-            entity.setPaymentMethod(generateRandom(String.class));
-            entity.setTotal(generateRandom(Float.class));
-            
+            PurchaseEntity entity = createTestObject();
             em.persist(entity);
             data.add(entity);
         }
     }
     
     @Test
-    public void createClientTest() {
-        PurchaseEntity newEntity = new PurchaseEntity();
-        newEntity.setCVC(generateRandom(String.class));
-        newEntity.setCardNumber(generateRandom(String.class));
-        newEntity.setExpirationDate(generateRandom(String.class));
-        newEntity.setId(generateRandom(Long.class));
-        newEntity.setIva(generateRandom(Float.class));
-        newEntity.setNameCardOwner(generateRandom(String.class));
-        newEntity.setPaymentMethod(generateRandom(String.class));
-        newEntity.setTotal(generateRandom(Float.class));
+    public void createPurchaseTest() {
 
+        PurchaseEntity newEntity = createTestObject();
         PurchaseEntity result = purchasePersistence.create(newEntity);
 
         Assert.assertNotNull(result);
-
         PurchaseEntity entity = em.find(PurchaseEntity.class, result.getId());
         
-        Assert.assertEquals(newEntity.getCVC(), entity.getCVC());
-        Assert.assertEquals(newEntity.getCardNumber(), entity.getCardNumber());
-        Assert.assertEquals(newEntity.getExpirationDate(), entity.getExpirationDate());
         Assert.assertEquals(newEntity.getCardNumber(), entity.getCardNumber());
     }
-    
+
+    @Test
+    public void getPurchasesTest() {
+
+        List<PurchaseEntity> list = purchasePersistence.findAll(null, null);
+
+        Assert.assertEquals(data.size(), list.size());
+        for (PurchaseEntity newEntity : list) {
+            boolean found = false;
+            for (PurchaseEntity entity : data) {
+                if (newEntity.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    @Test
+    public void getPurchaseTest() {
+
+        PurchaseEntity entity = data.get(0);
+        PurchaseEntity newEntity = purchasePersistence.find(entity.getId());
+
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(newEntity.getCardNumber(), entity.getCardNumber());
+    }
+
+    @Test
+    public void deletePurchaseTest() {
+
+        PurchaseEntity entity = data.get(0);
+        purchasePersistence.delete(entity.getId());
+        PurchaseEntity deleted = em.find(PurchaseEntity.class, entity.getId());
+
+        Assert.assertNull(deleted);
+    }
+
+    @Test
+    public void updatePurchaseTest() {
+
+        PurchaseEntity entity = data.get(0);
+        PurchaseEntity newEntity = createTestObject();
+        newEntity.setId(entity.getId());
+        purchasePersistence.update(newEntity);
+        PurchaseEntity resp = em.find(PurchaseEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getCardNumber(), resp.getCardNumber());
+    }
 }

@@ -2,15 +2,11 @@ package co.edu.uniandes.csw.musicstore.tests;
 
 import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic; 
 import co.edu.uniandes.csw.musicstore.converters.PurchaseConverter;
-import co.edu.uniandes.csw.musicstore.dtos.AlbumDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
 import co.edu.uniandes.csw.musicstore.ejbs.PurchaseLogic;
-import co.edu.uniandes.csw.musicstore.entities.AlbumEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import co.edu.uniandes.csw.musicstore.persistence.PurchasePersistence;
-import static co.edu.uniandes.csw.musicstore.tests._TestUtil.generateRandom;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.PersistenceContext; 
@@ -78,41 +74,22 @@ public class PurchaseLogicTest {
 
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-             PurchaseEntity entity = new PurchaseEntity();
-        	entity.setCVC(generateRandom(String.class));
-        	entity.setCardNumber(generateRandom(String.class));
-        	entity.setDate(generateRandom(Date.class));
-        	entity.setExpirationDate(generateRandom(String.class));
-        	entity.setId(generateRandom(Long.class));
-                entity.setNameCardOwner(generateRandom(String.class));
-                entity.setPaymentMethod(generateRandom(String.class));
-                entity.setTotal(generateRandom(Float.class));
-
-            em.persist(entity);
+            PodamFactory factory = new PodamFactoryImpl(); 
+            PurchaseEntity entity = PurchaseConverter.basicDTO2Entity(factory.manufacturePojo(PurchaseDTO.class)); 
+            em.persist(entity); 
             data.add(entity);
-         
         }
     }
     
     @Test
-    public void createLongPlayTest() {
-    
+    public void createPurchaseTest() {
         
-         PurchaseDTO dto = new PurchaseDTO();
-                dto.setCVC(generateRandom(String.class));
-        	dto.setCardNumber(generateRandom(String.class));
-        	dto.setDate(generateRandom(Date.class));
-        	dto.setExpirationDate(generateRandom(String.class));
-        	dto.setId(generateRandom(Long.class));
-                dto.setNameCardOwner(generateRandom(String.class));
-                dto.setPaymentMethod(generateRandom(String.class));
-                dto.setTotal(generateRandom(Float.class));
+        PodamFactory factory = new PodamFactoryImpl();
+        PurchaseDTO dto = factory.manufacturePojo(PurchaseDTO.class);
         PurchaseDTO result = purchaseLogic.createPurchase(dto);
-
         Assert.assertNotNull(result);
-
         PurchaseEntity entity = em.find(PurchaseEntity.class, result.getId());
-
+        
         Assert.assertEquals(dto.getCVC(), entity.getCVC());
         Assert.assertEquals(dto.getCardNumber(), entity.getCardNumber());
         Assert.assertEquals(dto.getExpirationDate(), entity.getExpirationDate());
@@ -121,7 +98,45 @@ public class PurchaseLogicTest {
         Assert.assertEquals(dto.getNameCardOwner(), entity.getNameCardOwner());
         Assert.assertEquals(dto.getPaymentMethod(), entity.getPaymentMethod());
         Assert.assertEquals(dto.getTotal(), entity.getTotal());
-        
+    }
+    
+    private PurchaseDTO createTestObject() {
 
+        PodamFactory factory = new PodamFactoryImpl();
+        PurchaseDTO testObject = factory.manufacturePojo(PurchaseDTO.class);
+        return testObject;
+    }
+   
+
+    @Test
+    public void getPurchaseTest() {
+
+        PurchaseEntity entity = data.get(0);
+        PurchaseDTO newEntity = purchaseLogic.getPurchase(entity.getId());
+
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(newEntity.getCardNumber(), entity.getCardNumber());
+    }
+
+    @Test
+    public void deletePurchaseTest() {
+
+        PurchaseEntity entity = data.get(0);
+        purchaseLogic.deletePurchase(entity.getId());
+        PurchaseEntity deleted = em.find(PurchaseEntity.class, entity.getId());
+
+        Assert.assertNull(deleted);
+    }
+
+    @Test
+    public void updatePurchaseTest() {
+        
+        PurchaseEntity entity = data.get(0);
+        PurchaseDTO newEntity = createTestObject();
+        newEntity.setId(entity.getId());
+        purchaseLogic.updatePurchase(newEntity);
+        PurchaseEntity resp = em.find(PurchaseEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getCardNumber(), resp.getCardNumber());
     }
 }
