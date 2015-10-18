@@ -16,7 +16,6 @@ import java.util.List;
  */
 public interface IPurchaseLogic {
     public int countPurchases();
-    //public List<PurchaseDTO> getPurchases(Integer page, Integer maxRecords);
     public PurchaseDTO getPurchase(Long id);
     public PurchaseDTO createPurchase(PurchaseDTO dto);
     public PurchaseDTO updatePurchase(PurchaseDTO dto);

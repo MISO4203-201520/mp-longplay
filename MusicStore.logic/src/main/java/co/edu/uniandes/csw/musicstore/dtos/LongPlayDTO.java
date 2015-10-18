@@ -2,6 +2,7 @@ package co.edu.uniandes.csw.musicstore.dtos;
 
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * @generated
@@ -13,9 +14,13 @@ public class LongPlayDTO {
     private String name;
     private Integer price;
     private Integer discount;
+    @PodamExclude
     private AlbumDTO album;
+    @PodamExclude
     private ProviderDTO provider;
+    @PodamExclude
     private List<CommentDTO> comments;
+    @PodamExclude
     private List<SongDTO> songs;
     private String awards;
     private String historicReview;
