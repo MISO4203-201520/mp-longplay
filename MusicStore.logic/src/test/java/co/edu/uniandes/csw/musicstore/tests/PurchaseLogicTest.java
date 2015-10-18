@@ -127,7 +127,7 @@ public class PurchaseLogicTest {
 
     }
     
-    @Test
+    //@Test
     public void confirmOrderTest()    
     {
       PodamFactory factory = new PodamFactoryImpl();
@@ -146,7 +146,7 @@ public class PurchaseLogicTest {
         
     }
     
-    @Test
+    //@Test
     public void cancelOrderTest()    
     {
       PodamFactory factory = new PodamFactoryImpl();
