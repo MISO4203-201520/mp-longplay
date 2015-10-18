@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package co.edu.uniandes.csw.musicstore.entities;
 
 import java.io.Serializable;
@@ -13,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -20,17 +15,20 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class QuestionEntity implements Serializable {
-    
+
     @Id
     @GeneratedValue(generator = "Question")
+    @PodamExclude
     private Long id;
-        
+
+    @PodamExclude
     private AlbumEntity album;
-    
+
+    @PodamExclude
     private ClientEntity client;
-    
+
     private String description;
-    
+
     @Temporal(TemporalType.DATE)
     private Date postDate;
 

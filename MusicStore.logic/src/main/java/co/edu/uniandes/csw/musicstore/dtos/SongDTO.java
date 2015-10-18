@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.musicstore.dtos;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -9,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class SongDTO {
 
+    @PodamExclude
     private Long id;
 
     private String title;
@@ -21,6 +23,7 @@ public class SongDTO {
 
     private String sample;
 
+    @PodamExclude
     private LongPlayDTO longPlay;
 
     public Long getId() {

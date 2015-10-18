@@ -59,7 +59,7 @@ public abstract class SongConverter {
         }
     }
 
-    private static SongEntity basicDTO2Entity(SongDTO dto) {
+    public static SongEntity basicDTO2Entity(SongDTO dto) {
 
         if (dto != null) {
             SongEntity entity = new SongEntity();

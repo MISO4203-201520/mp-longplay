@@ -10,7 +10,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
- * @generated
+ *
+ * @author je.barrera11
  */
 @Stateless
 public class QuestionLogic implements IQuestionLogic {
@@ -19,28 +20,36 @@ public class QuestionLogic implements IQuestionLogic {
     private QuestionPersistence persistence;
 
     /**
-     * @generated
+     *
+     * @return
      */
     public int countQuestions() {
         return persistence.count();
     }
 
     /**
-     * @generated
+     *
+     * @param page
+     * @param maxRecords
+     * @return
      */
     public List<QuestionDTO> getQuestions(Integer page, Integer maxRecords) {
         return QuestionConverter.listEntity2DTO(persistence.findAll(page, maxRecords));
     }
 
     /**
-     * @generated
+     *
+     * @param id
+     * @return
      */
     public QuestionDTO getQuestion(Long id) {
         return QuestionConverter.fullEntity2DTO(persistence.find(id));
     }
 
     /**
-     * @generated
+     *
+     * @param dto
+     * @return
      */
     public QuestionDTO createQuestion(QuestionDTO dto) {
         QuestionEntity entity = QuestionConverter.fullDTO2Entity(dto);
@@ -49,7 +58,9 @@ public class QuestionLogic implements IQuestionLogic {
     }
 
     /**
-     * @generated
+     *
+     * @param dto
+     * @return
      */
     public QuestionDTO updateQuestion(QuestionDTO dto) {
         QuestionEntity entity = persistence.update(QuestionConverter.fullDTO2Entity(dto));
@@ -57,14 +68,17 @@ public class QuestionLogic implements IQuestionLogic {
     }
 
     /**
-     * @generated
+     *
+     * @param id
      */
     public void deleteQuestion(Long id) {
         persistence.delete(id);
     }
 
     /**
-     * @generated
+     *
+     * @param name
+     * @return
      */
     public List<QuestionDTO> findByName(String name) {
         return QuestionConverter.listEntity2DTO(persistence.findByName(name));

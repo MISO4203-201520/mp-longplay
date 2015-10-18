@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.musicstore.dtos;
 
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,14 +16,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class QuestionDTO {
 
+    @PodamExclude
     private Long id;
 
+    @PodamExclude
     private Long albumId;
 
+    @PodamExclude
     private AlbumDTO album;
 
+    @PodamExclude
     private Long clientId;
 
+    @PodamExclude
     private ClientDTO client;
 
     private String description;

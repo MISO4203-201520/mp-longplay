@@ -1,9 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
     <modelVersion>4.0.0</modelVersion>
     <groupId>co.edu.uniandes.csw.musicstore</groupId>
     <artifactId>MusicStore.logic</artifactId>
     <name>MusicStore.logic</name>
     <version>1.0</version>
+    
     <properties> 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
@@ -12,7 +14,15 @@
         <sonar.jacoco.outReportPath>target/jacoco</sonar.jacoco.outReportPath>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
     </properties>
+    
     <dependencies>
+        
+        <dependency>
+            <groupId>uk.co.jemos.podam</groupId>
+            <artifactId>podam</artifactId>
+            <version>6.0.1.RELEASE</version>
+        </dependency>
+        
         <!-- embedded glassfish 3.1.2 --> 
         <dependency>
             <groupId>org.glassfish.main.extras</groupId>
@@ -20,15 +30,7 @@
             <version>3.1.2.2</version> 
             <scope>test</scope> 
         </dependency>
-        
-       <dependency>
-            <groupId>uk.co.jemos.podam</groupId>
-            <artifactId>podam</artifactId>
-            <version>6.0.2.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
 
-        
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
@@ -82,7 +84,7 @@
             <version>1.0.RC2</version>
             <scope>runtime</scope>
         </dependency>
-          <!-- Java Mail --> 
+        <!-- Java Mail --> 
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
