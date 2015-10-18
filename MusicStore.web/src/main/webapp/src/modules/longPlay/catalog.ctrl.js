@@ -1,21 +1,20 @@
-(function(ng) {
+(function (ng) {
     var mod = ng.module('longPlayModule');
 
-    mod.controller('catalogCtrl', ['CrudCreator', '$scope', '$route', 'longPlayService', 'longPlayModel', 'cartItemService', '$location', 'commentService', 'authService', 'questionService', function(CrudCreator, $scope, $route, svc, model, cartItemSvc, $location, commentService, authSvc, questionService) {
+    mod.controller('catalogCtrl', ['CrudCreator', '$scope', '$route', 'longPlayService', 'longPlayModel', 'cartItemService', '$location', 'commentService', 'authService', 'questionService', function (CrudCreator, $scope, $route, svc, model, cartItemSvc, $location, commentService, authSvc, questionService) {
             CrudCreator.extendController(this, svc, $scope, $route, model, 'catalog', 'Catalog');
             this.asGallery = true;
             this.readOnly = true;
             this.detailsMode = false;
             this.myTextArea = "";
             var self = this;
-            //this.answerMode = false;
             $scope.answerMode = [];
             this.idCommentPadre = 0;
-            
+
             $scope.modal = {url: 'src/modules/question/question.tpl.html', data: null, question: ''};
-            
-      
-            this.searchByName = function(albumName) {
+
+
+            this.searchByName = function (albumName) {
                 var search;
                 if (albumName) {
                     search = '?q=' + albumName;
@@ -23,7 +22,7 @@
                 $location.url('/catalog' + search);
             };
 
-            this.registerQuestion = function() {
+            this.registerQuestion = function () {
                 var result = false;
                 result = questionService.registerQuestion($scope.modal.data, $scope.modal.question);
                 if (result) {
@@ -32,47 +31,33 @@
                 }
             };
 
-            this.addComment = function(record) {
-                var comment = "";
-                var x = document.getElementsByClassName("textArea");
-                var i;
-
-                for (i = 0; i < x.length; i++) {
-                    comment = x[i].value;
-                }
-                if (comment.trim().length == 0) {
-                    alert("El comentario esta vacio.");
-                }
-                else {
-                    commentService.createComment(record, comment, null);
+            this.addComment = function (record, commentReg) {
+                if (commentReg.trim().length !== 0)
+                {
+                    commentService.createComment(record, commentReg, null);
+                    this.answerMode = false;
                     this.refreshComment(record);
                 }
-                for (i = 0; i < x.length; i++) {
-                    x[i].value = "";
-                }
+                $scope.commentReg="";
+                this.refreshComment(record);
             };
 
-            this.refreshComment = function(record) {
-                //location.reload(true);
-                //$route.reload();
-                //self.detailsModel = true;
-                svc.api.get(record.id).then(function(data) {
-                    //alert(record.id);
+            this.refreshComment = function (record) {
+                svc.api.get(record.id).then(function (data) {
                     self.detailsModel = true;
                     $scope.model = data;
                 });
                 this.fetchRecords();
             };
 
-            this.findItem = function(priceMax) {
-                //alert(priceMax);
-                svc.findItem(priceMax).then(function(results) {
+            this.findItem = function (priceMax) {
+                svc.findItem(priceMax).then(function (results) {
                     $scope.records = [];
                     $scope.records = results;
                 });
             };
 
-            this.playSong = function(record, song) {
+            this.playSong = function (record, song) {
 
                 jwplayer("player" + record.id).setup({
                     playlist: [
@@ -86,7 +71,6 @@
                 });
             };
             this.addAnswer = function (record, answer) {
-                //alert(record.id + ' ' + this.idCommentPadre + ' ' + answer);
                 if (answer.trim().length !== 0)
                 {
                     commentService.createComment(record, answer, this.idCommentPadre);
@@ -100,14 +84,14 @@
                     displayName: 'Add to Cart',
                     icon: 'shopping-cart',
                     class: 'primary',
-                    fn: function(longPlay) {
+                    fn: function (longPlay) {
                         return cartItemSvc.addItem({
                             longPlay: longPlay,
                             name: longPlay.name,
                             quantity: 1
                         });
                     },
-                    show: function() {
+                    show: function () {
                         return true;
                     }
                 },
@@ -116,12 +100,12 @@
                     displayName: 'Add Question',
                     icon: 'question-sign',
                     class: 'info',
-                    fn: function(record) {
+                    fn: function (record) {
                         $scope.modal.data = record;
                         $scope.modal.question = '';
                         return true;
                     },
-                    show: function() {
+                    show: function () {
                         return true;
                     }
                 },
@@ -130,14 +114,14 @@
                     displayName: 'Comments',
                     icon: 'list',
                     class: 'info',
-                    fn: function(record) {
-                        svc.api.get(record.id).then(function(data) {
+                    fn: function (record) {
+                        svc.api.get(record.id).then(function (data) {
                             self.detailsMode = true;
-                            self.findCheapMode =false;
+                            self.findCheapMode = false;
                             $scope.model = data;
                         });
                     },
-                    show: function() {
+                    show: function () {
                         return !self.detailsMode;
                     }
                 },
@@ -146,14 +130,14 @@
                     displayName: 'Song List',
                     icon: 'music',
                     class: 'info',
-                    fn: function(record) {
+                    fn: function (record) {
                         if (record.songs.length > 0)
                             $('#song_modal_' + record.id).modal('show');
                         else
                             alert('No songs to Play');
                         return true;
                     },
-                    show: function() {
+                    show: function () {
                         return true;
                     }
                 }];
