@@ -148,6 +148,7 @@
                             //self.fetchRecords();
                         });
                    }
+                   alert("La Compra se ha realizado de manera exitosa!");
                 //$('#divPagar').hide('slow');    
                 window.location="#/catalog";
                  }
