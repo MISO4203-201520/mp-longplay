@@ -22,13 +22,11 @@
         </dependency>
         
        <dependency>
-       <groupId>uk.co.jemos.podam</groupId>
- 
-        <artifactId>podam</artifactId>
- 
-        <version>6.0.1.RELEASE</version>
- 
-</dependency>
+            <groupId>uk.co.jemos.podam</groupId>
+            <artifactId>podam</artifactId>
+            <version>6.0.2.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
 
         
         <!-- JUnit -->
@@ -65,6 +63,30 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
+        </dependency>
+        <!--   Stormpath   -->
+        <dependency>
+            <groupId>com.stormpath.shiro</groupId>
+            <artifactId>stormpath-shiro-core</artifactId>
+            <version>0.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stormpath.sdk</groupId>
+            <artifactId>stormpath-sdk-api</artifactId>
+            <version>1.0.RC2</version>
+            <type>jar</type>
+        </dependency> 
+        <dependency>
+            <groupId>com.stormpath.sdk</groupId>
+            <artifactId>stormpath-sdk-httpclient</artifactId>
+            <version>1.0.RC2</version>
+            <scope>runtime</scope>
+        </dependency>
+          <!-- Java Mail --> 
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
         </dependency>
     </dependencies>
     <build>

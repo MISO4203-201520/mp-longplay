@@ -44,7 +44,7 @@ public class AlbumServiceTest {
     
     public static final String DEPLOY = "Prueba";  
     public static String URLRESOURCES = "src/main/webapp"; 
-    public static String URLBASE = "http://localhost:8080/MusicStore.web/webresources"; 
+    public static String URLBASE = "http://localhost:8181/MusicStore.web/webresources"; 
     public static String PATHALBUM = "/albums";
     public static ArrayList<AlbumDTO> oraculo = new ArrayList<AlbumDTO>();
     @Deployment  

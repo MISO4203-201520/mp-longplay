@@ -11,6 +11,12 @@
                 }, {
                     value: 'cre',
                     label: 'Credit'
+                }, {
+                    value: 'pse',
+                    label: 'PSE'
+                }, {
+                    value: 'pay',
+                    label: 'PayPal'
                 }]; 
             
             $scope.fecha="";
@@ -111,7 +117,7 @@
                 var date="";
                 var grabar=true;
                 if ($scope.cardNumber == undefined){
-                    self.showWarning("Card number is required.");                    
+                    self.showWarning("Number is required.");                    
                 }else if($scope.paymentMethodList==undefined){
                     self.showWarning("Payment method is required.");
                 } else{

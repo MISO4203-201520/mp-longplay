@@ -2,8 +2,10 @@ package co.edu.uniandes.csw.musicstore.tests;
 
 import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic; 
 import co.edu.uniandes.csw.musicstore.converters.PurchaseConverter;
+import co.edu.uniandes.csw.musicstore.dtos.AlbumDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
 import co.edu.uniandes.csw.musicstore.ejbs.PurchaseLogic;
+import co.edu.uniandes.csw.musicstore.entities.AlbumEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import co.edu.uniandes.csw.musicstore.persistence.PurchasePersistence;
 import static co.edu.uniandes.csw.musicstore.tests._TestUtil.generateRandom;
@@ -26,6 +28,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 @RunWith(Arquillian.class) 
 public class PurchaseLogicTest {
+
     public static final String DEPLOY = "Prueba";
     
     @Deployment
@@ -72,22 +75,40 @@ public class PurchaseLogicTest {
     }
     
     private List<PurchaseEntity> data = new ArrayList<PurchaseEntity>();
-    
+
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-            
-            PodamFactory factory = new PodamFactoryImpl(); 
-            PurchaseEntity entity = PurchaseConverter.basicDTO2Entity(factory.manufacturePojo(PurchaseDTO.class)); 
-            em.persist(entity); 
-            data.add(entity); 
+             PurchaseEntity entity = new PurchaseEntity();
+        	entity.setCVC(generateRandom(String.class));
+        	entity.setCardNumber(generateRandom(String.class));
+        	entity.setDate(generateRandom(Date.class));
+        	entity.setExpirationDate(generateRandom(String.class));
+        	entity.setId(generateRandom(Long.class));
+                entity.setNameCardOwner(generateRandom(String.class));
+                entity.setPaymentMethod(generateRandom(String.class));
+                entity.setTotal(generateRandom(Float.class));
+
+            em.persist(entity);
+            data.add(entity);
+         
         }
     }
     
     @Test
     public void createLongPlayTest() {
-        PodamFactory factory = new PodamFactoryImpl();
-        PurchaseDTO dto = factory.manufacturePojo(PurchaseDTO.class);
+    
+        
+         PurchaseDTO dto = new PurchaseDTO();
+                dto.setCVC(generateRandom(String.class));
+        	dto.setCardNumber(generateRandom(String.class));
+        	dto.setDate(generateRandom(Date.class));
+        	dto.setExpirationDate(generateRandom(String.class));
+        	dto.setId(generateRandom(Long.class));
+                dto.setNameCardOwner(generateRandom(String.class));
+                dto.setPaymentMethod(generateRandom(String.class));
+                dto.setTotal(generateRandom(Float.class));
         PurchaseDTO result = purchaseLogic.createPurchase(dto);
+
         Assert.assertNotNull(result);
 
         PurchaseEntity entity = em.find(PurchaseEntity.class, result.getId());
@@ -100,5 +121,7 @@ public class PurchaseLogicTest {
         Assert.assertEquals(dto.getNameCardOwner(), entity.getNameCardOwner());
         Assert.assertEquals(dto.getPaymentMethod(), entity.getPaymentMethod());
         Assert.assertEquals(dto.getTotal(), entity.getTotal());
+        
+
     }
 }
