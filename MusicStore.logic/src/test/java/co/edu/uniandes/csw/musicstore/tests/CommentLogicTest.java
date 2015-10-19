@@ -1,9 +1,7 @@
 package co.edu.uniandes.csw.musicstore.tests;
 import co.edu.uniandes.csw.musicstore.api.ICommentLogic;
 import co.edu.uniandes.csw.musicstore.converters.CommentConverter;
-import co.edu.uniandes.csw.musicstore.dtos.ClientDTO;
 import co.edu.uniandes.csw.musicstore.dtos.CommentDTO;
-import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
 import co.edu.uniandes.csw.musicstore.ejbs.CommentLogic;
 import co.edu.uniandes.csw.musicstore.entities.CommentEntity;
 import co.edu.uniandes.csw.musicstore.persistence.CommentPersistence;
@@ -12,9 +10,7 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl; 
 
 
-import static co.edu.uniandes.csw.musicstore.tests._TestUtil.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
