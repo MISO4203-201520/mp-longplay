@@ -79,7 +79,6 @@
                 logoutURL: 'logout',
                 nameCookie: 'userCookie'
             });
-//            auth.setRoles({'user': 'Client', 'provider': 'Provider'});
         }]);
 
     mainApp.run(function(editableOptions) {
