@@ -20,6 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class CommentEntity implements Serializable{
+    private static final long serialVersionUID = 1905122041950251207L;
     @Id
     @GeneratedValue(generator = "Comment")
     private Long id;

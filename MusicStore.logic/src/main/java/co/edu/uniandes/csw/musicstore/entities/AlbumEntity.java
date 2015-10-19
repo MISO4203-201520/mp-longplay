@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class AlbumEntity implements Serializable {
-
+    private static final long serialVersionUID = 1905122041950251207L;
     @Id
     @GeneratedValue(generator = "Album")
     private Long id;
