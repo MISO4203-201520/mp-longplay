@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.musicstore.dtos;
 
-import co.edu.uniandes.csw.musicstore.entities.PurchaseDetailEntity;
 import java.util.Date;
 import java.util.List;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;

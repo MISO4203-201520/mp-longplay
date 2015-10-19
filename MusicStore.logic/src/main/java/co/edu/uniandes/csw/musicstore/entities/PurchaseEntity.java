@@ -25,6 +25,7 @@ import javax.persistence.TemporalType;
     @NamedQueries({
         @NamedQuery(name = "PurchaseEntity.getUserPurchases", query = "select u from PurchaseEntity u WHERE u.client.userId = :userId")})
 public class PurchaseEntity implements Serializable{
+    private static final long serialVersionUID = 1905122041950251207L;
     @Id
     @GeneratedValue(generator = "Purchase")
     private Long id;

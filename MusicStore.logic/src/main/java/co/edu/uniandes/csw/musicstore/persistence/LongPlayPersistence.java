@@ -1,10 +1,11 @@
 package co.edu.uniandes.csw.musicstore.persistence;
 
 import co.edu.uniandes.csw.musicstore.entities.LongPlayEntity;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 
@@ -27,6 +28,7 @@ public class LongPlayPersistence extends CrudPersistence<LongPlayEntity> {
             params.put("albumName", albumName);
             return this.executeListNamedQuery("LongPlay.getByAlbumName", params);
         } catch (NoResultException e) {
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
             return null;
         }
     }
@@ -38,6 +40,7 @@ public class LongPlayPersistence extends CrudPersistence<LongPlayEntity> {
             return  executeListNamedQuery("LongPlay.getCheaperProduct",params);
             //return list.get(0);
             } catch(NoResultException e){
+                Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
                 return null;
             }
         }

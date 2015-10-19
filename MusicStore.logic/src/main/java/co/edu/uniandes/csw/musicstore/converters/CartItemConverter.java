@@ -104,8 +104,7 @@ public abstract class CartItemConverter {
      */
     public static CartItemEntity fullDTO2Entity(CartItemDTO dto) {
         if (dto != null) {
-            CartItemEntity entity = basicDTO2Entity(dto);
-            return entity;
+            return basicDTO2Entity(dto);
         } else {
             return null;
         }
