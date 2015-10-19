@@ -3,10 +3,13 @@ package co.edu.uniandes.csw.musicstore.tests;
 import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic; 
 import co.edu.uniandes.csw.musicstore.converters.PurchaseConverter;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
+import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import co.edu.uniandes.csw.musicstore.ejbs.PurchaseLogic;
+import co.edu.uniandes.csw.musicstore.entities.PurchaseDetailEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import co.edu.uniandes.csw.musicstore.persistence.PurchasePersistence;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.PersistenceContext; 
@@ -138,5 +141,37 @@ public class PurchaseLogicTest {
         PurchaseEntity resp = em.find(PurchaseEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getCardNumber(), resp.getCardNumber());
+    }
+    
+    @Test
+    public void confirmOrderTest()    
+    {
+      PodamFactory factory = new PodamFactoryImpl();
+      PurchaseDetailDTO newEntity = factory.manufacturePojo(PurchaseDetailDTO.class);
+      newEntity.setPurchase(factory.manufacturePojo(PurchaseDTO.class));
+      PurchaseDetailDTO result = purchaseLogic.confirmOrder(newEntity);
+      Assert.assertNotNull(result);
+      PurchaseDetailEntity entity= em.find(PurchaseDetailEntity.class, result.getId());
+      Date newEntityDate = newEntity.getConfirmDate();
+      //ignore time
+      newEntityDate.setHours(0);
+      newEntityDate.setMinutes(0);
+      newEntityDate.setSeconds(0);
+      Assert.assertEquals(newEntityDate.toString(), entity.getConfirmDate().toString());
+      Assert.assertEquals(newEntity.getIsConfirm(), entity.getIsConfirm());
+        
+    }
+    
+    @Test
+    public void cancelOrderTest()    
+    {
+      PodamFactory factory = new PodamFactoryImpl();
+      PurchaseDetailDTO newEntity = factory.manufacturePojo(PurchaseDetailDTO.class);
+      newEntity.setPurchase(factory.manufacturePojo(PurchaseDTO.class));
+      PurchaseDetailDTO result = purchaseLogic.cancelOrder(newEntity);
+      Assert.assertNotNull(result);
+      PurchaseDetailEntity entity= em.find(PurchaseDetailEntity.class, result.getId());
+      Assert.assertEquals(newEntity.getConfirmObservations(), entity.getConfirmObservations());
+      Assert.assertEquals(newEntity.getIsConfirm(), entity.getIsConfirm());
     }
 }

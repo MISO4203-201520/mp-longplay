@@ -12,21 +12,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
  * @author jd.patino10
  */
 public class PurchaseDetailDTO {
-  private Long id;
-    
-    
+    @PodamExclude
+    private Long id;
+    @PodamExclude
     private PurchaseDTO purchase;
-    
+    @PodamExclude
     private LongPlayDTO longPlay;         
     
     private Integer quantity;
-
+    
     private Integer price; 
     
     private Boolean isConfirm;

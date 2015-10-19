@@ -93,11 +93,14 @@ public class PurchaseLogic implements IPurchaseLogic{
         String path = "C:\\.stormpath/apiKey.properties";
         ApiKey apiKey = ApiKeys.builder().setFileLocation(path).build();
         Client client = Clients.builder().setApiKey(apiKey).build();
-        Account account = client.getResource(persistence.find(dto.getPurchase().getId()).getClient().getUserId(), Account.class);
-        //Send email
-        String emailBody="<h2>Hello, your order has been confirm!</h2>"+
-                "you will receive your order on "+dto.getConfirmDate();
-        MailManager.generateAndSendEmail(emailBody, account.getEmail(), "Order Confirmation");
+        if(persistence.find(dto.getPurchase().getId()).getClient()!=null)
+        {    
+            Account account = client.getResource(persistence.find(dto.getPurchase().getId()).getClient().getUserId(), Account.class);
+            //Send email
+            String emailBody="<h2>Hello, your order has been confirm!</h2>"+
+                    "you will receive your order on "+dto.getConfirmDate();
+            MailManager.generateAndSendEmail(emailBody, account.getEmail(), "Order Confirmation");
+        }
         return PurchaseDetailConverter.fullEntity2DTO(entity);
     }
 
@@ -107,11 +110,14 @@ public class PurchaseLogic implements IPurchaseLogic{
         String path = "C:\\.stormpath/apiKey.properties";
         ApiKey apiKey = ApiKeys.builder().setFileLocation(path).build();
         Client client = Clients.builder().setApiKey(apiKey).build();
-        Account account = client.getResource(persistence.find(dto.getPurchase().getId()).getClient().getUserId(), Account.class);
-        //Send email
-        String emailBody="<h2>Hello, your order has been canceled!</h2>"+
-                "the reason is that: "+dto.getConfirmObservations();
-        MailManager.generateAndSendEmail(emailBody, account.getEmail(), "Order Cancelation");
+        if(persistence.find(dto.getPurchase().getId()).getClient()!=null)
+        {  
+            Account account = client.getResource(persistence.find(dto.getPurchase().getId()).getClient().getUserId(), Account.class);
+            //Send email
+            String emailBody="<h2>Hello, your order has been canceled!</h2>"+
+                    "the reason is that: "+dto.getConfirmObservations();
+            MailManager.generateAndSendEmail(emailBody, account.getEmail(), "Order Cancelation");
+        }
         return PurchaseDetailConverter.fullEntity2DTO(entity);
     }
 }

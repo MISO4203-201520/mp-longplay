@@ -77,7 +77,7 @@ public abstract class PurchaseDetailConverter {
     /**
      * @generated
      */
-    private static PurchaseDetailEntity basicDTO2Entity(PurchaseDetailDTO dto) {
+    public static PurchaseDetailEntity basicDTO2Entity(PurchaseDetailDTO dto) {
         if (dto != null) {
             PurchaseDetailEntity entity = new PurchaseDetailEntity();
             entity.setId(dto.getId());
