@@ -89,12 +89,13 @@ public class PurchaseLogic implements IPurchaseLogic{
     @Override
     public PurchaseDetailDTO confirmOrder(PurchaseDetailDTO dto) {
         PurchaseDetailEntity entity = persistenceDetail.update(PurchaseDetailConverter.fullDTO2Entity(dto));
-        //Query user mail
-        String path = "C:\\.stormpath/apiKey.properties";
-        ApiKey apiKey = ApiKeys.builder().setFileLocation(path).build();
-        Client client = Clients.builder().setApiKey(apiKey).build();
+       
         if(persistence.find(dto.getPurchase().getId()).getClient()!=null)
         {    
+            //Query user mail
+            String path = "C:\\.stormpath/apiKey.properties";
+            ApiKey apiKey = ApiKeys.builder().setFileLocation(path).build();
+            Client client = Clients.builder().setApiKey(apiKey).build();
             Account account = client.getResource(persistence.find(dto.getPurchase().getId()).getClient().getUserId(), Account.class);
             //Send email
             String emailBody="<h2>Hello, your order has been confirm!</h2>"+
@@ -107,12 +108,12 @@ public class PurchaseLogic implements IPurchaseLogic{
     @Override
     public PurchaseDetailDTO cancelOrder(PurchaseDetailDTO dto) {
         PurchaseDetailEntity entity = persistenceDetail.update(PurchaseDetailConverter.fullDTO2Entity(dto));
-        //Query user mail
-        String path = "C:\\.stormpath/apiKey.properties";
-        ApiKey apiKey = ApiKeys.builder().setFileLocation(path).build();
-        Client client = Clients.builder().setApiKey(apiKey).build();
         if(persistence.find(dto.getPurchase().getId()).getClient()!=null)
         {  
+            //Query user mail
+            String path = "C:\\.stormpath/apiKey.properties";
+            ApiKey apiKey = ApiKeys.builder().setFileLocation(path).build();
+            Client client = Clients.builder().setApiKey(apiKey).build();
             Account account = client.getResource(persistence.find(dto.getPurchase().getId()).getClient().getUserId(), Account.class);
             //Send email
             String emailBody="<h2>Hello, your order has been canceled!</h2>"+
