@@ -9,25 +9,29 @@ import co.edu.uniandes.csw.musicstore.entities.PurchaseDetailEntity;
 import java.util.Date;
 import java.util.List;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
  * @author jd.patino10
  */
 public class PurchaseDTO {
+    @PodamExclude
     private Long id;
     
-   
+    @PodamExclude
     private ClientDTO client;
 
     private String paymentMethod;    
     @XmlJavaTypeAdapter(DateAdapter.class)
+    @PodamExclude
     private Date date;
     
     
     private Float total;
 
     private Float iva;
+    @PodamExclude
     private List<PurchaseDetailDTO> purchaseDetail;
     private String cardNumber;
     private String nameCardOwner;

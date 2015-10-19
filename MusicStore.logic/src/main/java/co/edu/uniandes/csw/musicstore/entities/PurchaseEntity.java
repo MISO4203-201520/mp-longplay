@@ -17,6 +17,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author jd.patino10
@@ -27,21 +28,25 @@ import javax.persistence.TemporalType;
 public class PurchaseEntity implements Serializable{
     @Id
     @GeneratedValue(generator = "Purchase")
+    @PodamExclude
     private Long id;
     
     @ManyToOne
+    @PodamExclude
     private ClientEntity client;
 
     private String paymentMethod;    
     
 
     @Temporal(TemporalType.DATE)
+    @PodamExclude
     private Date date;
     
     
     private Float total;
 
     private Float iva;
+    @PodamExclude
     @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PurchaseDetailEntity> purchaseDetail;
     private String cardNumber;

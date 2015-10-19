@@ -33,6 +33,7 @@ public class PurchaseDetailDTO {
     private Boolean isConfirm;
     
     @XmlJavaTypeAdapter(DateAdapter.class)
+    @PodamExclude
     private Date confirmDate;
     
     private String confirmObservations;

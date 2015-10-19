@@ -14,6 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -27,11 +28,14 @@ public class PurchaseDetailEntity {
     
     @Id
     @GeneratedValue(generator = "PurchaseDetail")
+    @PodamExclude
     private Long id;
     
     @ManyToOne
+    @PodamExclude
     private PurchaseEntity purchase;
     @ManyToOne
+    @PodamExclude
     private LongPlayEntity longPlay;         
     
     private Integer quantity;
@@ -41,6 +45,7 @@ public class PurchaseDetailEntity {
     private Boolean isConfirm;
     
     @Temporal(TemporalType.DATE)
+    @PodamExclude
     private Date confirmDate;
     
     private String confirmObservations;

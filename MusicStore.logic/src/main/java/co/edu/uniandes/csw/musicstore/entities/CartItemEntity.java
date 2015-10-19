@@ -1,10 +1,11 @@
 package co.edu.uniandes.csw.musicstore.entities;
 
 import java.io.Serializable;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * @generated
@@ -14,6 +15,7 @@ public class CartItemEntity implements Serializable {
 
     @Id
     @GeneratedValue(generator = "CartItem")
+    @PodamExclude
     private Long id;
 
     private String name;
@@ -21,8 +23,10 @@ public class CartItemEntity implements Serializable {
     private Integer quantity;
 
     @ManyToOne
+    @PodamExclude
     private ClientEntity client;
     @ManyToOne
+    @PodamExclude
     private LongPlayEntity longPlay;
     /**
      * @generated
