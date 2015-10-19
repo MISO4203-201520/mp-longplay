@@ -13,9 +13,9 @@
                 data: data,
                 headers: {'Content-Type': 'application/json'}
             }).success(function(response) {
-                alert("Se registró la información");
+                alert("Information stored successfully");
             }).error(function() {
-                alert("Se presentó un problema registrando la información");
+                alert("Information NOT stored, contact the administrator");
             });
             
             return true;
