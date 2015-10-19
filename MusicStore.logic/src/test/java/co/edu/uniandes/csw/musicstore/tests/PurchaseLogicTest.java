@@ -2,11 +2,9 @@ package co.edu.uniandes.csw.musicstore.tests;
 
 import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic; 
 import co.edu.uniandes.csw.musicstore.converters.PurchaseConverter;
-import co.edu.uniandes.csw.musicstore.dtos.AlbumDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import co.edu.uniandes.csw.musicstore.ejbs.PurchaseLogic;
-import co.edu.uniandes.csw.musicstore.entities.AlbumEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseDetailEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import co.edu.uniandes.csw.musicstore.persistence.PurchasePersistence;
@@ -127,7 +125,7 @@ public class PurchaseLogicTest {
 
     }
     
-    //@Test
+    @Test
     public void confirmOrderTest()    
     {
       PodamFactory factory = new PodamFactoryImpl();
@@ -146,7 +144,7 @@ public class PurchaseLogicTest {
         
     }
     
-    //@Test
+    @Test
     public void cancelOrderTest()    
     {
       PodamFactory factory = new PodamFactoryImpl();

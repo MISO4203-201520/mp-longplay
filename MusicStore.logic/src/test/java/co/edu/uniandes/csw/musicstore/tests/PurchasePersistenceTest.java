@@ -1,6 +1,5 @@
 package co.edu.uniandes.csw.musicstore.tests;
 
-import co.edu.uniandes.csw.musicstore.entities.ClientEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import co.edu.uniandes.csw.musicstore.persistence.PurchasePersistence;
 import static co.edu.uniandes.csw.musicstore.tests._TestUtil.generateRandom;
