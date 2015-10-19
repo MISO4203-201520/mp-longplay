@@ -20,6 +20,7 @@ public class LongPlayLogic implements ILongPlayLogic {
     /**
      * @generated
      */
+    @Override
     public int countLongPlays() {
         return persistence.count();
     }
@@ -27,6 +28,7 @@ public class LongPlayLogic implements ILongPlayLogic {
     /**
      * @generated
      */
+    @Override
     public List<LongPlayDTO> getLongPlays(Integer page, Integer maxRecords) {
         return LongPlayConverter.listEntity2DTO(persistence.findAll(page, maxRecords));
     }
@@ -34,6 +36,7 @@ public class LongPlayLogic implements ILongPlayLogic {
     /**
      * @generated
      */
+    @Override
     public LongPlayDTO getLongPlay(Long id) {
         return LongPlayConverter.fullEntity2DTO(persistence.find(id));
     }
@@ -41,6 +44,7 @@ public class LongPlayLogic implements ILongPlayLogic {
     /**
      * @generated
      */
+    @Override
     public LongPlayDTO createLongPlay(LongPlayDTO dto) {
         LongPlayEntity entity = LongPlayConverter.fullDTO2Entity(dto);
         persistence.create(entity);
@@ -50,6 +54,7 @@ public class LongPlayLogic implements ILongPlayLogic {
     /**
      * @generated
      */
+    @Override
     public LongPlayDTO updateLongPlay(LongPlayDTO dto) {
         LongPlayEntity entity = persistence.update(LongPlayConverter.fullDTO2Entity(dto));
         return LongPlayConverter.fullEntity2DTO(entity);
@@ -58,6 +63,7 @@ public class LongPlayLogic implements ILongPlayLogic {
     /**
      * @generated
      */
+    @Override
     public void deleteLongPlay(Long id) {
         persistence.delete(id);
     }
@@ -65,14 +71,17 @@ public class LongPlayLogic implements ILongPlayLogic {
     /**
      * @generated
      */
+    @Override
     public List<LongPlayDTO> findByName(String name) {
         return LongPlayConverter.listEntity2DTO(persistence.findByName(name));
     }
     
+    @Override
     public List<LongPlayDTO> findByAlbumName(String albumName) {
         return LongPlayConverter.listEntity2DTO(persistence.findByAlbumName(albumName));
     }
     
+    @Override
     public List<LongPlayDTO> getCheaperProduct(Long priceMax){       
         return LongPlayConverter.listEntity2DTO(persistence.getCheaperProduct(priceMax));
     }

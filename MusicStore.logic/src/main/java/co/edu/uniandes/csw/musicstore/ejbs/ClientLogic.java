@@ -21,6 +21,7 @@ public class ClientLogic implements IClientLogic {
     /**
      * @generated
      */
+    @Override
     public int countClients() {
         return persistence.count();
     }
@@ -28,6 +29,7 @@ public class ClientLogic implements IClientLogic {
     /**
      * @generated
      */
+    @Override
     public List<ClientDTO> getClients(Integer page, Integer maxRecords) {
         return ClientConverter.listEntity2DTO(persistence.findAll(page, maxRecords));
     }
@@ -35,6 +37,7 @@ public class ClientLogic implements IClientLogic {
     /**
      * @generated
      */
+    @Override
     public ClientDTO getClient(Long id) {
         return ClientConverter.fullEntity2DTO(persistence.find(id));
     }
@@ -42,6 +45,7 @@ public class ClientLogic implements IClientLogic {
     /**
      * @generated
      */
+    @Override
     public ClientDTO createClient(ClientDTO dto) {
         ClientEntity entity = ClientConverter.fullDTO2Entity(dto);
         persistence.create(entity);
@@ -51,6 +55,7 @@ public class ClientLogic implements IClientLogic {
     /**
      * @generated
      */
+    @Override
     public ClientDTO updateClient(ClientDTO dto) {
         ClientEntity entity = persistence.update(ClientConverter.fullDTO2Entity(dto));
         return ClientConverter.fullEntity2DTO(entity);
@@ -59,6 +64,7 @@ public class ClientLogic implements IClientLogic {
     /**
      * @generated
      */
+    @Override
     public void deleteClient(Long id) {
         persistence.delete(id);
     }
@@ -66,14 +72,17 @@ public class ClientLogic implements IClientLogic {
     /**
      * @generated
      */
+    @Override
     public List<ClientDTO> findByName(String name) {
         return ClientConverter.listEntity2DTO(persistence.findByName(name));
     }
-
+    
+    @Override
     public ClientDTO getClientByUserId(String userId) {
         return ClientConverter.refEntity2DTO(persistence.getClientByUserId(userId));
     }
-
+    
+    @Override
     public List<ClientDTO> getAllClients() {
         return ClientConverter.listEntity2DTO(persistence.findAll());
     }

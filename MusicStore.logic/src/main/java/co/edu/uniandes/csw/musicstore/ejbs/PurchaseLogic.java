@@ -36,6 +36,7 @@ public class PurchaseLogic implements IPurchaseLogic{
     /**
      * @generated
      */
+    @Override 
     public int countPurchases() {
         return persistence.count();
     }
@@ -43,14 +44,7 @@ public class PurchaseLogic implements IPurchaseLogic{
     /**
      * @generated
      */
-    /*
-    public List<PurchaseDTO> getPurchases(Integer page, Integer maxRecords) {
-        return PurchaseConverter.listEntity2DTO(persistence.findAll(page, maxRecords));
-    }
-*/
-    /**
-     * @generated
-     */
+    @Override
     public PurchaseDTO getPurchase(Long id) {
         return PurchaseConverter.fullEntity2DTO(persistence.find(id));
     }
@@ -58,6 +52,7 @@ public class PurchaseLogic implements IPurchaseLogic{
     /**
      * @generated
      */
+    @Override
     public PurchaseDTO createPurchase(PurchaseDTO dto) {
         PurchaseEntity entity = PurchaseConverter.fullDTO2Entity(dto);
         persistence.create(entity);
@@ -67,6 +62,7 @@ public class PurchaseLogic implements IPurchaseLogic{
     /**
      * @generated
      */
+    @Override
     public PurchaseDTO updatePurchase(PurchaseDTO dto) {
         PurchaseEntity entity = persistence.update(PurchaseConverter.fullDTO2Entity(dto));
         return PurchaseConverter.fullEntity2DTO(entity);
@@ -75,18 +71,22 @@ public class PurchaseLogic implements IPurchaseLogic{
     /**
      * @generated
      */
+    @Override
     public void deletePurchase(Long id) {
         persistence.delete(id);
     }
-
+    
+    @Override
     public List<PurchaseDTO> getUserPurchases(String userId) {
         return PurchaseConverter.listEntity2DTO(persistence.getUserPurchases(userId));
     }
     
+    @Override
     public List<PurchaseDetailDTO> getProviderPurchases(String providerId) {
         return PurchaseDetailConverter.listEntity2DTO(persistence.getProviderPurchases(providerId));
     }
 
+    @Override
     public PurchaseDetailDTO confirmOrder(PurchaseDetailDTO dto) {
         PurchaseDetailEntity entity = persistenceDetail.update(PurchaseDetailConverter.fullDTO2Entity(dto));
         //Query user mail
@@ -104,6 +104,7 @@ public class PurchaseLogic implements IPurchaseLogic{
         return PurchaseDetailConverter.fullEntity2DTO(entity);
     }
 
+    @Override
     public PurchaseDetailDTO cancelOrder(PurchaseDetailDTO dto) {
         PurchaseDetailEntity entity = persistenceDetail.update(PurchaseDetailConverter.fullDTO2Entity(dto));
         //Query user mail
