@@ -14,6 +14,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -47,6 +49,7 @@ public class CommentService {
 		Date date = dateFormat.parse(dateInString);
                 dto.setCommentDate(date);
 	} catch (ParseException e) {
+                Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
                 dto.setCommentDate(null);
 	}
         
