@@ -1,23 +1,23 @@
-(function () {
+(function() {
 
-    var questionService = function ($http, $cookies) {
+    var questionService = function($http, $cookies) {
 
-        var registerQuestion = function (record, question) {
-            
+        var registerQuestion = function(record, question) {
+
             var user = angular.fromJson($cookies.get('userCookie'));
-            var data = angular.toJson({ albumId: record.album.id, clientId: user.id, description: question, id: null });
-            
+            var data = angular.toJson({albumId: record.album.id, clientId: user.id, description: question, id: null});
+
             $http({
                 method: "POST",
                 url: "webresources/questions",
                 data: data,
                 headers: {'Content-Type': 'application/json'}
-            }).success(function(response) {
-                alert("Information stored successfully");
+            }).success(function() {
+                //"Information stored successfully"
             }).error(function() {
-                alert("Information NOT stored, contact the administrator");
+                //"Information NOT stored, contact the administrator"
             });
-            
+
             return true;
         };
 

@@ -8,8 +8,7 @@
     var cIMod = 'cartItemModel';
     var ps = 'purchaseService';
 
-    mod.controller(cICtrl, [cc, '$scope', cIServ, cIMod, ps,
-        function(CrudCreator, $scope, svc, model, purchaseSvc) {
+    mod.controller(cICtrl, [cc, '$scope', cIServ, cIMod, ps, function(CrudCreator, $scope, svc, model, pSvc) {
 
             CrudCreator.extendController(this, svc, $scope, model, 'cartItem', 'CartItem');
             var self = this;
@@ -122,6 +121,11 @@
                 }
             };
 
+            $scope.deleteRecord = function(record) {
+                svc.deleteRecord(record).then(function() {
+                });
+            };
+
             $scope.pay = function() {
 
                 var date = "";
@@ -134,12 +138,8 @@
                             self.showWarning("Expired data is required");
                             grabar = false;
                         }
-                        else if ($scope.nameCardOwner === "" || $scope.nameCardOwner === undefined) {
+                        else if ($scope.nameCardOwner === "" || $scope.nameCardOwner === undefined || $scope.cvc === "" || $scope.cvc === undefined) {
                             self.showWarning("Card data is required");
-                            grabar = false;
-                        }
-                        else if ($scope.cvc === "" || $scope.cvc === undefined) {
-                            self.showWarning("Data is required");
                             grabar = false;
                         }
                         else {
@@ -158,12 +158,11 @@
                         pay.expirationDate = date;
                         pay.CVC = $scope.cvc;
                         pay.nameCardOwner = $scope.nameCardOwner;
-                        purchaseSvc.addItem(pay);
+                        pSvc.addItem(pay);
                         for (var i = 0; i < $scope.records.length; i++) {
-                            svc.deleteRecord($scope.records[i]).then(function() {
-                            });
+                            $scope.deleteRecord($scope.records[i]);
                         }
-                        alert("Congratulations, purchase made successfully!");
+                        self.showWarning("Congratulations, purchase made successfully!");
                         window.location = "#/catalog";
                     }
                 }

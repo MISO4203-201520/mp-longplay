@@ -10,11 +10,9 @@
     var cServ = 'commentService';
     var qServ = 'questionService';
 
-    mod.controller(cCtrl, [cc, '$scope', '$route', lpServ, lpMod,
-        cIServ, '$location', cServ, qServ,
-        function(CrudCreator, $scope, $route, svc, model,
-                cartItemSvc, $location, commentService, questionService) {
-                    
+    mod.controller(cCtrl, [cc, '$scope', '$route', lpServ, lpMod, cIServ, '$location', cServ, qServ,
+        function(CrudCreator, $scope, $route, svc, model, cartItemSvc, $location, cmScv, qScv) {
+
             CrudCreator.extendController(this, svc, $scope, $route, model, 'catalog', 'Catalog');
             this.asGallery = true;
             this.readOnly = true;
@@ -37,7 +35,7 @@
 
             this.registerQuestion = function() {
                 var result = false;
-                result = questionService.registerQuestion($scope.modal.data, $scope.modal.question);
+                result = qScv.registerQuestion($scope.modal.data, $scope.modal.question);
                 if (result) {
                     $scope.modal.data = null;
                     $scope.modal.question = '';
@@ -47,7 +45,7 @@
             this.addComment = function(record, commentReg) {
                 if (commentReg.trim().length !== 0)
                 {
-                    commentService.createComment(record, commentReg, null);
+                    cmScv.createComment(record, commentReg, null);
                     this.answerMode = false;
                     this.refreshComment(record);
                 }
@@ -83,17 +81,17 @@
                     ]
                 });
             };
-            
+
             this.addAnswer = function(record, answer) {
                 if (answer.trim().length !== 0)
                 {
-                    commentService.createComment(record, answer, this.idCommentPadre);
+                    cmScv.createComment(record, answer, this.idCommentPadre);
                     this.answerMode = false;
                     this.refreshComment(record);
                 }
                 this.refreshComment(record);
             };
-            
+
             this.recordActions = [{
                     name: 'addToCart',
                     displayName: 'Add to Cart',
