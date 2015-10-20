@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
 /**
@@ -31,7 +33,7 @@ public class PurchasePersistence extends CrudPersistence<PurchaseEntity> {
             params.put("userId", userId);
             result = executeListNamedQuery("PurchaseEntity.getUserPurchases", params);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
         }
         return result;
     }
@@ -43,7 +45,7 @@ public class PurchasePersistence extends CrudPersistence<PurchaseEntity> {
             params.put("providerId", userId);
             result = executeListNamedQuery("PurchaseDetailEntity.getProviderLongPlayPurchases", params);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
         }
         return result;
     }
