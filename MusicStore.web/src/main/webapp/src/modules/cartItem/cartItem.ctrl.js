@@ -93,8 +93,6 @@
             };//Realiza la validacion de la nueva cantidad asignada.
 
             $scope.checkout = function() {
-
-                //self.showWarning("Not implemented yet");
                 $('#divPagar').show('slow');
             };
 
