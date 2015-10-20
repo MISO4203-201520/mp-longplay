@@ -17,6 +17,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 @NamedQueries({
     @NamedQuery(name = "Song.getByLongPlay", query = "select s from SongEntity s WHERE s.longPlay.id = :longPlay")})
 public class SongEntity implements Serializable {
+    
+    private static final long serialVersionUID = 1905122041950251207L;
 
     @Id
     @GeneratedValue(generator = "Song")
