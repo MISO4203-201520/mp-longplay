@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.musicstore.persistence;
 
-import co.edu.uniandes.csw.musicstore.entities.LongPlayEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseDetailEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import java.util.ArrayList;

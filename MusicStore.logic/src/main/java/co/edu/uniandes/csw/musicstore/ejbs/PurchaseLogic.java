@@ -44,14 +44,6 @@ public class PurchaseLogic implements IPurchaseLogic{
     /**
      * @generated
      */
-    /*
-    public List<PurchaseDTO> getPurchases(Integer page, Integer maxRecords) {
-        return PurchaseConverter.listEntity2DTO(persistence.findAll(page, maxRecords));
-    }
-*/
-    /**
-     * @generated
-     */
     @Override
     public PurchaseDTO getPurchase(Long id) {
         return PurchaseConverter.fullEntity2DTO(persistence.find(id));
