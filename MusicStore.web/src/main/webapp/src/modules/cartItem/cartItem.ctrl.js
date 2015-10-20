@@ -7,24 +7,15 @@
     var ciMod = 'cartItemModel';
     var pSvc = 'purchaseService';
 
-    mod.controller(ciCtrl, [cc, '$scope', ciSvc, ciMod, pSvc,
-        function(CrudCreator, $scope, svc, model, purchaseSvc) {
+    mod.controller(ciCtrl, [cc, '$scope', ciSvc, ciMod, pSvc, function(CrudCreator, $scope, svc, model, purchaseSvc) {
             CrudCreator.extendController(this, svc, $scope, model, 'cartItem', 'CartItem');
             var self = this;
 
-            $scope.paymentMethod = [{
-                    value: 'deb',
-                    label: 'Debit'
-                }, {
-                    value: 'cre',
-                    label: 'Credit'
-                }, {
-                    value: 'pse',
-                    label: 'PSE'
-                }, {
-                    value: 'pay',
-                    label: 'PayPal'
-                }];
+            $scope.paymentMethod = [
+                {value: 'deb', label: 'Debit'},
+                {value: 'cre', label: 'Credit'},
+                {value: 'pse', label: 'PSE'},
+                {value: 'pay', label: 'PayPal'}];
 
             $scope.fecha = "";
             var oldFetch = this.fetchRecords;
@@ -44,9 +35,7 @@
 
             this.recordActions = {
                 delete: {
-                    displayName: ' ',
-                    icon: 'trash',
-                    class: 'primary',
+                    displayName: ' ', icon: 'trash', class: 'primary',
                     fn: function(record) {
                         svc.deleteRecord(record).then(function() {
                             self.fetchRecords();
@@ -59,10 +48,12 @@
             };
 
             this.calcTotal = function() {
+                
                 $scope.cartList = [];
                 $scope.total = 0;
                 $scope.totalDiscount = 0;
                 $scope.totalIva = 0;
+                
                 for (var i = 0; i < $scope.records.length; i++) {
                     var iva = ($scope.records[i].longPlay.price * $scope.records[i].quantity) * 0.16;
                     var total = (($scope.records[i].longPlay.price * $scope.records[i].quantity) + iva) - $scope.records[i].longPlay.discount;
@@ -121,21 +112,6 @@
                 }
             };
 
-            function isEmpty(value) {
-
-                var result = false;
-
-                if (value === undefined) {
-                    result = true;
-                } else if (value === 'undefined') {
-                    result = true;
-                } else if (value === '') {
-                    result = true;
-                }
-
-                return result;
-            }
-
             $scope.deleteRecord = function(record) {
                 svc.deleteRecord(record).then(function() {
                 });
@@ -145,12 +121,12 @@
 
                 var date = "";
                 var grabar = true;
-                if (isEmpty($scope.cardNumber) || isEmpty($scope.paymentMethodList)) {
+                if (svc.isEmpty($scope.cardNumber) || svc.isEmpty($scope.paymentMethodList)) {
                     self.showWarning("Number and Payment method is required.");
                 } else {
                     if ($scope.paymentMethodList.label === "Credit") {
 
-                        if ($scope.expire === undefined || isEmpty($scope.nameCardOwner) || isEmpty($scope.cvc)) {
+                        if ($scope.expire === undefined || svc.isEmpty($scope.nameCardOwner) || svc.isEmpty($scope.cvc)) {
                             self.showWarning("Payment information is required");
                             grabar = false;
                         } else {
