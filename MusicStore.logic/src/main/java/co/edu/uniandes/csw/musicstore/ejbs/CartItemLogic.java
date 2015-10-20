@@ -20,6 +20,7 @@ public class CartItemLogic implements ICartItemLogic {
     /**
      * @generated
      */
+    @Override
     public int countCartItems() {
         return persistence.count();
     }
@@ -27,6 +28,7 @@ public class CartItemLogic implements ICartItemLogic {
     /**
      * @generated
      */
+    @Override
     public List<CartItemDTO> getCartItems(Integer page, Integer maxRecords) {
         return CartItemConverter.listEntity2DTO(persistence.findAll(page, maxRecords));
     }
@@ -34,6 +36,7 @@ public class CartItemLogic implements ICartItemLogic {
     /**
      * @generated
      */
+    @Override
     public CartItemDTO getCartItem(Long id) {
         return CartItemConverter.fullEntity2DTO(persistence.find(id));
     }
@@ -41,6 +44,7 @@ public class CartItemLogic implements ICartItemLogic {
     /**
      * @generated
      */
+    @Override
     public CartItemDTO createCartItem(CartItemDTO dto) {
         CartItemEntity entity = CartItemConverter.fullDTO2Entity(dto);
         persistence.create(entity);
@@ -50,6 +54,7 @@ public class CartItemLogic implements ICartItemLogic {
     /**
      * @generated
      */
+    @Override
     public CartItemDTO updateCartItem(CartItemDTO dto) {
         CartItemEntity entity = persistence.update(CartItemConverter.fullDTO2Entity(dto));
         return CartItemConverter.fullEntity2DTO(entity);
@@ -58,6 +63,7 @@ public class CartItemLogic implements ICartItemLogic {
     /**
      * @generated
      */
+    @Override
     public void deleteCartItem(Long id) {
         persistence.delete(id);
     }
@@ -65,6 +71,7 @@ public class CartItemLogic implements ICartItemLogic {
     /**
      * @generated
      */
+    @Override
     public List<CartItemDTO> findByName(String name) {
         return CartItemConverter.listEntity2DTO(persistence.findByName(name));
     }

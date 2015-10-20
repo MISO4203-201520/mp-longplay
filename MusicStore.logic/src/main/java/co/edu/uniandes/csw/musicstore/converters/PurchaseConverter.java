@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.musicstore.converters;
-import co.edu.uniandes.csw.musicstore.dtos.CartItemDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
-import co.edu.uniandes.csw.musicstore.entities.CartItemEntity;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import co.edu.uniandes.csw.musicstore.entities.ClientEntity;
 import java.util.ArrayList;

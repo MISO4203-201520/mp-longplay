@@ -22,6 +22,7 @@ public class CommentLogic implements ICommentLogic{
     
     @Inject private CommentPersistence persistence;
     
+    @Override
     public CommentDTO createComment(CommentDTO dto) {
         CommentEntity entity = CommentConverter.fullDTO2Entity(dto);
         persistence.create(entity);

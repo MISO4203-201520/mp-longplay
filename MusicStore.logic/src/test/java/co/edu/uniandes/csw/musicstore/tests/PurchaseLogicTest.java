@@ -160,14 +160,13 @@ public class PurchaseLogicTest {
         PurchaseEntity resp = em.find(PurchaseEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getCardNumber(), resp.getCardNumber());
-    }
+    }*/
     
-    @Test
+     @Test
     public void confirmOrderTest()    
     {
       PodamFactory factory = new PodamFactoryImpl();
       PurchaseDetailDTO newEntity = factory.manufacturePojo(PurchaseDetailDTO.class);
-      newEntity.setPurchase(factory.manufacturePojo(PurchaseDTO.class));
       PurchaseDetailDTO result = purchaseLogic.confirmOrder(newEntity);
       Assert.assertNotNull(result);
       PurchaseDetailEntity entity= em.find(PurchaseDetailEntity.class, result.getId());
@@ -186,12 +185,10 @@ public class PurchaseLogicTest {
     {
       PodamFactory factory = new PodamFactoryImpl();
       PurchaseDetailDTO newEntity = factory.manufacturePojo(PurchaseDetailDTO.class);
-      newEntity.setPurchase(factory.manufacturePojo(PurchaseDTO.class));
       PurchaseDetailDTO result = purchaseLogic.cancelOrder(newEntity);
       Assert.assertNotNull(result);
       PurchaseDetailEntity entity= em.find(PurchaseDetailEntity.class, result.getId());
       Assert.assertEquals(newEntity.getConfirmObservations(), entity.getConfirmObservations());
       Assert.assertEquals(newEntity.getIsConfirm(), entity.getIsConfirm());
     }
-    */
 }

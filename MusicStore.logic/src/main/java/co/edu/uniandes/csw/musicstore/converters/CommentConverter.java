@@ -92,8 +92,7 @@ public abstract class CommentConverter {
      */
     public static CommentDTO fullEntity2DTO(CommentEntity entity) {
         if (entity != null) {
-            CommentDTO dto = basicEntity2DTO(entity);
-            return dto;
+            return basicEntity2DTO(entity);
         } else {
             return null;
         }
