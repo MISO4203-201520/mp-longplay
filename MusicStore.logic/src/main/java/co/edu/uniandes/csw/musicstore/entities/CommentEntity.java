@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -28,10 +29,10 @@ public class CommentEntity implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date commentDate;
     private Long idPadre;
-    
+    @PodamExclude
     @ManyToOne
     private LongPlayEntity longPlay;
-    
+    @PodamExclude
     @ManyToOne
     private ClientEntity client;
 
