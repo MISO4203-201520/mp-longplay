@@ -37,6 +37,7 @@
                 {
                     commentService.createComment(record, commentReg, null);
                     this.answerMode = false;
+                    this.refreshComment(record);
                 }
                 $scope.commentReg = "";
                 this.refreshComment(record);
@@ -61,6 +62,7 @@
                 {
                     commentService.createComment(record, answer, this.idCommentPadre);
                     this.answerMode = false;
+                    this.refreshComment(record);
                 }
                 this.refreshComment(record);
             };
