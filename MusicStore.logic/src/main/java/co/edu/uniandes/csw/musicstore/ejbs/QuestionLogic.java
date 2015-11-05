@@ -23,6 +23,7 @@ public class QuestionLogic implements IQuestionLogic {
      *
      * @return
      */
+    @Override
     public int countQuestions() {
         return persistence.count();
     }
@@ -33,6 +34,7 @@ public class QuestionLogic implements IQuestionLogic {
      * @param maxRecords
      * @return
      */
+    @Override
     public List<QuestionDTO> getQuestions(Integer page, Integer maxRecords) {
         return QuestionConverter.listEntity2DTO(persistence.findAll(page, maxRecords));
     }
@@ -42,6 +44,7 @@ public class QuestionLogic implements IQuestionLogic {
      * @param id
      * @return
      */
+    @Override
     public QuestionDTO getQuestion(Long id) {
         return QuestionConverter.fullEntity2DTO(persistence.find(id));
     }
@@ -51,6 +54,7 @@ public class QuestionLogic implements IQuestionLogic {
      * @param dto
      * @return
      */
+    @Override
     public QuestionDTO createQuestion(QuestionDTO dto) {
         QuestionEntity entity = QuestionConverter.fullDTO2Entity(dto);
         persistence.create(entity);
@@ -62,6 +66,7 @@ public class QuestionLogic implements IQuestionLogic {
      * @param dto
      * @return
      */
+    @Override
     public QuestionDTO updateQuestion(QuestionDTO dto) {
         QuestionEntity entity = persistence.update(QuestionConverter.fullDTO2Entity(dto));
         return QuestionConverter.fullEntity2DTO(entity);
@@ -71,6 +76,7 @@ public class QuestionLogic implements IQuestionLogic {
      *
      * @param id
      */
+    @Override
     public void deleteQuestion(Long id) {
         persistence.delete(id);
     }
@@ -80,6 +86,7 @@ public class QuestionLogic implements IQuestionLogic {
      * @param name
      * @return
      */
+    @Override
     public List<QuestionDTO> findByName(String name) {
         return QuestionConverter.listEntity2DTO(persistence.findByName(name));
     }

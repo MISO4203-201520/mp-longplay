@@ -18,7 +18,8 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "Client.getByUserId", query = "select u from ClientEntity u WHERE u.userId = :user_id")
 })
 public class ClientEntity implements Serializable {
-
+    
+    private static final long serialVersionUID = 1905122041950251207L;
     @Id
     @GeneratedValue(generator = "Client")
     private Long id;

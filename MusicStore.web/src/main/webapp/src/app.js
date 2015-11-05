@@ -79,10 +79,10 @@
                 logoutURL: 'logout',
                 nameCookie: 'userCookie'
             });
-//            auth.setRoles({'user': 'Client', 'provider': 'Provider'});
         }]);
 
     mainApp.run(function(editableOptions) {
         editableOptions.theme = 'bs3'; // bootstrap3 theme. For Xeditable plugin Angular
     });
+    
 })(window.angular);

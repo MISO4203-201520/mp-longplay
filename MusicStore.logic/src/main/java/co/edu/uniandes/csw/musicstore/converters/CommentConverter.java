@@ -54,7 +54,7 @@ public abstract class CommentConverter {
     /**
      * @generated
      */
-    private static CommentDTO basicEntity2DTO(CommentEntity entity) {
+    public static CommentDTO basicEntity2DTO(CommentEntity entity) {
         if (entity != null) {
             CommentDTO dto = new CommentDTO();
             dto.setId(entity.getId());
@@ -72,7 +72,7 @@ public abstract class CommentConverter {
     /**
      * @generated
      */
-    private static CommentEntity basicDTO2Entity(CommentDTO dto) {
+    public static CommentEntity basicDTO2Entity(CommentDTO dto) {
         if (dto != null) {
             CommentEntity entity = new CommentEntity();
             entity.setId(dto.getId());
@@ -92,8 +92,7 @@ public abstract class CommentConverter {
      */
     public static CommentDTO fullEntity2DTO(CommentEntity entity) {
         if (entity != null) {
-            CommentDTO dto = basicEntity2DTO(entity);
-            return dto;
+            return basicEntity2DTO(entity);
         } else {
             return null;
         }

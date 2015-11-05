@@ -103,8 +103,7 @@ public abstract class LongPlayConverter {
      */
     public static LongPlayDTO fullEntity2DTO(LongPlayEntity entity) {
         if (entity != null) {
-            LongPlayDTO dto = basicEntity2DTO(entity);
-            return dto;
+            return basicEntity2DTO(entity);
         } else {
             return null;
         }
@@ -115,8 +114,7 @@ public abstract class LongPlayConverter {
      */
     public static LongPlayEntity fullDTO2Entity(LongPlayDTO dto) {
         if (dto != null) {
-            LongPlayEntity entity = basicDTO2Entity(dto);
-            return entity;
+            return basicDTO2Entity(dto);
         } else {
             return null;
         }

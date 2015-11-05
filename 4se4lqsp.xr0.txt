@@ -1,0 +1,46 @@
+﻿Merge branch 'master' of https://github.com/MISO4203-201520/mp-longplay
+
+Conflicts:
+	MusicStore.logic/src/test/java/co/edu/uniandes/csw/musicstore/tests/PurchaseLogicTest.java
+	MusicStore.logic/src/test/java/co/edu/uniandes/csw/musicstore/tests/PurchasePersistenceTest.java
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 2 and 21 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/converters/AlbumConverter.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/converters/CartItemConverter.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/dtos/LongPlayDTO.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/ejbs/AlbumLogic.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/ejbs/CartItemLogic.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/ejbs/ClientLogic.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/ejbs/LongPlayLogic.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/ejbs/ProviderLogic.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/ejbs/QuestionLogic.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/ejbs/SongLogic.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/entities/AlbumEntity.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/entities/CartItemEntity.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/entities/ClientEntity.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/entities/LongPlayEntity.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/entities/ProviderEntity.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/entities/SongEntity.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/persistence/ClientPersistence.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/persistence/LongPlayPersistence.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/persistence/ProviderPersistence.java
+#	modified:   MusicStore.logic/src/main/java/co/edu/uniandes/csw/musicstore/persistence/SongPersistence.java
+#	modified:   MusicStore.logic/src/test/java/co/edu/uniandes/csw/musicstore/tests/PurchaseLogicTest.java
+#	modified:   MusicStore.web/src/main/java/co/edu/uniandes/csw/musicstore/services/UserService.java
+#
+

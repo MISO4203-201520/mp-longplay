@@ -21,6 +21,7 @@ public class ProviderLogic implements IProviderLogic {
     /**
      * @generated
      */
+    @Override
     public int countProviders() {
         return persistence.count();
     }
@@ -28,6 +29,7 @@ public class ProviderLogic implements IProviderLogic {
     /**
      * @generated
      */
+    @Override
     public List<ProviderDTO> getProviders(Integer page, Integer maxRecords) {
         return ProviderConverter.listEntity2DTO(persistence.findAll(page, maxRecords));
     }
@@ -35,6 +37,7 @@ public class ProviderLogic implements IProviderLogic {
     /**
      * @generated
      */
+    @Override
     public ProviderDTO getProvider(Long id) {
         return ProviderConverter.fullEntity2DTO(persistence.find(id));
     }
@@ -42,6 +45,7 @@ public class ProviderLogic implements IProviderLogic {
     /**
      * @generated
      */
+    @Override
     public ProviderDTO createProvider(ProviderDTO dto) {
         ProviderEntity entity = ProviderConverter.fullDTO2Entity(dto);
         persistence.create(entity);
@@ -51,6 +55,7 @@ public class ProviderLogic implements IProviderLogic {
     /**
      * @generated
      */
+    @Override
     public ProviderDTO updateProvider(ProviderDTO dto) {
         ProviderEntity entity = persistence.update(ProviderConverter.fullDTO2Entity(dto));
         return ProviderConverter.fullEntity2DTO(entity);
@@ -59,6 +64,7 @@ public class ProviderLogic implements IProviderLogic {
     /**
      * @generated
      */
+    @Override
     public void deleteProvider(Long id) {
         persistence.delete(id);
     }
@@ -66,14 +72,17 @@ public class ProviderLogic implements IProviderLogic {
     /**
      * @generated
      */
+    @Override
     public List<ProviderDTO> findByName(String name) {
         return ProviderConverter.listEntity2DTO(persistence.findByName(name));
     }
 
+    @Override
     public ProviderDTO getArtistByUserId(String userId) {
         return ProviderConverter.refEntity2DTO(persistence.getProviderByUserId(userId));
     }
     
+    @Override
     public List<ProviderDTO> getAllProviders() {
         return ProviderConverter.listEntity2DTO(persistence.findAll());
     }

@@ -71,18 +71,20 @@
                 <input type="text" class="form-control" ng-model="commentReg" placeholder="New comment..."  ng-minlength="1" required ng-maxlength="250" style="width: 100%; border-radius: 4px; padding: 18px 18px">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-primary" ng-click="ctrl.addComment(model, commentReg);
-                                ctrl.refreshComment(model);commentReg=''" style="float:right; width: 100%">
+                                ctrl.refreshComment(model);
+                                commentReg = ''" style="float:right; width: 100%">
                         <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Add 
                     </button>
                 </span>
             </div>
             <br>
             <div class="input-group">
-                <button type="button" class="btn btn-primary" ng-click="ctrl.detailsMode = false;ctrl.findCheapMode = true" style="float:left; width: 100%">
+                <button type="button" class="btn btn-primary" ng-click="ctrl.detailsMode = false;
+                            ctrl.findCheapMode = true" style="float:left; width: 100%">
                     <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Back 
                 </button>
             </div>
-            <div class="panel-heading"><b>Comments:</b> </div>
+            <div class="panel-heading"> <strong>Comments:</strong> </div>
             <ul class="list-group" ng-repeat="comment in model.comments">
                 <li ng-show="comment.idPadre == null" class="list-group-item">
                     {{comment.description}}
@@ -91,7 +93,8 @@
                     <div ng-show="ctrl.answerMode[comment.id]" class="input-group">
                         <input type="text" class="form-control" placeholder="Reply..."  ng-model="answer" ng-minlength="1" required ng-maxlength="250" style="width: 100%; border-radius: 4px; padding: 18px 18px">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary" ng-click="ctrl.addAnswer(model, answer);answer=''" style="float:right; width: 100%">
+                            <button type="button" class="btn btn-primary" ng-click="ctrl.addAnswer(model, answer);
+                                            answer = ''" style="float:right; width: 100%">
                                 <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
                             </button>
                         </span>
@@ -111,7 +114,8 @@
                         <div ng-show="ctrl.answerMode[respuesta.id]" class="input-group">
                             <input type="text" class="form-control" placeholder="Reply..."  ng-model="answer" ng-minlength="1" required ng-maxlength="250" style="width: 100%; border-radius: 4px; padding: 18px 18px">
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary" ng-click="ctrl.addAnswer(model, answer);answer=''" style="float:right; width: 100%">
+                                <button type="button" class="btn btn-primary" ng-click="ctrl.addAnswer(model, answer);
+                                                    answer = ''" style="float:right; width: 100%">
                                     <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
                                 </button>
                             </span>
@@ -135,4 +139,3 @@
         </div>
 
     </div>
-

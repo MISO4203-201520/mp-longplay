@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musicstore.dtos;
 import java.util.Date;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -14,7 +15,9 @@ public class CommentDTO {
     private Long id;
     private String description;
     private Date commentDate;  
+    @PodamExclude
     private LongPlayDTO longPlay;
+    @PodamExclude
     private ClientDTO client;
     private Long clientId;
     private Long idPadre;

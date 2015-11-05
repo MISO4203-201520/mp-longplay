@@ -3,6 +3,8 @@ package co.edu.uniandes.csw.musicstore.persistence;
 import co.edu.uniandes.csw.musicstore.entities.SongEntity;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 
@@ -23,6 +25,7 @@ public class SongPersistence extends CrudPersistence<SongEntity> {
             params.put("longPlay", longPlay);
             return this.executeListNamedQuery("LongPlay.getByAlbumName", params);
         } catch (NoResultException e) {
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
             return null;
         }
     }

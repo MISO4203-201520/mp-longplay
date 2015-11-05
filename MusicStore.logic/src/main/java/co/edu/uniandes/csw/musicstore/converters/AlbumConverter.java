@@ -104,8 +104,7 @@ public abstract class AlbumConverter {
      */
     public static AlbumDTO fullEntity2DTO(AlbumEntity entity) {
         if (entity != null) {
-            AlbumDTO dto = basicEntity2DTO(entity);
-            return dto;
+            return basicEntity2DTO(entity);
         } else {
             return null;
         }
@@ -116,8 +115,7 @@ public abstract class AlbumConverter {
      */
     public static AlbumEntity fullDTO2Entity(AlbumDTO dto) {
         if (dto != null) {
-            AlbumEntity entity = basicDTO2Entity(dto);
-            return entity;
+            return basicDTO2Entity(dto);
         } else {
             return null;
         }

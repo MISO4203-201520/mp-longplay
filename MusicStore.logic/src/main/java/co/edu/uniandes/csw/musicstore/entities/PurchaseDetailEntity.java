@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musicstore.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -23,15 +25,20 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "PurchaseDetailEntity.getProviderLongPlayPurchases", query = "select u from PurchaseDetailEntity u WHERE u.longPlay.provider.userId = :providerId")
 })
-public class PurchaseDetailEntity {
+public class PurchaseDetailEntity implements Serializable {
+    
+    private static final long serialVersionUID = 1905122041950251207L;
     
     @Id
     @GeneratedValue(generator = "PurchaseDetail")
+    @PodamExclude
     private Long id;
     
     @ManyToOne
+    @PodamExclude
     private PurchaseEntity purchase;
     @ManyToOne
+    @PodamExclude
     private LongPlayEntity longPlay;         
     
     private Integer quantity;
@@ -41,6 +48,7 @@ public class PurchaseDetailEntity {
     private Boolean isConfirm;
     
     @Temporal(TemporalType.DATE)
+    @PodamExclude
     private Date confirmDate;
     
     private String confirmObservations;

@@ -78,8 +78,7 @@ public abstract class SongConverter {
 
     public static SongDTO fullEntity2DTO(SongEntity entity) {
         if (entity != null) {
-            SongDTO dto = basicEntity2DTO(entity);
-            return dto;
+            return basicEntity2DTO(entity);
         } else {
             return null;
         }
@@ -87,8 +86,7 @@ public abstract class SongConverter {
 
     public static SongEntity fullDTO2Entity(SongDTO dto) {
         if (dto != null) {
-            SongEntity entity = basicDTO2Entity(dto);
-            return entity;
+            return basicDTO2Entity(dto);
         } else {
             return null;
         }

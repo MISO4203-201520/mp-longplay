@@ -20,6 +20,7 @@ public class AlbumLogic implements IAlbumLogic {
     /**
      * @generated
      */
+    @Override
     public int countAlbums() {
         return persistence.count();
     }
@@ -27,6 +28,7 @@ public class AlbumLogic implements IAlbumLogic {
     /**
      * @generated
      */
+    @Override
     public List<AlbumDTO> getAlbums(Integer page, Integer maxRecords) {
         return AlbumConverter.listEntity2DTO(persistence.findAll(page, maxRecords));
     }
@@ -34,6 +36,7 @@ public class AlbumLogic implements IAlbumLogic {
     /**
      * @generated
      */
+    @Override
     public AlbumDTO getAlbum(Long id) {
         return AlbumConverter.fullEntity2DTO(persistence.find(id));
     }
@@ -41,6 +44,7 @@ public class AlbumLogic implements IAlbumLogic {
     /**
      * @generated
      */
+    @Override
     public AlbumDTO createAlbum(AlbumDTO dto) {
         AlbumEntity entity = AlbumConverter.fullDTO2Entity(dto);
         persistence.create(entity);
@@ -50,6 +54,7 @@ public class AlbumLogic implements IAlbumLogic {
     /**
      * @generated
      */
+    @Override
     public AlbumDTO updateAlbum(AlbumDTO dto) {
         AlbumEntity entity = persistence.update(AlbumConverter.fullDTO2Entity(dto));
         return AlbumConverter.fullEntity2DTO(entity);
@@ -58,6 +63,7 @@ public class AlbumLogic implements IAlbumLogic {
     /**
      * @generated
      */
+    @Override
     public void deleteAlbum(Long id) {
         persistence.delete(id);
     }
@@ -65,6 +71,7 @@ public class AlbumLogic implements IAlbumLogic {
     /**
      * @generated
      */
+    @Override
     public List<AlbumDTO> findByName(String name) {
         return AlbumConverter.listEntity2DTO(persistence.findByName(name));
     }

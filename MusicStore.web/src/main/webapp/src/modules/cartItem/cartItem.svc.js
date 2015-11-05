@@ -1,12 +1,12 @@
-(function (ng) {
+(function(ng) {
     var mod = ng.module('cartItemModule');
 
-    mod.service('cartItemService', ['CrudCreator', 'cartItemContext', function (CrudCreator, context) {
+    mod.service('cartItemService', ['CrudCreator', 'cartItemContext', function(CrudCreator, context) {
             CrudCreator.extendService(this, context);
 
-            this.addItem = function (record) {
+            this.addItem = function(record) {
                 var self = this;
-                this.fetchRecords().then(function (data) {
+                this.fetchRecords().then(function(data) {
                     for (var i = 0; i < data.length; i++) {
                         if (record.longPlay.id === data[i].longPlay.id) {
                             record = data[i];
@@ -17,6 +17,11 @@
                     self.saveRecord(record);
                 });
             };
-            
+
+            this.isEmpty = function(value) {
+                var result = (value === undefined || value === '');
+                return result;
+            };
+
         }]);
 })(window.angular);

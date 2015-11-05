@@ -46,7 +46,7 @@ public class AlbumServiceTest {
     public static String URLRESOURCES = "src/main/webapp"; 
     public static String URLBASE = "http://localhost:8181/MusicStore.web/webresources"; 
     public static String PATHALBUM = "/albums";
-    public static ArrayList<AlbumDTO> oraculo = new ArrayList<AlbumDTO>();
+    public static ArrayList<AlbumDTO> oraculo = new ArrayList<>();
     @Deployment  
     public static WebArchive createDeployment() { 
     
@@ -99,7 +99,7 @@ public class AlbumServiceTest {
         Assert.assertEquals(album.getAwards(), album.getAwards()); 
         Assert.assertEquals(album.getHistoricReview(), album.getHistoricReview()); 
         Assert.assertEquals(Created, response.getStatus()); 
-        */
+                */
         
     }
     

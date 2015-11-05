@@ -77,7 +77,7 @@ public abstract class PurchaseDetailConverter {
     /**
      * @generated
      */
-    private static PurchaseDetailEntity basicDTO2Entity(PurchaseDetailDTO dto) {
+    public static PurchaseDetailEntity basicDTO2Entity(PurchaseDetailDTO dto) {
         if (dto != null) {
             PurchaseDetailEntity entity = new PurchaseDetailEntity();
             entity.setId(dto.getId());
@@ -100,8 +100,7 @@ public abstract class PurchaseDetailConverter {
      */
     public static PurchaseDetailDTO fullEntity2DTO(PurchaseDetailEntity entity) {
         if (entity != null) {
-            PurchaseDetailDTO dto = basicEntity2DTO(entity);
-            return dto;
+            return basicEntity2DTO(entity);
         } else {
             return null;
         }
