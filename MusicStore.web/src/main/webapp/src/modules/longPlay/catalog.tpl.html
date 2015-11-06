@@ -41,15 +41,10 @@
 <div class="col-sm-2" style="position: absolute; right: 0px; padding-left: 0px;">
     <div class="panel panel-default text-center" style="background-color: #2780E3; color: white;">
         <h2> Top Seller </h2>
-        <div style="background-color: #f5f5f5">
+        <div ng-repeat="seller in sellers" style="background-color: #f5f5f5">
             <div align="center" style="padding: 10px;">
-                <img style="width: 175px;height: 175px" class="img-responsive" ng-src="http://d817ypd61vbww.cloudfront.net/sites/default/files/tile/image/original_463.jpg" alt="{{record.album.cover}}">
-            </div>
-            <div align="center" style="padding: 10px;">
-                <img style="width: 175px;height: 175px" class="img-responsive" ng-src="https://urbozblob.blob.core.windows.net/images/5338364418175201.jpg" alt="{{record.album.cover}}">
-            </div>
-            <div align="center" style="padding: 10px;">
-                <img style="width: 175px;height: 175px" class="img-responsive" ng-src="http://g-ecx.images-amazon.com/images/G/01/ciu/76/aa/f13281b0c8a0ded31aee8110.L.jpg" alt="{{record.album.cover}}">
+                <h5 style="color: black;"><b>{{seller.artist}}</b></h5>
+                <img style="width: 175px;height: 175px" class="img-responsive" ng-src="{{seller.cover}}" alt="{{seller.cover}}">
             </div>
         </div>
         

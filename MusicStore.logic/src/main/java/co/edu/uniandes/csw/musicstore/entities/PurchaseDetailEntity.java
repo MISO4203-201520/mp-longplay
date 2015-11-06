@@ -23,7 +23,8 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "PurchaseDetailEntity.getProviderLongPlayPurchases", query = "select u from PurchaseDetailEntity u WHERE u.longPlay.provider.userId = :providerId")
+    @NamedQuery(name = "PurchaseDetailEntity.getProviderLongPlayPurchases", query = "select u from PurchaseDetailEntity u WHERE u.longPlay.provider.userId = :providerId"),
+    @NamedQuery(name = "PurchaseDetailEntity.getTopSellerAlbums", query = "select u.longPlay.album from PurchaseDetailEntity u group by u.longPlay.album order by count(u) desc")
 })
 public class PurchaseDetailEntity implements Serializable {
     

@@ -75,4 +75,10 @@ public class AlbumLogic implements IAlbumLogic {
     public List<AlbumDTO> findByName(String name) {
         return AlbumConverter.listEntity2DTO(persistence.findByName(name));
     }
+    
+    @Override
+    public List<AlbumDTO> getTopSellerAlbums() {
+        System.out.println("entro2");
+        return AlbumConverter.listEntity2DTO(persistence.getTopSeller());
+    }
 }

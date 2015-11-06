@@ -2,6 +2,7 @@ package co.edu.uniandes.csw.musicstore.services;
 
 import co.edu.uniandes.csw.musicstore.api.IAlbumLogic;
 import co.edu.uniandes.csw.musicstore.dtos.AlbumDTO;
+import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
 import java.util.List;
 import javax.inject.Inject;
@@ -77,5 +78,12 @@ public class AlbumService {
     @Path("{id: \\d+}")
     public void deleteAlbum(@PathParam("id") Long id) {
         albumLogic.deleteAlbum(id);
+    }
+    
+    @GET
+    @Path("/sellers")
+    public List<AlbumDTO> getTopSellerAlbums() {
+        System.out.println("entro1");
+        return albumLogic.getTopSellerAlbums();
     }
 }

@@ -6,8 +6,10 @@
 package co.edu.uniandes.csw.musicstore.ejbs;
 
 import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic;
+import co.edu.uniandes.csw.musicstore.converters.AlbumConverter;
 import co.edu.uniandes.csw.musicstore.converters.PurchaseConverter;
 import co.edu.uniandes.csw.musicstore.converters.PurchaseDetailConverter;
+import co.edu.uniandes.csw.musicstore.dtos.AlbumDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import co.edu.uniandes.csw.musicstore.entities.PurchaseDetailEntity;

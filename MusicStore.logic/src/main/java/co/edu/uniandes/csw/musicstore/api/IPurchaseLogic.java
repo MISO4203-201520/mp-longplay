@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musicstore.api;
 
+import co.edu.uniandes.csw.musicstore.dtos.AlbumDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import java.util.List;
