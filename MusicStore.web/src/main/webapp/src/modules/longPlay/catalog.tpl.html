@@ -1,5 +1,5 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
-<div class="col-sm-12" >
+<div class="col-sm-10" >
     <script type="text/javascript">
                 authorization();
     </script>
@@ -38,7 +38,19 @@
         </div>
     </div>
 </div>
-<div class="text-center">
+<div class="col-sm-2" style="position: absolute; right: 0px; padding-left: 0px;">
+    <div class="panel panel-default text-center" style="background-color: #2780E3; color: white;">
+        <h2> Top Seller </h2>
+        <div ng-repeat="seller in sellers" style="background-color: #f5f5f5">
+            <div align="center" style="padding: 10px;">
+                <h5 style="color: black;"><b>{{seller.artist}}</b></h5>
+                <img style="width: 175px;height: 175px" class="img-responsive" ng-src="{{seller.cover}}" alt="{{seller.cover}}">
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="col-sm-10 text-center">
     <pagination ng-show="ctrl.numPages > 1" num-pages="ctrl.numPages" total-items="ctrl.totalItems"
                 ng-model="ctrl.currentPage" ng-change="ctrl.pageChanged()" items-per-page="ctrl.itemsPerPage"
                 max-size="ctrl.maxSize" class="pagination-md" boundary-links="true" rotate="false"></pagination>

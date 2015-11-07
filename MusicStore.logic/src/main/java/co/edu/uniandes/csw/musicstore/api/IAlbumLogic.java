@@ -11,4 +11,5 @@ public interface IAlbumLogic {
     public AlbumDTO updateAlbum(AlbumDTO dto);
     public void deleteAlbum(Long id);
     public List<AlbumDTO> findByName(String name);
+    public List<AlbumDTO> getTopSellerAlbums();
 }

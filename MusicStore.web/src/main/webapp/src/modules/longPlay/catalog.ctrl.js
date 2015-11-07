@@ -7,8 +7,9 @@
     var ciSvc = 'cartItemService';
     var cSvc = 'commentService';
     var qSvc = 'questionService';
-    mod.controller(cCtrl, [cc, '$scope','$modal','$route', lpSvc, lpMod, ciSvc, '$location', cSvc, qSvc, 
-        function(CrudCreator, $scope, $modal,$route, svc, model, cartItemSvc, $location, commentService, questionService) {
+    var abSvc = 'albumService';
+    mod.controller(cCtrl, [cc, '$scope', '$route', lpSvc, lpMod, ciSvc, '$location', cSvc, qSvc, abSvc,
+        function(CrudCreator, $scope, $route, svc, model, cartItemSvc, $location, commentService, questionService, albumService) {
             CrudCreator.extendController(this, svc, $scope, $route, model, 'catalog', 'Catalog');
             this.asGallery = true;
             this.readOnly = true;
@@ -90,47 +91,13 @@
                         return true;
                     }, show: function() {
                         return true;
-                    }}, {
-                    name: 'share social',
-                    displayName: 'Share',
-                    icon: 'share',
-                    class: 'primary',
-                    fn: function (app) {
-                        var modalInstance = $modal.open({
-                            animation: true,
-                            templateUrl: 'src/modules/share/social.html',
-                            controller: 'ModalShare',
-                            resolve: {
-                                app: function () {
-                                  //  $rootScope.selectedApp = app;
-                                    return app;
-                                }
-                            }
-                        });
-                        modalInstance.result.then(function (text) {
-                            svc.sendQuestion(text, app);
-                        }, function () {
-
-                        });
-                    },
-                    show: function () {
-                        return true;
-                    }
-                }];
+                    }}];
             this.fetchRecords();
+            albumService.getTopSellerAlbums().then(function(res) {
+                console.log(res[0])
+                    $scope.sellers = [];
+                    $scope.sellers = res;
+            });
+            
         }]);
-        mod.controller('ModalShare', function ($scope, $modalInstance, app) {
-        $scope.itemQuestion = {
-            name: app.name,
-            text: ""
-        };
-
-        $scope.ok = function () {
-            $modalInstance.close($scope.itemQuestion.text);
-        };
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
-    });
 })(window.angular);
