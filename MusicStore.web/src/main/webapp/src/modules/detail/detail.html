@@ -1,0 +1,27 @@
+<div class="modal-content">
+          <div class="modal-body row">
+              <div class="modal-header-product">
+                    <div class="product-image">
+                        <div class="product-image-wraper">
+                            <img ng-mouseover="zoomIn(productInfo._id)" data-zoom-image="{{record.img}}" id="zoom-56289102891d9f4000875ae4" class="img-responsive img" ng-src="{{record.img}}"src="{{record.img}}">
+                        </div>
+                    </div>
+                    <!-- ngIf: productInfo --><div ng-if="record" class="product-description ng-scope">
+                <h1><b class="ng-binding">{{record.name}}</b></h1>
+                <p><strong>Album: </strong>{{record.albumName}}</p>
+                <p><strong>Release: </strong>{{record.release| date}}</p>
+                <p><strong>Single: </strong> <span class="glyphicon" ng-class="{'glyphicon-check': !!record.single, 'glyphicon-unchecked': !record.single}"></span></p>
+                <p><strong>Artist: </strong> {{record.artist}}</p>
+                <p><strong>Price: </strong> {{record.price| currency}}</p>
+                <p><strong>Discount: </strong> {{record.discount| currency}}</p>
+                <p><strong>Provider: </strong> {{record.providerName}}</p>
+                <p><strong>Songs: </strong> {{record.songs.length}}</p>
+                <p><strong>Historic Review </strong> {{record.historic}}</p>
+                <p><strong>Awards </strong> {{record.awards}}</p>
+                    </div><!-- end ngIf: productInfo -->
+                </div>
+            </div>
+    <div class="modal-footer">
+    <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+</div>
+</div>

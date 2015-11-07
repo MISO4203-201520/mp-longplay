@@ -21,14 +21,6 @@
             </div>
             <div class="caption" >
                 <p><strong>Long Play: </strong> {{record.name}}</p>
-                <p><strong>Album: </strong>{{record.album.name}}</p>
-                <p><strong>Release: </strong>{{record.album.release| date}}</p>
-                <p><strong>Single: </strong> <span class="glyphicon" ng-class="{'glyphicon-check': !!record.album.single, 'glyphicon-unchecked': !record.album.single}"></span></p>
-                <p><strong>Artist: </strong> {{record.album.artist}}</p>
-                <p><strong>Price: </strong> {{record.price| currency}}</p>
-                <p><strong>Discount: </strong> {{record.discount| currency}}</p>
-                <p><strong>Provider: </strong> {{record.provider.name}}</p>
-                <p><strong>Songs: </strong> {{record.songs.length}}</p>
                 <div ng-show="record.songs.length > 0" ng-include src="'src/modules/song/song.tpl.html'" ></div>
             </div>
             <p ng-if="ctrl.recordActions" class="text-center">

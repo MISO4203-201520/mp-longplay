@@ -103,7 +103,7 @@
                             controller: 'ModalShare',
                             resolve: {
                                 app: function () {
-                                  //  $rootScope.selectedApp = app;
+
                                     return app;
                                 }
                             }
@@ -117,7 +117,34 @@
                     show: function () {
                         return true;
                     }
-                }];
+                }, {
+                    name: 'detail',
+                    displayName: 'Detail',
+                    icon: 'info-sign',
+                    class: 'primary',
+                    fn: function (app) {
+                        var modalInstance = $modal.open({
+                            animation: true,
+                            templateUrl: 'src/modules/detail/detail.html',
+                            controller: 'ModalDetail',
+                            resolve: {
+                                app: function () {
+
+                                    return app;
+                                }
+                            }
+                        });
+                        modalInstance.result.then(function (text) {
+                            svc.sendQuestion(text, app);
+                        }, function () {
+
+                        });
+                    },
+                    show: function () {
+                        return true;
+                    }
+                }
+            ];
             this.fetchRecords();
             albumService.getTopSellerAlbums().then(function(res) {
                 console.log(res[0])
@@ -134,6 +161,31 @@
 
         $scope.ok = function () {
             $modalInstance.close($scope.itemQuestion.text);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    });
+     mod.controller('ModalDetail', function ($scope, $modalInstance, app) {
+        $scope.record = {
+            name: app.name, 
+            price:app.price,
+            img:app.album.cover,
+            albumName:app.album.name,
+            release:app.album.release,
+            single:app.album.single,
+            artist:app.album.artist,
+            discount:app.discount,
+            providerName:app.provider.name,
+            songs:app.songs,
+            historic:app.album.historicReview,
+            awards:app.album.awards,
+            text: ""
+        };
+
+        $scope.ok = function () {
+            $modalInstance.close($scope.record.text);
         };
 
         $scope.cancel = function () {
