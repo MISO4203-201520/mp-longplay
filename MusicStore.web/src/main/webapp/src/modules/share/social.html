@@ -1,24 +1,37 @@
 <!DOCTYPE html>
+<head>
+    <style type="text/css">
+ 
+#share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
+}
+ 
+</style>
+</head>>   
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <div class="modal-header">
     <h3 class="modal-title">Share App!</h3>
 </div>
 <div class="modal-body">
     <p>Share about {{itemQuestion.name}} </p>
-       <button type="button" class="btn btn-default btn-lg">
-         <a style="color: white" href="https://twitter.com/intent/tweet?text=Check%20this%20App: {{itemQuestion.name}} &url=https://www.facebook.com/Appmarketplace-865305713576278" class="twitter-share-button" data-text="Here is an awesome App">Share on Twitter
-       </a>
-       </button>
-      <button type="button" class="btn btn-default btn-lg">
-         <a style="color: white" href="https://www.facebook.com/dialog/feed?  app_id=145634995501895  &display=popup&caption=Appoteca%20Sharing%20 &link=https://www.facebook.com/dialog/feed?%20%20app_id=145634995501895%20%20&display=popup&caption=Check%20This%20Application: %20{{itemQuestion.name}}%20%20&link=https%3A%2F%2Fwww.facebook.com%2FAppmarketplace-865305713576278&redirect_uri=https://developers.facebook.com/tools/explorer  &redirect_uri=https://developers.facebook.com/tools/explorer" target="_blank">
-         Share on Facebook
-         </a>
-      </button>
-
+            <a href="https://twitter.com/intent/tweet?text=Check%20this%20LongPlay: {{itemQuestion.name}} &url=https://www.facebook.com/Long-Play-Music-Store-1065896100110025/?ref=hl" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+    </a>
+           <a href="https://www.facebook.com/dialog/feed?  app_id=145634995501895  &display=popup&caption=LongPlay%20Sharing%20 &link=https://www.facebook.com/dialog/feed?%20%20app_id=145634995501895%20%20&display=popup&caption=Check%20This%20LongPlay: %20{{itemQuestion.name}}%20%20&link=https%3A%2F%2Fwww.facebook.com%2FLong-Play-Music-Store-1065896100110025%2F%3Fref%3Dhl&redirect_uri=https://developers.facebook.com/tools/explorer  &redirect_uri=https://developers.facebook.com/tools/explorer" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+           </a>
+     <a href="https://plus.google.com/share?url=https://www.facebook.com/Long-Play-Music-Store-1065896100110025/?ref=hl" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+    </a>
 </div>
 <div class="modal-footer">
     <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
