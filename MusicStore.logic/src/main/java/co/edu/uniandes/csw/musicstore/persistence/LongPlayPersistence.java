@@ -30,19 +30,17 @@ public class LongPlayPersistence extends CrudPersistence<LongPlayEntity> {
             return this.executeListNamedQuery("LongPlay.getByAlbumName", params);
         } catch (NoResultException e) {
             Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
-            return null;
+            return new ArrayList<LongPlayEntity>();
         }
     }
     public List<LongPlayEntity> getCheaperProduct (Long priceMax){
         try{
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("priceMax",priceMax);
-            //List<LongPlayEntity> list = new ArrayList<LongPlayEntity>();
             return  executeListNamedQuery("LongPlay.getCheaperProduct",params);
-            //return list.get(0);
             } catch(NoResultException e){
                 Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
-                return null;
+                return new ArrayList<LongPlayEntity>();
             }
         }
 }

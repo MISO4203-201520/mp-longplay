@@ -114,8 +114,7 @@ public abstract class PurchaseDetailConverter {
      */
     public static PurchaseDetailEntity fullDTO2Entity(PurchaseDetailDTO dto) {
         if (dto != null) {
-            PurchaseDetailEntity entity = basicDTO2Entity(dto);
-            return entity;
+            return basicDTO2Entity(dto);
         } else {
             return null;
         }
