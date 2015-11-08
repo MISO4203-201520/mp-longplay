@@ -321,12 +321,11 @@ public class AlbumLogicTest {
         }
     }
     
-    @Test
-    public void topSellerAlbums()
+    //@Test
+    public void getTopSellerAlbums()
     {
-      PodamFactory factory = new PodamFactoryImpl();
       //Setup albums
-      List<AlbumDTO> listAlbums = albumLogic.getAlbums(null, null);
+      List<AlbumDTO> listAlbums = albumLogic.getAlbums(0, 5);
       
       if(listAlbums.size()>2)
       {
@@ -350,7 +349,7 @@ public class AlbumLogicTest {
           }
            //DetailsAlbum2
           for (int i = 0; i < 2; i++) {
-             PurchaseDetailDTO det = new PurchaseDetailDTO();
+            PurchaseDetailDTO det = new PurchaseDetailDTO();
             LongPlayDTO dto = new LongPlayDTO();
             dto.setName(generateRandom(String.class));
             dto.setPrice(generateRandom(Integer.class));
@@ -372,8 +371,6 @@ public class AlbumLogicTest {
           purchaseLogic.createPurchase(purchase);
           
           List<AlbumDTO> top =albumLogic.getTopSellerAlbums();
-          System.out.println(top.size());
-          System.out.println(top.get(0).getName());
           Assert.assertEquals(top.get(0).getName(), album1.getName());
           Assert.assertEquals(top.get(1).getName(), album2.getName());
           Assert.assertEquals(top.get(2).getName(), album3.getName());
