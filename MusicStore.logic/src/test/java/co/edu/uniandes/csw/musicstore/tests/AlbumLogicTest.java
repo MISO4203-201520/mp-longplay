@@ -2,9 +2,22 @@ package co.edu.uniandes.csw.musicstore.tests;
 
 import co.edu.uniandes.csw.musicstore.ejbs.AlbumLogic;
 import co.edu.uniandes.csw.musicstore.api.IAlbumLogic;
+import co.edu.uniandes.csw.musicstore.api.ILongPlayLogic;
+import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic;
 import co.edu.uniandes.csw.musicstore.converters.AlbumConverter;
+import co.edu.uniandes.csw.musicstore.converters.LongPlayConverter;
+import co.edu.uniandes.csw.musicstore.converters.PurchaseConverter;
+import co.edu.uniandes.csw.musicstore.converters.PurchaseDetailConverter;
 import co.edu.uniandes.csw.musicstore.dtos.AlbumDTO;
+import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
+import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
+import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
+import co.edu.uniandes.csw.musicstore.ejbs.LongPlayLogic;
+import co.edu.uniandes.csw.musicstore.ejbs.PurchaseLogic;
 import co.edu.uniandes.csw.musicstore.entities.AlbumEntity;
+import co.edu.uniandes.csw.musicstore.entities.LongPlayEntity;
+import co.edu.uniandes.csw.musicstore.entities.PurchaseDetailEntity;
+import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import co.edu.uniandes.csw.musicstore.persistence.AlbumPersistence;
 import static co.edu.uniandes.csw.musicstore.tests._TestUtil.*;
 import java.util.ArrayList;
@@ -22,6 +35,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  * @generated
@@ -42,6 +57,19 @@ public class AlbumLogicTest {
                 .addPackage(AlbumLogic.class.getPackage())
                 .addPackage(IAlbumLogic.class.getPackage())
                 .addPackage(AlbumPersistence.class.getPackage())
+                .addPackage(LongPlayDTO.class.getPackage())
+                .addPackage(LongPlayEntity.class.getPackage())
+                .addPackage(PurchaseEntity.class.getPackage())
+                .addPackage(PurchaseDetailEntity.class.getPackage())
+                .addPackage(PurchaseDTO.class.getPackage())
+                .addPackage(PurchaseDetailDTO.class.getPackage())
+                .addPackage(LongPlayLogic.class.getPackage())
+                .addPackage(PurchaseLogic.class.getPackage())
+                .addPackage(PurchaseConverter.class.getPackage())
+                .addPackage(PurchaseDetailConverter.class.getPackage())
+                .addPackage(LongPlayConverter.class.getPackage())
+                .addPackage(ILongPlayLogic.class.getPackage())
+                .addPackage(IPurchaseLogic.class.getPackage())
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource("META-INF/beans.xml", "beans.xml");
     }
@@ -51,7 +79,12 @@ public class AlbumLogicTest {
      */
     @Inject
     private IAlbumLogic albumLogic;
+    
+    @Inject
+    private ILongPlayLogic longPlayLogic;
 
+    @Inject
+    private IPurchaseLogic purchaseLogic;
     /**
      * @generated
      */
@@ -286,5 +319,66 @@ public class AlbumLogicTest {
                 Assert.fail();
             }
         }
+    }
+    
+    @Test
+    public void topSellerAlbums()
+    {
+      PodamFactory factory = new PodamFactoryImpl();
+      //Setup albums
+      List<AlbumDTO> listAlbums = albumLogic.getAlbums(null, null);
+      
+      if(listAlbums.size()>2)
+      {
+          //Albums
+          AlbumDTO album1 = listAlbums.get(0);
+          AlbumDTO album2 = listAlbums.get(1);
+          AlbumDTO album3 = listAlbums.get(2);
+          
+          //Purchase
+          PurchaseDTO purchase = new PurchaseDTO();
+          ArrayList<PurchaseDetailDTO> detList = new ArrayList<PurchaseDetailDTO>();
+          //DetailsAlbum1
+          for (int i = 0; i < 3; i++) {
+            PurchaseDetailDTO det = new PurchaseDetailDTO();
+            LongPlayDTO dto = new LongPlayDTO();
+            dto.setName(generateRandom(String.class));
+            dto.setPrice(generateRandom(Integer.class));
+            dto.setAlbum(album1);
+            det.setLongPlay(longPlayLogic.createLongPlay(dto));
+            detList.add(det);
+          }
+           //DetailsAlbum2
+          for (int i = 0; i < 2; i++) {
+             PurchaseDetailDTO det = new PurchaseDetailDTO();
+            LongPlayDTO dto = new LongPlayDTO();
+            dto.setName(generateRandom(String.class));
+            dto.setPrice(generateRandom(Integer.class));
+            dto.setAlbum(album2);
+            det.setLongPlay(longPlayLogic.createLongPlay(dto));
+            detList.add(det);
+          }
+           //DetailsAlbum3
+          for (int i = 0; i < 1; i++) {
+            PurchaseDetailDTO det = new PurchaseDetailDTO();
+            LongPlayDTO dto = new LongPlayDTO();
+            dto.setName(generateRandom(String.class));
+            dto.setPrice(generateRandom(Integer.class));
+            dto.setAlbum(album3);
+            det.setLongPlay(longPlayLogic.createLongPlay(dto));
+            detList.add(det);
+          }
+          purchase.setPurchaseDetail(detList);
+          purchaseLogic.createPurchase(purchase);
+          
+          List<AlbumDTO> top =albumLogic.getTopSellerAlbums();
+          System.out.println(top.size());
+          System.out.println(top.get(0).getName());
+          Assert.assertEquals(top.get(0).getName(), album1.getName());
+          Assert.assertEquals(top.get(1).getName(), album2.getName());
+          Assert.assertEquals(top.get(2).getName(), album3.getName());
+          
+      }
+        
     }
 }
