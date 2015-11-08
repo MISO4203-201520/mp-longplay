@@ -3,21 +3,24 @@ package co.edu.uniandes.csw.musicstore.dtos;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * @generated
  */
 @XmlRootElement 
 public class AlbumDTO {
-
+    
+    @PodamExclude
     private Long id;
     private String name;
     private String cover;
     @XmlJavaTypeAdapter(DateAdapter.class)
+    @PodamExclude
     private Date release;
     private Boolean single;
     private String artist;
-    
+    @PodamExclude
     private Date publicationDate;    // Nuevo atributo
     
     private String awards;
