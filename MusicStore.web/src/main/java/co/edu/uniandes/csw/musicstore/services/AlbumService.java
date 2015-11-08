@@ -2,7 +2,6 @@ package co.edu.uniandes.csw.musicstore.services;
 
 import co.edu.uniandes.csw.musicstore.api.IAlbumLogic;
 import co.edu.uniandes.csw.musicstore.dtos.AlbumDTO;
-import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
 import java.util.List;
 import javax.inject.Inject;

@@ -5,7 +5,6 @@ import co.edu.uniandes.csw.musicstore.api.IProviderLogic;
 import co.edu.uniandes.csw.musicstore.api.IPurchaseLogic;
 import co.edu.uniandes.csw.musicstore.dtos.LongPlayDTO;
 import co.edu.uniandes.csw.musicstore.dtos.ProviderDTO;
-import co.edu.uniandes.csw.musicstore.dtos.PurchaseDTO;
 import co.edu.uniandes.csw.musicstore.dtos.PurchaseDetailDTO;
 import co.edu.uniandes.csw.musicstore.providers.StatusCreated;
 import java.util.List;

@@ -26,7 +26,6 @@ import org.apache.shiro.SecurityUtils;
  *
  * @author va.bastidas10
  */
-
 @Path("/comments")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)

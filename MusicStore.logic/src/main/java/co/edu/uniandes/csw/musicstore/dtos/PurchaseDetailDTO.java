@@ -5,12 +5,7 @@
  */
 package co.edu.uniandes.csw.musicstore.dtos;
 
-import co.edu.uniandes.csw.musicstore.entities.LongPlayEntity;
-import co.edu.uniandes.csw.musicstore.entities.PurchaseEntity;
 import java.util.Date;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import uk.co.jemos.podam.common.PodamExclude;
 
