@@ -121,6 +121,9 @@ public class AlbumLogicTest {
      * @generated
      */
     private void clearData() {
+        em.createQuery("delete from PurchaseDetailEntity").executeUpdate();
+        em.createQuery("delete from PurchaseEntity").executeUpdate();
+        em.createQuery("delete from LongPlayEntity").executeUpdate();
         em.createQuery("delete from AlbumEntity").executeUpdate();
     }
 
