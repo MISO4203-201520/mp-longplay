@@ -83,7 +83,6 @@ public class AlbumService {
     @GET
     @Path("/sellers")
     public List<AlbumDTO> getTopSellerAlbums() {
-        System.out.println("entro1");
         return albumLogic.getTopSellerAlbums();
     }
 }

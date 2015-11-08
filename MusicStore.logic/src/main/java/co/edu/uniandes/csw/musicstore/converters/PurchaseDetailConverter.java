@@ -17,6 +17,9 @@ import java.util.List;
  */
 public abstract class PurchaseDetailConverter {
     
+    private PurchaseDetailConverter() {
+    }
+    
  /**
      * @param entity
      * @return

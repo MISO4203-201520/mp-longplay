@@ -14,6 +14,11 @@ import java.util.List;
  * @author jd.patino10
  */
 public abstract class PurchaseConverter {
+    
+    private PurchaseConverter()
+    {
+        
+    }
    
     /**
      * @param entity

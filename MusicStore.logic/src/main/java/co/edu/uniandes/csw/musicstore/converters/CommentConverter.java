@@ -16,6 +16,11 @@ import java.util.List;
  * @author va.bastidas10
  */
 public abstract class CommentConverter {
+    
+    private CommentConverter()
+    {
+        
+    }
 
     /**
      * @param entity

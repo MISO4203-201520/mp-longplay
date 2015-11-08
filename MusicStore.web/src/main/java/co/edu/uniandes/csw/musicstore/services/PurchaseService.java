@@ -40,12 +40,6 @@ public class PurchaseService {
     private IPurchaseLogic PurchaseLogic;
     @Inject
     private IClientLogic clientLogic;
-    @Context
-    private HttpServletResponse response;
-    @QueryParam("page")
-    private Integer page;
-    @QueryParam("maxRecords")
-    private Integer maxRecords;
     private ClientDTO client = (ClientDTO) SecurityUtils.getSubject().getSession().getAttribute("Client");
 
     /**
@@ -109,7 +103,6 @@ public class PurchaseService {
     @PUT
     @Path("/confirm/{id: \\d+}")
     public PurchaseDetailDTO confirmOrder(@PathParam("id") Long id, PurchaseDetailDTO dto) {
-        System.out.println("data"+id+dto.getId());
         dto.setId(id);
         return PurchaseLogic.confirmOrder(dto);
     }
@@ -117,7 +110,6 @@ public class PurchaseService {
     @PUT
     @Path("/cancel/{id: \\d+}")
     public PurchaseDetailDTO cancelOrder(@PathParam("id") Long id, PurchaseDetailDTO dto) {
-        System.out.println("data"+id+dto.getId());
         dto.setId(id);
         return PurchaseLogic.cancelOrder(dto);
     }

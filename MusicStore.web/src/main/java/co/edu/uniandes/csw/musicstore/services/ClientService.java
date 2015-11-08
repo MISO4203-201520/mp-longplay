@@ -18,10 +18,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import com.stormpath.sdk.client.*;
-import com.stormpath.sdk.group.Group;
-import com.stormpath.sdk.group.GroupList;
-import javax.ws.rs.core.Response;
 /**
  * @generated
  */

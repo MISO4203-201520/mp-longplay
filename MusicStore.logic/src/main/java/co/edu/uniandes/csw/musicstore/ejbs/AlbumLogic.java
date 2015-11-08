@@ -78,7 +78,6 @@ public class AlbumLogic implements IAlbumLogic {
     
     @Override
     public List<AlbumDTO> getTopSellerAlbums() {
-        System.out.println("entro2");
         return AlbumConverter.listEntity2DTO(persistence.getTopSeller());
     }
 }
