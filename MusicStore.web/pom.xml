@@ -6,7 +6,7 @@
     <name>MusicStore.web</name>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <properties>  
+    <properties> 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
         <sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
@@ -15,13 +15,14 @@
         <sonar.jacoco.outReportPath>target/jacoco</sonar.jacoco.outReportPath>
         <sonar.jacoco.outItReportPath>target/jacoco-it</sonar.jacoco.outItReportPath>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <org.slf4j.version>1.7.12</org.slf4j.version>
     </properties>
     <dependencies>
-       <dependency>
-       <groupId>uk.co.jemos.podam</groupId>
-        <artifactId>podam</artifactId>
-        <version>6.0.1.RELEASE</version>
-       </dependency>
+        <dependency>
+            <groupId>co.edu.uniandes.csw.musicstore</groupId>
+            <artifactId>MusicStore.logic</artifactId>
+            <version>1.0</version>
+        </dependency>
         <dependency>
             <groupId>org.glassfish.main.extras</groupId>
             <artifactId>glassfish-embedded-all</artifactId>
@@ -29,14 +30,14 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>co.edu.uniandes.csw.musicstore</groupId>
-            <artifactId>MusicStore.logic</artifactId>
-            <version>1.0</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4-1201-jdbc41</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.container</groupId>
             <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
-            <version>1.0.0.CR4</version>
+            <version>1.0.0.CR3</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -50,30 +51,6 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <version>1.2.3</version>
-            <type>jar</type>
-        </dependency>
-        <!--   Stormpath   -->
-        <dependency>
-            <groupId>com.stormpath.shiro</groupId>
-            <artifactId>stormpath-shiro-core</artifactId>
-            <version>0.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.stormpath.sdk</groupId>
-            <artifactId>stormpath-sdk-api</artifactId>
-            <version>1.0.RC2</version>
-            <type>jar</type>
-        </dependency> 
-        <dependency>
-            <groupId>com.stormpath.sdk</groupId>
-            <artifactId>stormpath-sdk-httpclient</artifactId>
-            <version>1.0.RC2</version>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.shrinkwrap.resolver</groupId>
@@ -107,65 +84,69 @@
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>4.3.3</version>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.5</version>
+        </dependency>
+        <!-- Shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.2.3</version>
+            <type>jar</type>
+        </dependency>
+        <!--   Stormpath   -->
+        <dependency>
+            <groupId>com.stormpath.shiro</groupId>
+            <artifactId>stormpath-shiro-core</artifactId>
+            <version>0.6.0</version>
         </dependency>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.4-1201-jdbc41</version>
+            <groupId>com.stormpath.sdk</groupId>
+            <artifactId>stormpath-sdk-api</artifactId>
+            <version>1.0.RC2</version>
+            <type>jar</type>
+        </dependency> 
+        <dependency>
+            <groupId>com.stormpath.sdk</groupId>
+            <artifactId>stormpath-sdk-httpclient</artifactId>
+            <version>1.0.RC2</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.0</version>
-            <scope>provided</scope>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stormpath.sdk</groupId>
+            <artifactId>stormpath-sdk-impl</artifactId>
+            <version>1.0.RC2</version>
+            <type>jar</type>
+        </dependency>
+        <!-- Podam -->
+        <dependency>
+            <groupId>uk.co.jemos.podam</groupId>
+            <artifactId>podam</artifactId>
+            <version>6.0.1.RELEASE</version>
+        </dependency>
+        <!-- Logger implementation -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${org.slf4j.version}</version>
         </dependency>
     </dependencies>
-     <build>
-        <pluginManagement>
-            <plugins>
-                <!-- For executing & reporting ntegration tests -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>2.18</version>
-                    <executions>
-                        <execution>
-                            <id>integration-test</id>
-                            <goals>
-                                <goal>integration-test</goal>
-                                <goal>verify</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.18</version>
-                    <executions>
-                        <execution>
-                            <id>run-unit-tests</id>
-                            <goals>
-                                <goal>test</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.7.4.201502262128</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    
-        <plugins>
-                           
+    <build>
+        <plugins>                           
             <plugin> 
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.1.201405082137</version>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
@@ -173,7 +154,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                         <configuration>
-                            <!--                            <destFile>${sonar.jacoco.reportPath}</destFile>-->
+                            <destFile>${sonar.jacoco.reportPath}</destFile>
                             <propertyName>surefireArgLine</propertyName>
                             <excludes>
                                 <exclude>**/*IT.java</exclude>
@@ -187,14 +168,14 @@
                             <goal>report</goal>
                         </goals>
                         <configuration>
-                            <!-- Sets the path to the file which contains the execution data. -->
+                            <!--                             Sets the path to the file which contains the execution data. -->
                             <dataFile>${sonar.jacoco.reportPath}</dataFile>
-                            <!-- Sets the output directory for the code coverage report. -->
+                            <!--                             Sets the output directory for the code coverage report. -->
                             <outputDirectory>${sonar.jacoco.outReportPath}</outputDirectory>
                         </configuration>
                     </execution>
                     
-                    <!--we want to execute <span class="hiddenSpellError" pre="execute " data-mce-bogus="1">jacoco</span>:prepare-agent-integration in test phase,
+                    <!--                    we want to execute <span class="hiddenSpellError" pre="execute " data-mce-bogus="1">jacoco</span>:prepare-agent-integration in test phase,
                     but before executing maven failsafe plugin -->
                     <execution>
                         <configuration>
@@ -210,7 +191,7 @@
                             <goal>prepare-agent-integration</goal>
                         </goals>
                     </execution>
-                    <!-- Ensures that the code coverage report for integration tests after integration tests have been run. -->
+                    <!--                     Ensures that the code coverage report for integration tests after integration tests have been run. -->
                     <execution>
                         <id>post-integration-test</id>
                         <phase>post-integration-test</phase>
@@ -218,9 +199,9 @@
                             <goal>report</goal>
                         </goals>
                         <configuration>
-                            <!-- Sets the path to the file which contains the execution data. -->
+                            Sets the path to the file which contains the execution data. 
                             <dataFile>${sonar.jacoco.itReportPath}</dataFile>
-                            <!-- Sets the output directory for the code coverage report. -->
+                            Sets the output directory for the code coverage report. 
                             <outputDirectory>${sonar.jacoco.outItReportPath}</outputDirectory>
                         </configuration>
                     </execution>
@@ -232,7 +213,7 @@
                 <version>2.18</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <argLine>${jacoco.agent.argLine} -XX:MaxPermSize=1024m</argLine> 
+                    <argLine>${jacoco.agent.argLine}</argLine> 
                     <reportsDirectory>${project.build.directory}/target/failsafe-reports</reportsDirectory>
                     <excludes>
                         <exclude>**/*Test.java</exclude>
@@ -254,10 +235,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18</version>
                 <configuration>
-                    <!-- Sets the VM argument line used when unit tests are run. -->
+                    <!--                     Sets the VM argument line used when unit tests are run. -->
                     <argLine>${surefireArgLine}</argLine>
-                    <!-- Skips unit tests if the value of skip.unit.tests property is true -->                  
-                    <!-- Excludes integration tests when unit tests are run. -->
+                    <!--                     Skips unit tests if the value of skip.unit.tests property is true                   
+                    Excludes integration tests when unit tests are run. -->
                     <excludes>
                         <exclude>**/*IT.java</exclude>
                     </excludes>
@@ -280,6 +261,6 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-        </plugins>                              
-    </build>
+        </plugins>
+    </build>    
 </project>
